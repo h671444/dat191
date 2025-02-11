@@ -18,56 +18,80 @@ const quizData = [
   ];
   
   let currentQuestion = 0;
+  let score = 0;
+  let isAnswered = false;
   
-  // Funksjon for å vise et spørsmål og tilhørende svaralternativer
+  // Viser et spørsmål og tilhørende svaralternativer
   function showQuestion() {
     const questionEl = document.getElementById("question");
     const choicesEl = document.getElementById("choices");
     const resultEl = document.getElementById("result");
-    const nextButton = document.getElementById("nextButton");
     
-    // Tilbakestill resultat og skjul "Neste"-knappen
+    // Tilbakestill tilbakemeldingen
     resultEl.textContent = "";
-    nextButton.style.display = "none";
+    
+    // Resett svarstatus for det nye spørsmålet
+    isAnswered = false;
     
     // Hent gjeldende spørsmål
     const q = quizData[currentQuestion];
     questionEl.textContent = q.question;
     
-    // Tøm tidligere alternativer
+    // Tøm tidligere svaralternativer
     choicesEl.innerHTML = "";
     
-    // Lag knapper for hvert svaralternativ
+    // Lag en knapp for hvert svaralternativ, med tastetall foran
     q.choices.forEach((choice, index) => {
       const button = document.createElement("button");
-      button.textContent = choice;
+      button.textContent = `${index + 1}. ${choice}`;
       button.classList.add("choice");
       button.addEventListener("click", () => {
-        if (index === q.answer) {
-          resultEl.textContent = "Riktig! Bra jobba!";
-          nextButton.style.display = "inline-block";
-        } else {
-          resultEl.textContent = "Feil, prøv igjen!";
+        if (!isAnswered) {
+          if (index === q.answer) {
+            resultEl.textContent = "Riktig! Bra jobba!";
+            score++;
+            updateScore();
+            isAnswered = true;
+            // Gå automatisk videre til neste spørsmål etter 1,5 sekunder
+            setTimeout(() => {
+              currentQuestion++;
+              if (currentQuestion < quizData.length) {
+                showQuestion();
+              } else {
+                questionEl.textContent = "Gratulerer! Du har fullført quizen!";
+                choicesEl.innerHTML = "";
+                resultEl.textContent = "";
+              }
+            }, 1500);
+          } else {
+            resultEl.textContent = "Feil, prøv igjen!";
+          }
         }
       });
       choicesEl.appendChild(button);
     });
   }
   
-  // Håndter "Neste"-knappen
-  document.getElementById("nextButton").addEventListener("click", () => {
-    currentQuestion++;
-    if (currentQuestion < quizData.length) {
-      showQuestion();
-    } else {
-      // Sluttmelding når quizen er fullført
-      document.getElementById("question").textContent = "Gratulerer! Du har fullført quizen!";
-      document.getElementById("choices").innerHTML = "";
-      document.getElementById("nextButton").style.display = "none";
-      document.getElementById("result").textContent = "";
+  // Oppdaterer scorevisningen
+  function updateScore() {
+    const scoreEl = document.getElementById("score");
+    scoreEl.textContent = `Poengsum: ${score}`;
+  }
+  
+  // Legger til tastaturhåndtering for svaralternativene (tastene 1, 2, 3 osv.)
+  document.addEventListener("keydown", (event) => {
+    if (!isAnswered) {
+      const key = event.key;
+      if (key >= '1' && key <= '9') {
+        const index = parseInt(key) - 1;
+        const choicesEl = document.getElementById("choices");
+        if (index < choicesEl.children.length) {
+          choicesEl.children[index].click();
+        }
+      }
     }
   });
   
-  // Start quizen med det første spørsmålet
+  // Starter quizen med det første spørsmålet
   showQuestion();
   

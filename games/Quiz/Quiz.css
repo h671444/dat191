@@ -23,6 +23,11 @@ body {
     margin-bottom: 20px;
   }
   
+  #score {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+  }
+  
   .question {
     font-size: 1.5em;
     margin-bottom: 20px;
