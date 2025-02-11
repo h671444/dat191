@@ -1,0 +1,73 @@
+/* Grunnleggende styling */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f0f8ff; /* Lys blå bakgrunn */
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Quiz container */
+  .quiz-container {
+    max-width: 500px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .question {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+  }
+  
+  .choices {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .choice {
+    background: #87cefa;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .choice:hover {
+    background: #00bfff;
+  }
+  
+  #result {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    min-height: 1.5em;
+  }
+  
+  #nextButton {
+    padding: 10px 20px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 5px;
+    background: #1e90ff;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s;
+    display: none;
+  }
+  
+  #nextButton:hover {
+    background: #0d6efd;
+  }
+  
