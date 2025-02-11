@@ -167,10 +167,10 @@ function updateParticles() {
 ================================= */
 // Move paddle (keyboard controls)
 function movePaddle() {
-  if (keys.ArrowLeft && paddle.x > 0) {
+  if ((keys.ArrowLeft || keys.KeyA) && paddle.x > 0) {
     paddle.x -= paddleSpeed;
   }
-  if (keys.ArrowRight && paddle.x + paddle.width < canvas.width) {
+  if ((keys.ArrowRight || keys.KeyD) && paddle.x + paddle.width < canvas.width) {
     paddle.x += paddleSpeed;
   }
 }
@@ -288,7 +288,8 @@ function gameLoop() {
 ================================= */
 // Keyboard controls (move left/right, start/restart)
 document.addEventListener('keydown', function(e) {
-  if (e.code === 'ArrowLeft' || e.code === 'ArrowRight') {
+  if (e.code === 'ArrowLeft' || e.code === 'ArrowRight' ||
+      e.code === 'KeyA' || e.code === 'KeyD') {
     keys[e.code] = true;
   }
   if (e.code === 'Space') {
@@ -301,7 +302,8 @@ document.addEventListener('keydown', function(e) {
   }
 });
 document.addEventListener('keyup', function(e) {
-  if (e.code === 'ArrowLeft' || e.code === 'ArrowRight') {
+  if (e.code === 'ArrowLeft' || e.code === 'ArrowRight' ||
+      e.code === 'KeyA' || e.code === 'KeyD') {
     keys[e.code] = false;
   }
 });
