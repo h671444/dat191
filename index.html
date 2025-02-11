@@ -1,24 +1,50 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Game hub</title>
+        <title>Game hub - Spill lobby</title>
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-
-        <div>
-            <div class="titleBox">
-                <h1>Spill lobby</h1>
+        <header class = "hero">
+            <div class = "overlay">
+                <h1>Velkommen til Spill Lobby</h1>
+                <p> Velg et spill!</p>
             </div>
-            <div class="gameChoices">
-                <p>Velg et spill</p>
+        </header>
+
+        <main class = "container">
+            <section class = "game-cards">
+                <article class = "game-card">
+                    <a href="games/placeholder.txt">
+                    <img src ="css/images/Quiz1.jpg" alt= "Quiz Game">
+                    <div class = "game-info">
+                        <h2> Quiz</h2>
+                        <p>Test dine kunnskaper!</p>
+                    
+                    </div>
+                </a>
+                </article>
+
+                <article class = "game-card">
+                    <a href = "games/PongBreaker/PongBreaker.html">
+                    <img src = "css/images/Pong.png" alt = "PongBreaker">
                 
-                <a href = "games/PongBreaker/PongBreaker.html">PongBreaker</a>
-    
-            </div>
-            <p>hello world</p>
-        </div>
+                    <div class ="game-info">
+                        <h2>Pong Breaker</h2>
+                        <p>Ødelegg alle rutene med kulen</p>
+                        
+                    </div>
+                </a>
+                </article>
+            </section>
+        </main>
 
-        <script></script>
+
+        <footer>
+            <p>&copy; Spill Lobby</p>
+
+        </footer>
+                
+    
     </body>
 </html>
