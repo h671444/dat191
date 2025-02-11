@@ -1,0 +1,39 @@
+/* Reset & Basic Setup */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* Canvas fills the entire screen */
+  canvas {
+    display: block;
+    background: #222;
+    margin: 0 auto;
+  }
+  
+  /* Overlay (for start/game over messages) */
+  #overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 2em;
+    text-align: center;
+    z-index: 10;
+    user-select: none;
+    transition: opacity 0.3s ease;
+  }
+  
