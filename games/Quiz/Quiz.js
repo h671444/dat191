@@ -1,3 +1,17 @@
+// const loadQuestions = async () => {
+//   try {
+//       const res = await fetch("../../assets/questions.json");
+//       const data = await res.json();
+//       return data;
+//   } catch (e) {
+//     console.log("Error loading questions", error);
+//       return [];
+//   }
+// }
+
+
+
+
 // Definer quiz-spørsmålene
 const quizData = [
     {
