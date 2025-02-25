@@ -3,6 +3,7 @@
     <head>
         <title>Game hub - Spill lobby</title>
         <link rel="stylesheet" href="css/style.css">
+        <script src="https://webgazer.cs.brown.edu/webgazer.js"></script>
     </head>
     <body>
         <header>
@@ -60,10 +61,21 @@
             </div>
         </main>
 
+
         <footer>
             <p>&copy; 2025 NordicNeuroLabs. All rights reserved.</p>
         </footer>
                 
-    
+        <script>
+            window.onload = function() {
+                webgazer.setGazeListener(function(data, elapsedTime) {
+                    if (data) {
+                        console.log("Gaze X: " + data.x + " Y: " + data.y);
+                    }
+                }).begin();
+                
+            };
+        </script>
+        
     </body>
 </html>
