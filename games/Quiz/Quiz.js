@@ -1,111 +1,102 @@
-// const loadQuestions = async () => {
-//   try {
-//       const res = await fetch("../../assets/questions.json");
-//       const data = await res.json();
-//       return data;
-//   } catch (e) {
-//     console.log("Error loading questions", error);
-//       return [];
-//   }
-// }
+let questions = {}
+let selectedCategory = "";
+let selectedDifficulty = "";
+let currentQuestionIndex = 0;
+let currentQuestions = [];
+
+const loadQuestions = async () => {
+    const response = await fetch("../../assets/questions.json")
+    const data = await response.json();
+    console.log(data)
+    questions = data.categories;
+
+    displayCategories();
+}
+
+const displayCategories = () => {
+  const categoriesDiv = document.getElementById("categories");
+  categoriesDiv.innerHTML = "";
+
+  Object.keys(questions).forEach(category => {
+    let btn = document.createElement("button");
+    btn.innerText = category;
+    btn.onclick = () => selectCategory(category);
+    categoriesDiv.appendChild(btn);
 
 
+  })
+}
 
+const selectCategory = (category) => {
+  selectedCategory = category;
 
-// Definer quiz-spørsmålene
-const quizData = [
-    {
-      question: "Hva er 2 + 2?",
-      choices: ["3", "4", "5"],
-      answer: 1  // "4" er riktig (indeks 1)
-    },
-    {
-      question: "Hvilken farge har himmelen?",
-      choices: ["Blå", "Grønn", "Rød"],
-      answer: 0  // "Blå" er riktig (indeks 0)
-    },
-    {
-      question: "Hva sier katten?",
-      choices: ["Mjau", "Voff", "Kvakk"],
-      answer: 0  // "Mjau" er riktig (indeks 0)
-    }
-  ];
-  
-  let currentQuestion = 0;
-  let score = 0;
-  let isAnswered = false;
-  
-  // Viser et spørsmål og tilhørende svaralternativer
-  function showQuestion() {
-    const questionEl = document.getElementById("question");
-    const choicesEl = document.getElementById("choices");
-    const resultEl = document.getElementById("result");
-    
-    // Tilbakestill tilbakemeldingen
-    resultEl.textContent = "";
-    
-    // Resett svarstatus for det nye spørsmålet
-    isAnswered = false;
-    
-    // Hent gjeldende spørsmål
-    const q = quizData[currentQuestion];
-    questionEl.textContent = q.question;
-    
-    // Tøm tidligere svaralternativer
-    choicesEl.innerHTML = "";
-    
-    // Lag en knapp for hvert svaralternativ, med tastetall foran
-    q.choices.forEach((choice, index) => {
-      const button = document.createElement("button");
-      button.textContent = `${index + 1}. ${choice}`;
-      button.classList.add("choice");
-      button.addEventListener("click", () => {
-        if (!isAnswered) {
-          if (index === q.answer) {
-            resultEl.textContent = "Riktig! Bra jobba!";
-            score++;
-            updateScore();
-            isAnswered = true;
-            // Gå automatisk videre til neste spørsmål etter 1,5 sekunder
-            setTimeout(() => {
-              currentQuestion++;
-              if (currentQuestion < quizData.length) {
-                showQuestion();
-              } else {
-                questionEl.textContent = "Gratulerer! Du har fullført quizen!";
-                choicesEl.innerHTML = "";
-                resultEl.textContent = "";
-              }
-            }, 1500);
-          } else {
-            resultEl.textContent = "Feil, prøv igjen!";
-          }
-        }
-      });
-      choicesEl.appendChild(button);
+  document.getElementById("category-selection").hidden = true;
+  document.getElementById("difficulty-selection").hidden = false;
+}
+
+const selectDifficulty = (difficulty) => {
+  selectedDifficulty = difficulty;
+
+  loadQuiz();
+}
+
+const loadQuiz = () => {
+  document.getElementById("difficulty-selection").hidden = true;
+  document.getElementById("quiz-area").hidden = false;
+
+  let availiableQuestions = [];
+
+  if(selectedCategory === "random") {
+    Object.values(questions).forEach(category => {
+      availiableQuestions.push(...category.questions);
     });
+  } else {
+    availiableQuestions = questions[selectedCategory].questions;
   }
+
+  currentQuestions = availiableQuestions.filter(q => q.difficulty === selectedDifficulty);
+  currentQuestions = shuffleArray(currentQuestions);
   
-  // Oppdaterer scorevisningen
-  function updateScore() {
-    const scoreEl = document.getElementById("score");
-    scoreEl.textContent = `Poengsum: ${score}`;
-  }
-  
-  // Legger til tastaturhåndtering for svaralternativene (tastene 1, 2, 3 osv.)
-  document.addEventListener("keydown", (event) => {
-    if (!isAnswered) {
-      const key = event.key;
-      if (key >= '1' && key <= '9') {
-        const index = parseInt(key) - 1;
-        const choicesEl = document.getElementById("choices");
-        if (index < choicesEl.children.length) {
-          choicesEl.children[index].click();
-        }
-      }
-    }
-  });
-  
-  // Starter quizen med det første spørsmålet
+  currentQuestionIndex = 0;
   showQuestion();
-  
+}
+
+const showQuestion = () => {
+  console.log(currentQuestions);
+  if (currentQuestionIndex >= currentQuestions.length) {
+    alert("Quiz ferdig!");
+    location.reload();
+    return;
+  }
+
+  let questionObj = currentQuestions[currentQuestionIndex];
+  document.getElementById("question").innerText = questionObj.question;
+
+  let optionsDiv = document.getElementById("options");
+  optionsDiv.innerHTML = "";
+
+  Object.keys(questionObj.answers).forEach(key => {
+    let btn = document.createElement("button");
+    btn.innerText = `${key}: ${questionObj.answers[key]}`;
+    btn.classList.add("option-btn");
+    btn.onclick = () => checkAnswer(key, questionObj.correct);
+    optionsDiv.appendChild(btn);
+  })
+}
+
+const checkAnswer = (selected, correct) => {
+  if (selected === correct) {
+    alert("Riktig");
+  } else {
+    alert("Feil");
+  }
+  currentQuestionIndex++;
+  showQuestion();
+}
+
+const shuffleArray = (array) => {
+  return array.sort(() => Math.random() - 0.5);
+}
+
+
+window.onload = loadQuestions;

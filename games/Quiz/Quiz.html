@@ -1,21 +1,37 @@
 <!DOCTYPE html>
-<html lang="no">
+<html>
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enkel Quiz for Barn</title>
-    <link rel="stylesheet" href="Quiz.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Spill</title>
+    <link rel="stylesheet" href="quiz.css">
+    <script defer src="quiz.js"></script>
   </head>
   <body>
-    <div class="quiz-container">
-      <h1>Quiz for barn</h1>
-      <div id="poengsum">Poengsum: 0</div>
-      <div id="question" class="question"></div>
-      <div id="choices" class="choices"></div>
-      <div id="result"></div>
-      <button id="nextButton">Neste</button>
+    <div>
+      <h1>Velkommen til Quiz</h1>
+
+      <div id="category-selection">
+          <h2>Velg en kategori</h2>
+          <div id="categories"></div>
+          <button>Tilfeldige spørsmål</button>
+      </div>
+
+      <div id="difficulty-selection" hidden="true">
+        <h2>Velg en vanskelighetsgrad</h2>
+        <div id="diffuclties"></div>
+        <button class="difficulty-btn" onclick="selectDifficulty('lett')">Lett</button>
+        <button class="difficulty-btn" onclick="selectDifficulty('middels')">Middels</button>
+        <button class="difficulty-btn" onclick="selectDifficulty('vanskelig')">Vanskelig</button>
+      </div>
+
+      <div id="quiz-area" hidden="true">
+        <h2 id="question">Lorem Ipsum?</h2>
+        <div id="options" class="options-container">
+
+      </div>
+      <button id="nextQuestion-btn"> Neste spørsmål</button>
+
     </div>
-    
-    <script src="Quiz.js"></script>
   </body>
 </html>
