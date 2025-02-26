@@ -69,7 +69,7 @@ const showQuestion = () => {
     return;
   }
 
-  let questionObj = currentQuestions[currentQuestionIndex];
+  let questionObj = currentQuestions[0];
   document.getElementById("question").innerText = questionObj.question;
 
   let optionsDiv = document.getElementById("options");
@@ -90,7 +90,9 @@ const checkAnswer = (selected, correct) => {
   } else {
     alert("Feil");
   }
-  currentQuestionIndex++;
+
+  //removes used question from our currentQuestion array (removes first elem)
+  currentQuestions.shift();
   showQuestion();
 }
 

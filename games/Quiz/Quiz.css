@@ -1,0 +1,42 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  text-align: center;
+}
+
+.quiz-area {
+  background: white;
+  padding: 20px;
+  width: 50%;
+  margin: 20px auto;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+}
+
+button {
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
+  font-size: 18px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+.options-container {
+  margin-top: 20px;
+}
+
+.option-btn {
+  display: block;
+  width: 80%;
+  margin: 10px auto;
+  padding: 10px;
+  font-size: 16px;
+}
