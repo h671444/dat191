@@ -3,6 +3,7 @@ let selectedCategory = "";
 let selectedDifficulty = "";
 let currentQuestionIndex = 0;
 let currentQuestions = [];
+let score = 0;
 
 const loadQuestions = async () => {
     const response = await fetch("../../assets/questions.json")
@@ -93,6 +94,8 @@ const checkAnswer = (selected, correct) => {
 
       if (btn.innerText.startsWith(correct)) {
           btn.classList.add("correct"); 
+          score++;
+          updateScore();
       } else if (btn.innerText.startsWith(selected)) {
           btn.classList.add("incorrect");
       }
@@ -108,6 +111,10 @@ const checkAnswer = (selected, correct) => {
 const shuffleArray = (array) => {
   return array.sort(() => Math.random() - 0.5);
 }
+
+const updateScore = () => {
+  document.getElementById("score").innerText = score;
+};
 
 
 window.onload = () => {
