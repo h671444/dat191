@@ -4,4 +4,5 @@ window.onload = function() {
             console.log("Gaze X: " + data.x + " Y: " + data.y);
         }
     }).begin();
+    console.log("webgazer is loaded");
 };

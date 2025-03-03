@@ -1,42 +1,140 @@
+/* General Styling */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  text-align: center;
-}
-
-.quiz-area {
-  background: white;
-  padding: 20px;
-  width: 50%;
-  margin: 20px auto;
-  border-radius: 10px;
-  box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
-}
-
-button {
-  display: block;
-  margin: 10px auto;
-  padding: 10px;
-  font-size: 18px;
-  background: #007bff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #437EF6; /* Blue background */
   color: white;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; 
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #222224;
+  color: white;
+  position: fixed; 
+  top: 0;
+  left: 0;
+  height: 80px;
+  z-index: 1000; 
+}
+
+
+header p {
+  font-size: 35px;
+  padding-left: 10px
+}
+
+/* Shared Button Styles */
+button {
+  width: 100%;
+  padding: 20px; /* Bigger buttons */
+  font-size: 1.6rem; /* Bigger text */
+  border-radius: 12px;
   border: none;
-  border-radius: 5px;
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 
-button:hover {
-  background: #0056b3;
+/* Category & Difficulty Buttons */
+.category-btn, .difficulty-btn {
+  background: #44475a; /* Dark button */
+  color: white;
+  margin: 14px 0;
 }
 
-.options-container {
-  margin-top: 20px;
+.category-btn:hover, .difficulty-btn:hover {
+  background: #575c70;
+  transform: scale(1.1);
 }
 
+/* Quiz Container */
+#quiz-area {
+  background: #222224; /* Dark container */
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+  width: 90%;
+  max-width: 700px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Question Styling */
+#question {
+  font-size: 2rem; /* Bigger text */
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Answer Buttons */
 .option-btn {
-  display: block;
-  width: 80%;
-  margin: 10px auto;
-  padding: 10px;
-  font-size: 16px;
+  background: #44475a;
+  color: white;
+  padding: 22px; /* Bigger buttons */
+  margin: 14px 0;
+  font-size: 1.6rem; /* Bigger text */
+}
+
+.option-btn:hover {
+  background: #575c70;
+  transform: scale(1.1);
+}
+
+/* Correct Answer Glow */
+.option-btn.correct {
+  background: #50fa7b;
+  color: black;
+  box-shadow: 0 0 15px #50fa7b;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Incorrect Answer Glow */
+.option-btn.incorrect {
+  background: #ff5555;
+  color: black;
+  box-shadow: 0 0 15px #ff5555;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Navigation Buttons */
+.nav-btn {
+  background: #0095ff;
+  color: white;
+  padding: 22px; /* Bigger buttons */
+  font-size: 1.6rem; /* Bigger text */
+  margin-top: 25px;
+  width: 85%;
+  max-width: 500px;
+}
+
+.nav-btn:hover {
+  background: #0080e6;
+  transform: scale(1.08);
+}
+
+/* Hide Sections Initially */
+.hidden {
+  display: none;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(-20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
 }

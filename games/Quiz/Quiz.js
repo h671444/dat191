@@ -20,6 +20,7 @@ const displayCategories = () => {
   Object.keys(questions).forEach(category => {
     let btn = document.createElement("button");
     btn.innerText = category;
+    btn.classList.add("category-btn");
     btn.onclick = () => selectCategory(category);
     categoriesDiv.appendChild(btn);
 
@@ -46,7 +47,7 @@ const loadQuiz = () => {
 
   let availiableQuestions = [];
 
-  if(selectedCategory === "random") {
+  if(selectedCategory === "Tilfeldig spørsmål") {
     Object.values(questions).forEach(category => {
       availiableQuestions.push(...category.questions);
     });
@@ -85,20 +86,41 @@ const showQuestion = () => {
 }
 
 const checkAnswer = (selected, correct) => {
-  if (selected === correct) {
-    alert("Riktig");
-  } else {
-    alert("Feil");
-  }
+  let buttons = document.querySelectorAll(".option-btn");
 
-  //removes used question from our currentQuestion array (removes first elem)
-  currentQuestions.shift();
-  showQuestion();
-}
+  buttons.forEach(btn => {
+      btn.disabled = true; 
+
+      if (btn.innerText.startsWith(correct)) {
+          btn.classList.add("correct"); 
+      } else if (btn.innerText.startsWith(selected)) {
+          btn.classList.add("incorrect");
+      }
+  });
+
+  //move to next question after a short delay
+  setTimeout(() => {
+      currentQuestions.shift(); 
+      showQuestion();
+  }, 2500);
+};
 
 const shuffleArray = (array) => {
   return array.sort(() => Math.random() - 0.5);
 }
 
 
-window.onload = loadQuestions;
+window.onload = () => {
+  console.log("Loading quiz...");
+
+  //preventing duplicate instances of webgazer
+  if (typeof webgazer !== "undefined") {
+      console.log("Starting WebGazer...");
+      webgazer.begin();
+      webgazer.showPredictionPoints(true);
+  } else {
+      console.error("WebGazer not loaded.");
+  }
+
+  loadQuestions();
+};
