@@ -1,7 +1,6 @@
-/* General Styling */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #437EF6; /* Blue background */
+  background-color: #437EF6;
   color: white;
   text-align: center;
   margin: 0;
@@ -38,17 +37,16 @@ header p {
 /* Shared Button Styles */
 button {
   width: 100%;
-  padding: 20px; /* Bigger buttons */
-  font-size: 1.6rem; /* Bigger text */
+  padding: 20px; 
+  font-size: 1.6rem; 
   border-radius: 12px;
   border: none;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
 
-/* Category & Difficulty Buttons */
 .category-btn, .difficulty-btn {
-  background: #44475a; /* Dark button */
+  background: #44475a; 
   color: white;
   margin: 14px 0;
 }
@@ -58,9 +56,8 @@ button {
   transform: scale(1.1);
 }
 
-/* Quiz Container */
 #quiz-area {
-  background: #222224; /* Dark container */
+  background: #222224;
   padding: 40px;
   border-radius: 12px;
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
@@ -69,20 +66,19 @@ button {
   animation: fadeIn 0.5s ease-in-out;
 }
 
-/* Question Styling */
 #question {
-  font-size: 2rem; /* Bigger text */
+  font-size: 2rem; 
   font-weight: bold;
   margin-bottom: 20px;
 }
 
-/* Answer Buttons */
+/* question answer buttons */
 .option-btn {
   background: #44475a;
   color: white;
-  padding: 22px; /* Bigger buttons */
+  padding: 22px;
   margin: 14px 0;
-  font-size: 1.6rem; /* Bigger text */
+  font-size: 1.6rem;
 }
 
 .option-btn:hover {
@@ -90,7 +86,6 @@ button {
   transform: scale(1.1);
 }
 
-/* Correct Answer Glow */
 .option-btn.correct {
   background: #50fa7b;
   color: black;
@@ -98,7 +93,6 @@ button {
   transition: all 0.3s ease-in-out;
 }
 
-/* Incorrect Answer Glow */
 .option-btn.incorrect {
   background: #ff5555;
   color: black;
@@ -110,8 +104,8 @@ button {
 .nav-btn {
   background: #0095ff;
   color: white;
-  padding: 22px; /* Bigger buttons */
-  font-size: 1.6rem; /* Bigger text */
+  padding: 22px;
+  font-size: 1.6rem; 
   margin-top: 25px;
   width: 85%;
   max-width: 500px;
@@ -122,12 +116,12 @@ button {
   transform: scale(1.08);
 }
 
-/* Hide Sections Initially */
+/* hide sections initially */
 .hidden {
   display: none;
 }
 
-/* Animations */
+/* animations */
 @keyframes fadeIn {
   from {
       opacity: 0;
