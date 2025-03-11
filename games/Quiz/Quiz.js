@@ -116,6 +116,10 @@ const updateScore = () => {
   document.getElementById("score").innerText = score;
 };
 
+const returnToHome = () => {
+  window.location.href = "/index.html";
+};
+
 
 window.onload = () => {
   console.log("Loading quiz...");
