@@ -12,47 +12,57 @@ body {
   height: 100vh;
 }
 
-
 header {
   display: flex;
   align-items: center;
-  justify-content: flex-start; 
+  justify-content: space-between; 
   width: 100%;
   padding: 10px 20px;
   background-color: #222224;
   color: white;
-  position: fixed; 
+  position: fixed;
   top: 0;
   left: 0;
   height: 80px;
-  z-index: 1000; 
+  z-index: 1000;
 }
 
+.nav-left {
+  display: flex;
+  align-items: center;
+}
 
-header p {
+.nav-left p {
   font-size: 35px;
-  padding-left: 10px
+  padding-left: 10px;
+  margin: 0;
+  line-height: 80px;
 }
 
-.header-home-btn {
-  background-color: #0095ff; 
+.nav-right {
+  display: flex;
+  align-items: center;
+  margin-left: auto; 
+  margin-right: 50px;
+}
+
+.nav-home-btn {
+  background-color: #0095ff;
   color: white;
   border: none;
-  padding: 10px 15px;
-  font-size: 1rem;
+  padding: 12px 20px;
+  font-size: 1.2rem;
   border-radius: 8px;
   cursor: pointer;
-  margin-left: auto;
-  margin-right: 20px;
-  transition: background 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out, transform 0.2s;
 }
 
-.header-home-btn:hover {
+.nav-home-btn:hover {
   background-color: #0080e6;
   transform: scale(1.05);
 }
 
-/* Shared Button Styles */
+/* shared button styles */
 button {
   width: 100%;
   padding: 20px; 
