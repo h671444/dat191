@@ -4,6 +4,9 @@ A web-based game hub featuring educational games with eye-tracking capabilities.
 - Quiz Game: Test your knowledge across various categories and difficulty levels
 - Pong Breaker: A classic brick breaker game with a twist
 
+## About
+This project was developed as part of DAT191 at HVL.
+
 ## Project Structure
 ```
 dat191/
