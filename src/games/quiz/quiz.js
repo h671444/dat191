@@ -6,7 +6,7 @@ let currentQuestions = [];
 let score = 0;
 
 const loadQuestions = async () => {
-    const response = await fetch("../../assets/questions.json")
+    const response = await fetch("../../assets/data/questions.json")
     const data = await response.json();
     console.log(data)
     questions = data.categories;

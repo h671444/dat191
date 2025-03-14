@@ -5,7 +5,18 @@ window.onload = () => {
         console.log("Calibration complete! Eye tracking started.");
     };
 
-    GazeCloudAPI.OnResult = function (GazeData) {
+    GazeCloudAPI.OnCamDenied = () => {
+        console.log("Camera access denied.");
+    };
+
+    GazeCloudAPI.OnError = (msg) => {
+        console.log("Error:", msg);
+    };
+
+    // Start eye tracking
+    GazeCloudAPI.StartEyeTracking();
+
+    GazeCloudAPI.OnResult = (GazeData) => {
         // GazeData.state: 0 = valid data; -1 = face tracking lost; 1 = uncalibrated
         if (GazeData.state === 0) {
             let x = GazeData.docX; // Gaze X-coordinate in document
@@ -23,15 +34,4 @@ window.onload = () => {
             console.log("Gaze data not valid. State:", GazeData.state);
         }
     };
-
-    GazeCloudAPI.OnCamDenied = function () {
-        console.log("Camera access denied.");
-    };
-
-    GazeCloudAPI.OnError = function (msg) {
-        console.log("Error:", msg);
-    };
-
-    // Start eye tracking
-    GazeCloudAPI.StartEyeTracking();
 };
