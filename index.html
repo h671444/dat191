@@ -1,73 +1,65 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Game hub - Spill lobby</title>
-        <link rel="stylesheet" href="css/style.css">
-        <script src="https://webgazer.cs.brown.edu/webgazer.js"></script>
-        <script src="js/webgazer.js" type="text/javascript"></script>
+   <head>
+      <title>Game hub - Spill lobby</title>
+      <link rel="stylesheet" href="css/style.css">
 
-    </head>
-    <body>
-        <header>
-            <img src="assets/NNL logo.png" alt="NordicNeuroLabs logo" width="100" height="100">
-            <p>NordicNeuroLabs</p>
-        </header>
+      <!-- webgazer-->
+      <!-- <script src="https://webgazer.cs.brown.edu/webgazer.js"></script>
+      <script src="js/webgazer.js" type="text/javascript"></script> -->
 
-        <main>
-
-            <div class = "hero">
-                <div class = "overlay">
-                    <h1>Velkommen til Spill Lobby</h1>
-                    <p> Velg et spill!</p>
-                </div>
+      <!-- gazecloudapi-->
+      <script src="https://api.gazerecorder.com/GazeCloudAPI.js"></script>
+      <script src="js/gazecloud.js" type="text/javascript"></script>
+   </head>
+   <body>
+      <header>
+         <img src="assets/NNL logo.png" alt="NordicNeuroLabs logo" width="100" height="100">
+         <p>NordicNeuroLabs</p>
+      </header>
+      <main>
+         <!-- eye tracking dot for gazecloud -->
+         <div id="gazeDot"></div>
+         <div class="hero">
+            <div class="overlay">
+               <h1>Velkommen til Spill Lobby</h1>
+               <p> Velg et spill!</p>
             </div>
-    
-            <div class = "container">
-                <section class = "game-cards">
-                    <article class = "game-card">
-                        <a href="games/Quiz/Quiz.html">
-                        <img src ="css/images/Quiz1.jpg" alt= "Quiz Game">
-                        <div class = "game-info">
-                            <h2> Quiz</h2>
-                            <p>Test dine kunnskaper!</p>
-                        
-                        </div>
-                    </a>
-                    </article>
-    
-                    <article class = "game-card">
-                        <a href = "games/PongBreaker/PongBreaker.html">
-                        <img src = "css/images/Pong.png" alt = "PongBreaker">
-                    
-                        <div class ="game-info">
-                            <h2>Pong Breaker</h2>
-                            <p>Ødelegg alle rutene med kulen</p>
-                            
-                        </div>
-                    </a>
-                    </article>
-    
-                    <article class = "game-card">
-                        <a href = "games/PongBreaker/PongBreaker.html">
-                        <img src = "css/images/Pong.png" alt = "PongBreaker">
-                    
-                        <div class ="game-info">
-                            <h2>Pong Breaker</h2>
-                            <p>Ødelegg alle rutene med kulen</p>
-                            
-                        </div>
-                    </a>
-                    </article>
-                </section>
-
-            </div>
-        </main>
-
-
-        <footer>
-            <p>&copy; 2025 NordicNeuroLabs. All rights reserved.</p>
-        </footer>
-                
-        
-    </body>
+         </div>
+         <div class="container">
+            <section class="game-cards">
+               <article class="game-card">
+                  <a href="games/Quiz/Quiz.html">
+                     <img src="css/images/Quiz1.jpg" alt="Quiz Game">
+                     <div class="game-info">
+                        <h2> Quiz</h2>
+                        <p>Test dine kunnskaper!</p>
+                     </div>
+                  </a>
+               </article>
+               <article class="game-card">
+                  <a href="games/PongBreaker/PongBreaker.html">
+                     <img src="css/images/Pong.png" alt="PongBreaker">
+                     <div class="game-info">
+                        <h2>Pong Breaker</h2>
+                        <p>Ødelegg alle rutene med kulen</p>
+                     </div>
+                  </a>
+               </article>
+               <article class="game-card">
+                  <a href="games/PongBreaker/PongBreaker.html">
+                     <img src="css/images/Pong.png" alt="PongBreaker">
+                     <div class="game-info">
+                        <h2>Pong Breaker</h2>
+                        <p>Ødelegg alle rutene med kulen</p>
+                     </div>
+                  </a>
+               </article>
+            </section>
+         </div>
+      </main>
+      <footer>
+         <p>&copy; 2025 NordicNeuroLabs. All rights reserved.</p>
+      </footer>
+   </body>
 </html>
