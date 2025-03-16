@@ -37,7 +37,6 @@ function setupCalibration() {
         }
     }
     
-    // Show prediction points
     webgazer.showPredictionPoints(true);
     console.log('WebGazer is ready!');
 }

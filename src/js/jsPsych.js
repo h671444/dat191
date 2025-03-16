@@ -4,9 +4,6 @@ const jsPsych = initJsPsych({
         { type: jsPsychExtensionWebgazer }
     ],
     on_finish: function() {
-        // Ensure WebGazer continues running
-        webgazer.showPredictionPoints(true);
-        
         // Store calibration state
         const calibrationData = webgazer.getRegression();
         if (calibrationData) {
