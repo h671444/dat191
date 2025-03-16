@@ -1,13 +1,23 @@
 // Initialize WebGazer when the page loads
 window.onload = function() {
-    // Start WebGazer
+    initializeWebGazer();
+};
+
+// Make sure WebGazer is available before initializing
+function initializeWebGazer() {
+    if (typeof webgazer === 'undefined') {
+        console.error('WebGazer library not loaded');
+        return;
+    }
+
     webgazer.setRegression('ridge')
         .setTracker('TFFacemesh')
         .setGazeListener(handleGaze)
+        .showPredictionPoints(false)  // Disable WebGazer's built-in prediction points
         .begin()
         .then(setupCalibration)
         .catch(err => console.error('Error initializing WebGazer:', err));
-};
+}
 
 function handleGaze(data, clock) {
     if (!data) return;
@@ -37,21 +47,5 @@ function setupCalibration() {
         }
     }
     
-    webgazer.showPredictionPoints(true);
     console.log('WebGazer is ready!');
-}
-
-// Basic styling for the gaze prediction dot
-const style = document.createElement('style');
-style.textContent = `
-    #gazeDot {
-        position: fixed;
-        width: 10px;
-        height: 10px;
-        background: red;
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 999999;
-    }
-`;
-document.head.appendChild(style); 
+} 
