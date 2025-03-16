@@ -9,12 +9,12 @@ let particles = [];  // Array for particles
 function resizeCanvas() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-  // Recalculate block offset. Hvis det er behov for å reinitialisere, kan du kalle init() ved restart.
+  // Recalculate block offset
 }
 resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
 
-// Sound playback: AudioContext aktiveres etter brukerinteraksjon
+// Sound playback: AudioContext activated after user interaction
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 function playSound(frequency, type = 'sine') {
   const osc = audioCtx.createOscillator();
@@ -42,14 +42,14 @@ const keys = { ArrowLeft: false, ArrowRight: false };
 const paddleWidth = 100;
 const paddleHeight = 20;
 const paddleMarginBottom = 30;
-const paddleSpeed = 8;
+const paddleSpeed = 12;
 
 // Ball Settings
 const ballRadius = 10;
 let ballSpeed = 5;
 
 // Block Settings (Rows, Columns, Size, Padding)
-const blockRowCount = 5;
+const blockRowCount = 6; // Increased from 5 to 6
 const blockColumnCount = 8;
 const blockWidth = 75;
 const blockHeight = 20;
@@ -183,6 +183,7 @@ canvas.addEventListener('mousemove', function(e) {
   if (paddle.x + paddle.width > canvas.width) paddle.x = canvas.width - paddle.width;
 });
 // Move ball and check collisions with walls and paddle
+// Move ball and check collisions with walls and paddle
 function moveBall() {
   ball.x += ball.dx;
   ball.y += ball.dy;
@@ -198,13 +199,67 @@ function moveBall() {
     playSound(200, 'sine');
   }
   // Collision detection with paddle
-  if (ball.y + ball.radius > paddle.y && ball.x > paddle.x && ball.x < paddle.x + paddle.width) {
-    // Adjust angle based on hit position on paddle
-    let collidePoint = ball.x - (paddle.x + paddle.width / 2);
-    collidePoint = collidePoint / (paddle.width / 2);
-    let angle = collidePoint * (Math.PI / 3); // Maximum 60°
-    ball.dx = ball.speed * Math.sin(angle);
-    ball.dy = -ball.speed * Math.cos(angle);
+  if (
+    ball.y + ball.radius > paddle.y && 
+    ball.y - ball.radius < paddle.y + paddle.height &&
+    ball.x + ball.radius > paddle.x && 
+    ball.x - ball.radius < paddle.x + paddle.width
+  ) {
+    // Calculate overlaps
+    let overlapLeft = ball.x + ball.radius - paddle.x;
+    let overlapRight = (paddle.x + paddle.width) - (ball.x - ball.radius);
+    let overlapTop = ball.y + ball.radius - paddle.y;
+    let overlapBottom = (paddle.y + paddle.height) - (ball.y - ball.radius);
+    
+    // Find the smallest overlap to determine primary hit side
+    let minOverlap = Math.min(overlapLeft, overlapRight, overlapTop, overlapBottom);
+    
+    if (minOverlap === overlapTop) {
+      // Hit top of paddle
+      let collidePoint = ball.x - (paddle.x + paddle.width / 2);
+      collidePoint = collidePoint / (paddle.width / 2);
+      let angle = collidePoint * (Math.PI / 3); // Max 60° bounce angle
+      ball.dx = ball.speed * Math.sin(angle);
+      ball.dy = -ball.speed * Math.cos(angle);
+      // Position adjustment: move ball above paddle
+      ball.y = paddle.y - ball.radius;
+      // Check and correct horizontal overlap (for corners)
+      if (ball.x + ball.radius > paddle.x + paddle.width) {
+        ball.x = paddle.x + paddle.width + ball.radius; // Right edge
+      } else if (ball.x - ball.radius < paddle.x) {
+        ball.x = paddle.x - ball.radius; // Left edge
+      }
+    } else if (minOverlap === overlapLeft) {
+      // Hit left side
+      ball.dx = -Math.abs(ball.dx); // Bounce left
+      ball.x = paddle.x - ball.radius; // Move ball left of paddle
+      // Add slight vertical nudge if dy is small (shallow angle)
+      if (Math.abs(ball.dy) < 1) {
+        ball.dy = -2; // Small upward push
+      }
+      // Correct vertical overlap if near top
+      if (ball.y + ball.radius > paddle.y) {
+        ball.y = paddle.y - ball.radius;
+      }
+    } else if (minOverlap === overlapRight) {
+      // Hit right side
+      ball.dx = Math.abs(ball.dx); // Bounce right
+      ball.x = paddle.x + paddle.width + ball.radius; // Move ball right of paddle
+      // Add slight vertical nudge if dy is small
+      if (Math.abs(ball.dy) < 1) {
+        ball.dy = -2; // Small upward push
+      }
+      // Correct vertical overlap if near top
+      if (ball.y + ball.radius > paddle.y) {
+        ball.y = paddle.y - ball.radius;
+      }
+    } else if (minOverlap === overlapBottom) {
+      // Hit bottom (unlikely since paddle is at bottom of screen)
+      ball.dy = Math.abs(ball.dy);
+      ball.y = paddle.y + paddle.height + ball.radius;
+    }
+    
+    // Play sound (should only trigger once per real collision now)
     playSound(300, 'sine');
   }
   // Ball reaches bottom of screen → decrease life
@@ -230,9 +285,21 @@ function collisionDetection() {
           ball.y - ball.radius < b.y + blockHeight &&
           ball.y + ball.radius > b.y
         ) {
-          ball.dy = -ball.dy;
+          // Determine which side the ball hit
+          if (ball.x > b.x && ball.x < b.x + blockWidth) {
+            ball.dy = -ball.dy; // Hit top or bottom
+          } else {
+            ball.dx = -ball.dx; // Hit left or right
+          }
           b.status = 0;
           score += 10;
+          // Increase ball speed every 50 points, up to a max of 10
+          if (score % 50 === 0 && ball.speed < 10) {
+            let scalingFactor = (ball.speed + 0.5) / ball.speed;
+            ball.dx *= scalingFactor;
+            ball.dy *= scalingFactor;
+            ball.speed += 0.5;
+          }
           playSound(400, 'sine');
           // Generate particles (destruction effect)
           for (let i = 0; i < 10; i++) {
@@ -245,7 +312,7 @@ function collisionDetection() {
               life: 1
             });
           }
-          // Hvis alle blokker er ødelagt, har spilleren vunnet
+          // Check win condition
           if (score === blockRowCount * blockColumnCount * 10) {
             isGameWin = true;
             isGameRunning = false;
@@ -307,7 +374,7 @@ document.addEventListener('keyup', function(e) {
     keys[e.code] = false;
   }
 });
-// Klikk på canvas for å starte/restarte spillet
+// Click on canvas to start/restart the game
 canvas.addEventListener('click', function() {
   if (!isGameRunning) {
     if (isGameOver || isGameWin) {
