@@ -12,12 +12,14 @@
     <script src="../../js/components/eyeTracking/webgazer.js"></script>
     
     <!-- Application styles -->
+    <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="quiz.css">
     
     <!-- Application scripts -->
     <script defer src="quiz.js"></script>
   </head>
   <body>
+    <div id="gazeDot"></div>
     
     <header>
     <div class="nav-left">
@@ -34,7 +36,6 @@
           <h2>Velg en kategori</h2>
           <div id="categories"></div>
           <button id="tilfeldige-sporsmaal" onclick="selectCategory('Tilfeldig spørsmål')">Tilfeldig spørsmål</button>
-
       </div>
 
       <div id="difficulty-selection" hidden="true">
@@ -48,11 +49,8 @@
       <div id="quiz-area" hidden="true">
         <h2 id="question">Lorem Ipsum?</h2>
         <h3>Poeng: <span id="score">0</span></h3>
-        <div id="options" class="options-container">
-
+        <div id="options" class="options-container"></div>
       </div>
     </div>
-
-
   </body>
 </html>

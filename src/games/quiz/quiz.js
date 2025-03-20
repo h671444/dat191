@@ -5,6 +5,43 @@ let currentQuestionIndex = 0;
 let currentQuestions = [];
 let score = 0;
 
+// itialize WebGazer
+async function initializeWebGazer() {
+    try {
+        if (typeof webgazer === "undefined") {
+            console.error("WebGazer not loaded.");
+            return;
+        }
+
+        console.log("Starting WebGazer...");
+        await webgazer.setRegression('ridge')
+            .setTracker('TFFacemesh')
+            .showPredictionPoints(false)
+            .begin();
+        
+        const dot = document.getElementById('gazeDot');
+        if (dot) {
+            webgazer.setGazeListener(function(data, clock) {
+                if (data == null) return;
+                dot.style.display = 'block';
+                dot.style.left = data.x + 'px';
+                dot.style.top = data.y + 'px';
+            });
+        }
+        
+        console.log('WebGazer initialized in Quiz');
+    } catch (err) {
+        console.error('Failed to initialize WebGazer:', err);
+    }
+}
+
+// initialize everything when the page loads
+window.onload = async () => {
+    console.log("Loading quiz...");
+    await initializeWebGazer();
+    loadQuestions();
+};
+
 const loadQuestions = async () => {
     const response = await fetch("../../assets/data/questions.json")
     const data = await response.json();
@@ -118,20 +155,4 @@ const updateScore = () => {
 
 const returnToHome = () => {
   window.location.href = "/index.html";
-};
-
-
-window.onload = () => {
-  console.log("Loading quiz...");
-
-  //preventing duplicate instances of webgazer
-  if (typeof webgazer !== "undefined") {
-      console.log("Starting WebGazer...");
-      webgazer.begin();
-      webgazer.showPredictionPoints(true);
-  } else {
-      console.error("WebGazer not loaded.");
-  }
-
-  loadQuestions();
 };

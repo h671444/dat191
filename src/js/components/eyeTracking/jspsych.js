@@ -4,23 +4,12 @@ const jsPsych = initJsPsych({
         { type: jsPsychExtensionWebgazer }
     ],
     on_finish: function() {
-        // Store calibration state
-        const calibrationData = webgazer.getRegression();
-        if (calibrationData) {
-            localStorage.setItem('webgazerGlobalData', JSON.stringify(calibrationData));
-        }
-        
-        // Redirect to game hub
-        try {
-            window.location.replace('../index.html');
-        } catch (e) {
-            console.error('Redirect failed:', e);
-            window.location.href = '../index.html';
-        }
+        // Skip storage completely and force redirect
+        window.location.replace('index.html');
     }
 });
 
-// Define welcome message
+// caligration welcome message
 const welcome = {
     type: jsPsychHtmlKeyboardResponse,
     stimulus: `
@@ -31,7 +20,7 @@ const welcome = {
     `
 };
 
-// Camera initialization with custom text
+// camera initialization
 const init_camera = {
     type: jsPsychWebgazerInitCamera,
     instructions: `
@@ -41,14 +30,26 @@ const init_camera = {
     `
 };
 
+// calibration points
+const calibrationPoints = [
+    [10, 10],    // Top-left corner
+    [50, 10],    // Top middle
+    [90, 10],    // Top-right corner
+    [10, 50],    // Middle left
+    [50, 50],    // Center
+    [90, 50],    // Middle right
+    [10, 90],    // Bottom-left corner
+    [50, 90],    // Bottom middle
+    [90, 90]     // Bottom-right corner
+];
+
 // Calibration points setup with custom text
 const calibration = {
     type: jsPsychWebgazerCalibrate,
-    calibration_points: [
-        [25, 25], [75, 25], [50, 50], [25, 75], [75, 75]
-    ],
+    calibration_points: calibrationPoints,
+    // click can be changed to 'view' if you simply want to look at the points
     calibration_mode: 'click',
-    repetitions_per_point: 2,
+    repetitions_per_point: 1,
     randomize_calibration_order: true,
     instructions: `
         <p>Nå skal vi kalibrere øyesporingen.</p>
@@ -58,12 +59,10 @@ const calibration = {
     `
 };
 
-// Validation points setup with custom text
+// validation points setup with custom text
 const validation = {
     type: jsPsychWebgazerValidate,
-    validation_points: [
-        [25, 25], [75, 25], [50, 50], [25, 75], [75, 75]
-    ],
+    validation_points: calibrationPoints, // use same points for validation
     validation_duration: 2000,
     show_validation_data: true,
     instructions: `
@@ -73,7 +72,7 @@ const validation = {
     `
 };
 
-// Final message before redirect
+// final message before redirect
 const final_message = {
     type: jsPsychHtmlKeyboardResponse,
     stimulus: `
@@ -84,7 +83,7 @@ const final_message = {
     `
 };
 
-// Create the init timeline
+// create the init timeline
 const timeline = [];
 timeline.push(welcome);
 timeline.push(init_camera);
@@ -92,6 +91,6 @@ timeline.push(calibration);
 timeline.push(validation);
 timeline.push(final_message);
 
-// Run the experiment
+// run the program
 jsPsych.run(timeline);
   

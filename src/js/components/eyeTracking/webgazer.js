@@ -22,7 +22,6 @@ function initializeWebGazer() {
 function handleGaze(data, clock) {
     if (!data) return;
     
-    // You can use the gaze data here
     // data.x contains the predicted x coordinate
     // data.y contains the predicted y coordinate
     

@@ -129,17 +129,20 @@ footer{
     font-size: 14px;
 }
 
-/* eye tracking dot for gazecloud */
+/* eye tracking dot */
 #gazeDot {
     position: fixed;
-    width: 10px;
-    height: 10px;
-    background: red;
+    width: 40px;
+    height: 40px;
+    background: rgb(255, 0, 0);
+    opacity: 0.8;
     border-radius: 50%;
     pointer-events: none;
     transform: translate(-50%, -50%);
     z-index: 999999;
-    display: none; /* initially hidden until WebGazer sets it to block */
+    display: none; /* initially hidden until webgazer sets it to block */
+    box-shadow: 0 0 15px 5px rgba(255, 0, 0, 0.5);
+    filter: blur(2px);
 }
 
 
