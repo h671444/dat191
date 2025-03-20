@@ -46,7 +46,7 @@ const paddleSpeed = 12;
 
 // Ball Settings
 const ballRadius = 10;
-let ballSpeed = 5;
+let ballSpeed = 7;
 
 // Block Settings (Rows, Columns, Size, Padding)
 const blockRowCount = 6; // Increased from 5 to 6
