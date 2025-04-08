@@ -13,10 +13,12 @@ const jsPsych = initJsPsych({
 const welcome = {
     type: jsPsychHtmlKeyboardResponse,
     stimulus: `
-        <h1>Øyesporing oppsett</h1>
-        <p>Før du får tilgang til spillobbyen, må vi kalibrere øyesporingen.</p>
-        <p>Dette vil hjelpe oss med å spore øyebevegelsene dine.</p>
-        <p>Trykk på en tast for å begynne.</p>
+        <div class="calibration-text">
+            <h1>Øyesporing oppsett</h1>
+            <p>Før du får tilgang til spillobbyen, må vi kalibrere øyesporingen.</p>
+            <p>Dette vil hjelpe oss med å spore øyebevegelsene dine.</p>
+            <p>Trykk på en tast for å begynne.</p>
+        </div>
     `
 };
 
@@ -24,9 +26,11 @@ const welcome = {
 const init_camera = {
     type: jsPsychWebgazerInitCamera,
     instructions: `
-        <p>For å aktivere øyesporing trenger vi tilgang til webkameraet ditt.</p>
-        <p>Vennligst plasser ansiktet ditt i midten av kamera slik at boksen lyser grønt.</p>
-        <p>Klikk på "Tillat" når nettleseren ber om tilgang til kameraet ditt.</p>
+        <div class="calibration-text">
+            <p>For å aktivere øyesporing trenger vi tilgang til webkameraet ditt.</p>
+            <p>Vennligst plasser ansiktet ditt i midten av kamera slik at boksen lyser grønt.</p>
+            <p>Klikk på "Tillat" når nettleseren ber om tilgang til kameraet ditt.</p>
+        </div>
     `
 };
 
@@ -47,28 +51,31 @@ const calibrationPoints = [
 const calibration = {
     type: jsPsychWebgazerCalibrate,
     calibration_points: calibrationPoints,
-    // click can be changed to 'view' if you simply want to look at the points
     calibration_mode: 'click',
     repetitions_per_point: 1,
     randomize_calibration_order: true,
     instructions: `
-        <p>Nå skal vi kalibrere øyesporingen.</p>
-        <p>Det vil dukke opp flere punkter på skjermen.</p>
-        <p>Se på hvert punkt og klikk på det med musen.</p>
-        <p>Vær så nøyaktig som mulig.</p>
+        <div class="calibration-text">
+            <p>Nå skal vi kalibrere øyesporingen.</p>
+            <p>Det vil dukke opp flere punkter på skjermen.</p>
+            <p>Se på hvert punkt og klikk på det med musen.</p>
+            <p>Vær så nøyaktig som mulig.</p>
+        </div>
     `
 };
 
 // validation points setup with custom text
 const validation = {
     type: jsPsychWebgazerValidate,
-    validation_points: calibrationPoints, // use same points for validation
+    validation_points: calibrationPoints,
     validation_duration: 2000,
     show_validation_data: true,
     instructions: `
-        <p>Nå skal vi teste hvor nøyaktig kalibreringen er.</p>
-        <p>Se på hvert punkt som dukker opp på skjermen.</p>
-        <p>Du trenger ikke å klikke - bare følg punktet med øynene dine.</p>
+        <div class="calibration-text">
+            <p>Nå skal vi teste hvor nøyaktig kalibreringen er.</p>
+            <p>Se på hvert punkt som dukker opp på skjermen.</p>
+            <p>Du trenger ikke å klikke - bare følg punktet med øynene dine.</p>
+        </div>
     `
 };
 
@@ -76,10 +83,12 @@ const validation = {
 const final_message = {
     type: jsPsychHtmlKeyboardResponse,
     stimulus: `
-        <h1>Oppsett fullført!</h1>
-        <p>Øyesporing er nå kalibrert.</p>
-        <p>Du vil nå bli videresendt til spillobbyen.</p>
-        <p>Trykk på en tast for å fortsette.</p>
+        <div class="calibration-text">
+            <h1>Oppsett fullført!</h1>
+            <p>Øyesporing er nå kalibrert.</p>
+            <p>Du vil nå bli videresendt til spillobbyen.</p>
+            <p>Trykk på en tast for å fortsette.</p>
+        </div>
     `
 };
 

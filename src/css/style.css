@@ -6,10 +6,12 @@
 }
 body {
     height: 100%;
+    width: 100%;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
     background-color: #437EF6;
     line-height: 1.6;
     color: #333;
+    overflow: hidden;
 }
 a{
     text-decoration: none;
@@ -143,6 +145,20 @@ footer{
     display: none; /* initially hidden until webgazer sets it to block */
     box-shadow: 0 0 15px 5px rgba(255, 0, 0, 0.5);
     filter: blur(2px);
+}
+
+/* text styling for the calibration page.  */
+.calibration-text {
+    text-align: center;
+    margin: 2em auto;
+}
+
+.calibration-text h1 {
+    margin-bottom: 1em;
+}
+
+.calibration-text p {
+    margin: 0.75em 0;
 }
 
 
