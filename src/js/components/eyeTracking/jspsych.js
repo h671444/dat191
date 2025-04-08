@@ -17,7 +17,7 @@ const welcome = {
             <h1>Øyesporing oppsett</h1>
             <p>Før du får tilgang til spillobbyen, må vi kalibrere øyesporingen.</p>
             <p>Dette vil hjelpe oss med å spore øyebevegelsene dine.</p>
-            <p>Trykk på en tast for å begynne.</p>
+            <p>Vennligst vent på at kalibreringen starter.</p>
         </div>
     `
 };
@@ -51,6 +51,7 @@ const calibrationPoints = [
 const calibration = {
     type: jsPsychWebgazerCalibrate,
     calibration_points: calibrationPoints,
+    //can change calibration mode to 'view' if you wish to simply look at the points instead of click
     calibration_mode: 'click',
     repetitions_per_point: 1,
     randomize_calibration_order: true,
