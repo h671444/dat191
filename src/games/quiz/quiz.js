@@ -125,18 +125,23 @@ const showQuestion = () => {
 
 const checkAnswer = (selected, correct) => {
   let buttons = document.querySelectorAll(".option-btn");
+  let isCorrect = selected === correct;
 
   buttons.forEach(btn => {
       btn.disabled = true; 
 
       if (btn.innerText.startsWith(correct)) {
           btn.classList.add("correct"); 
-          score++;
-          updateScore();
-      } else if (btn.innerText.startsWith(selected)) {
-          btn.classList.add("incorrect");
+      } 
+      if (btn.innerText.startsWith(selected)) {
+          btn.classList.add(isCorrect ? "correct" : "incorrect");
       }
   });
+
+  if (isCorrect) {
+      score++;
+      updateScore();
+  }
 
   //move to next question after a short delay
   setTimeout(() => {
