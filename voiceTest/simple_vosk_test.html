@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Vosk Test</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        #status, #results { margin-top: 15px; padding: 10px; border: 1px solid #ccc; min-height: 40px; }
+        #status { background-color: #f0f0f0; }
+        #results { background-color: #e6f7ff; }
+        button { padding: 10px 15px; font-size: 16px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Simple Vosk WebSocket Test</h1>
+    <button id="toggleButton">Start Listening</button>
+    <div id="status">Status: Idle</div>
+    <div id="results">Last Command: ---</div>
+
+    <script src="simple_vosk_test.js"></script>
+</body>
+</html>
