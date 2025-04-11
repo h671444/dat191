@@ -5,38 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quiz Spill</title>
     
-    <!-- External libraries -->
-    <script src="https://webgazer.cs.brown.edu/webgazer.js"></script>
+    <link rel="stylesheet" href="../../css/style.css"> <link rel="stylesheet" href="quiz.css">
     
-    <!-- Eye tracking components -->
-    <script src="../../js/components/eyeTracking/webgazer.js"></script>
-    
-    <!-- Application styles -->
-    <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="quiz.css">
-    
-    <!-- Application scripts -->
-    <script defer src="quiz.js"></script>
+    <script type="module" src="quiz_main.js" defer></script>
   </head>
   <body>
-    <div id="gazeDot"></div>
-    
     <header>
-    <div class="nav-left">
-        <img src="../../assets/images/logo/NNL logo.png" alt="NordicNeuroLabs logo" width="100" height="100">
-        <p>NordicNeuroLabs</p>
-    </div>
-    <div class="nav-right">
-        <button class="nav-home-btn" onclick="returnToHome()">Hjem</button>
-    </div>
-</header>
+      <div class="nav-left">
+          <img src="../../assets/images/logo/NNL logo.png" alt="NordicNeuroLabs logo" width="100" height="100">
+          <p>NordicNeuroLabs</p>
+      </div>
+      <div class="nav-right">
+          <button class="nav-home-btn" onclick="returnToHome()">Hjem</button>
+      </div>
+    </header>
   
     <div>
       <div id="category-selection">
           <h2>Velg en kategori</h2>
           <div id="categories"></div>
           <button id="tilfeldige-sporsmaal" onclick="selectCategory('Tilfeldig spørsmål')">Tilfeldig spørsmål</button>
-      </div>
+          </div>
 
       <div id="difficulty-selection" hidden="true">
         <h2>Velg en vanskelighetsgrad</h2>
@@ -44,7 +33,7 @@
         <button class="difficulty-btn" onclick="selectDifficulty('lett')">Lett</button>
         <button class="difficulty-btn" onclick="selectDifficulty('middels')">Middels</button>
         <button class="difficulty-btn" onclick="selectDifficulty('vanskelig')">Vanskelig</button>
-      </div>
+         </div>
 
       <div id="quiz-area" hidden="true">
         <h2 id="question">Lorem Ipsum?</h2>
@@ -52,5 +41,5 @@
         <div id="options" class="options-container"></div>
       </div>
     </div>
-  </body>
+    </body>
 </html>
