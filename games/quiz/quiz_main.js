@@ -1,7 +1,7 @@
 // Import initializers and voice control functions
 import { loadQuestions } from './quiz.js'; // Use named export
 import { initializeVoice, stopVoiceRecognition, isVoiceRecognitionActive } from './quiz_voice.js';
-import { audioCtx } from './quiz.js'; // Import the shared AudioContext
+// import { audioCtx } from './quiz.js'; // Import the shared AudioContext
 
 document.addEventListener('DOMContentLoaded', () => {
     console.log("Quiz DOM Loaded. Initializing...");
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     voiceButton.onclick = () => {
         if (!isVoiceRecognitionActive) {
             // Pass the shared AudioContext when initializing
-            initializeVoice(audioCtx);
+            initializeVoice();
             voiceButton.textContent = 'Stopp Stemme Kontroll';
         } else {
             stopVoiceRecognition();

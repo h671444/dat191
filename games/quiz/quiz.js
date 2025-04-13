@@ -6,7 +6,7 @@ let currentQuestionIndex = 0; // Although you shift array, might be useful later
 let currentQuestions = [];
 let score = 0;
 let currentCorrectAnswer = null; // To store the correct key ('A', 'B', 'C', 'D') for the current question
-let currentQuizState = 'CATEGORY_SELECT'; // States: CATEGORY_SELECT, DIFFICULTY_SELECT, Youtube
+let currentQuizState = 'CATEGORY_SELECT'; // States: CATEGORY_SELECT, DIFFICULTY_SELECT, AWAITING_ANSWER, SHOWING_ANSWER
 
 // --- Initialization & Question Loading ---
 
@@ -66,7 +66,7 @@ const displayQuizArea = () => {
     document.getElementById("category-selection").hidden = true;
     document.getElementById("difficulty-selection").hidden = true;
     document.getElementById("quiz-area").hidden = false;
-    currentQuizState = 'Youtube';
+    currentQuizState = 'AWAITING_ANSWER';
 };
 
 const showQuestion = () => {
@@ -106,7 +106,7 @@ const showQuestion = () => {
          return;
     }
 
-    currentQuizState = 'Youtube'; // Ensure state is correct
+    currentQuizState = 'AWAITING_ANSWER'; // Ensure state is correct
 };
 
 
@@ -117,12 +117,14 @@ const selectCategory = (category) => {
     selectedCategory = category;
     displayDifficulties();
 };
+window.selectCategory = selectCategory; // <-- ADD THIS LINE
 
 const selectDifficulty = (difficulty) => {
     console.log("Difficulty selected:", difficulty);
     selectedDifficulty = difficulty;
     prepareQuizQuestions();
 };
+window.selectDifficulty = selectDifficulty; // <-- ADD THIS LINE
 
 const prepareQuizQuestions = () => {
     let availableQuestions = [];
@@ -167,7 +169,7 @@ const prepareQuizQuestions = () => {
 
 // checkAnswer now only needs the selected key, uses stored correct key
 const checkAnswer = (selectedKey) => {
-    if (currentQuizState !== 'Youtube') return; // Prevent accidental checks
+    if (currentQuizState !== 'AWAITING_ANSWER') return; // Prevent accidental checks
 
     let buttons = document.querySelectorAll(".option-btn");
     let isCorrect = selectedKey === currentCorrectAnswer;
@@ -270,7 +272,7 @@ window.processVoiceCommand = (command) => {
           }
           break; // End of DIFFICULTY_SELECT case
 
-      case 'Youtube':
+      case 'AWAITING_ANSWER':
           // Define the mapping for answer letters (lowercase voice command to uppercase key)
           const answerMap = {
               "a": "A",
