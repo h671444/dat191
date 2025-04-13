@@ -27,13 +27,14 @@
           <button id="tilfeldige-sporsmaal" onclick="selectCategory('Tilfeldig spørsmål')">Tilfeldig spørsmål</button>
           </div>
 
-      <div id="difficulty-selection" hidden="true">
-        <h2>Velg en vanskelighetsgrad</h2>
-        <div id="difficulties"></div>
-        <button class="difficulty-btn" onclick="selectDifficulty('lett')">Lett</button>
-        <button class="difficulty-btn" onclick="selectDifficulty('middels')">Middels</button>
-        <button class="difficulty-btn" onclick="selectDifficulty('vanskelig')">Vanskelig</button>
-         </div>
+          <div id="difficulty-selection" hidden="true">
+            <h2>Velg en vanskelighetsgrad</h2>
+            <div id="difficulties">
+              <button class="difficulty-btn" data-difficulty="lett" onclick="selectDifficulty('lett')">Lett</button>
+              <button class="difficulty-btn" data-difficulty="middels" onclick="selectDifficulty('middels')">Middels</button>
+              <button class="difficulty-btn" data-difficulty="vanskelig" onclick="selectDifficulty('vanskelig')">Vanskelig</button>
+            </div>
+          </div>
 
       <div id="quiz-area" hidden="true">
         <h2 id="question">Lorem Ipsum?</h2>

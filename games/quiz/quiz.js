@@ -220,6 +220,8 @@ const updateScore = () => {
 
 // Make this globally accessible for the voice module to call
 // Make this globally accessible for the voice module to call
+// Make this globally accessible for the voice module to call
+// Make this globally accessible for the voice module to call
 window.processVoiceCommand = (command) => {
   // Log the raw command received and the current state for debugging
   console.log(`Processing voice command: "${command}" in state: ${currentQuizState}`);
@@ -230,28 +232,64 @@ window.processVoiceCommand = (command) => {
   // Determine action based on the current state of the quiz
   switch (currentQuizState) {
 
-      case 'CATEGORY_SELECT':
+      case 'CATEGORY_SELECT': // This part should already be correct from the previous step
           // Define the mapping from English voice command to Norwegian category name
           const categoryMap = {
               "general knowledge": "Generell Kunnskap",
-              "history": "Historie",         // TODO: Add English mappings for ALL your categories
-              "geography": "Geografi",       // TODO: Add English mappings for ALL your categories
-              "science": "Vitenskap",        // TODO: Add English mappings for ALL your categories
+              "history": "Historie",         // TODO: Ensure mapping exists for all categories in JSON/Python grammar
+              "geography": "Geografi",       // TODO: Ensure mapping exists for all categories in JSON/Python grammar
+              "science": "Vitenskap",        // TODO: Ensure mapping exists for all categories in JSON/Python grammar
               "random question": "Tilfeldig spørsmål" // Mapping for the random button
           };
           // Find the Norwegian category name corresponding to the English command
           const targetCategory = categoryMap[commandLower];
 
           if (targetCategory) {
-               // If a mapping was found, call the function that selects the category
+               // If a mapping was found, proceed with feedback and selection
                console.log(`Match: Selecting category "${targetCategory}" (from "${commandLower}")`);
-               selectCategory(targetCategory); // Use the Norwegian name here
+
+               // --- Add Visual Feedback ---
+              let targetButton = null;
+              // Find the button among dynamically generated ones
+              const buttons = document.querySelectorAll("#categories .category-btn");
+              buttons.forEach(btn => {
+                if (btn.innerText === targetCategory) {
+                    targetButton = btn;
+                }
+              });
+
+              // Also check the hardcoded "Tilfeldig spørsmål" button if needed
+              if (!targetButton && targetCategory === "Tilfeldig spørsmål") {
+                targetButton = document.getElementById("tilfeldige-sporsmaal");
+              }
+
+              // Apply feedback if button found, then proceed
+              if (targetButton) {
+                  // Add the highlight class
+                  targetButton.classList.add('voice-selected-feedback');
+
+                  // Set a timer to remove the class and THEN call selectCategory
+                  setTimeout(() => {
+                      targetButton.classList.remove('voice-selected-feedback');
+                      // Call selectCategory AFTER the feedback timeout
+                      selectCategory(targetCategory); // Proceed to next step
+                  }, 750); // Wait 750ms (adjust timing as needed)
+
+              } else {
+                  // Fallback if button DOM element not found (shouldn't usually happen)
+                  console.warn("Target category button not found for feedback:", targetCategory);
+                  selectCategory(targetCategory); // Proceed without feedback
+              }
+              // --- End Visual Feedback ---
+
           } else {
               // If no mapping found, log it
               console.log("No matching category found for voice command:", commandLower);
           }
           break; // End of CATEGORY_SELECT case
 
+
+      // ***** THIS IS THE UPDATED BLOCK *****
       case 'DIFFICULTY_SELECT':
            // Define the mapping from English voice command to Norwegian difficulty value
           const difficultyMap = {
@@ -260,19 +298,51 @@ window.processVoiceCommand = (command) => {
               "hard": "vanskelig"
           };
            // Find the Norwegian difficulty value corresponding to the English command
-          const targetDifficulty = difficultyMap[commandLower];
+          const targetDifficulty = difficultyMap[commandLower]; // e.g., "lett"
 
           if (targetDifficulty) {
-              // If a mapping was found, call the function that selects the difficulty
+              // If a mapping was found, proceed with feedback and selection
               console.log(`Match: Selecting difficulty "${targetDifficulty}" (from "${commandLower}")`);
-              selectDifficulty(targetDifficulty); // Use the Norwegian name here
+
+              // --- Add Visual Feedback ---
+              let targetButton = null;
+              // Find the button using the data-difficulty attribute (make sure you added this in quiz.html)
+              const buttons = document.querySelectorAll(".difficulty-btn");
+              buttons.forEach(btn => {
+                  // Check if the button's data-difficulty matches the target value
+                  if (btn.getAttribute('data-difficulty') === targetDifficulty) {
+                      targetButton = btn;
+                  }
+              });
+
+              // Apply feedback if button found, then proceed
+              if (targetButton) {
+                  // Add the highlight class
+                  targetButton.classList.add('voice-selected-feedback');
+
+                  // Set a timer to remove the class and THEN call selectDifficulty
+                  setTimeout(() => {
+                      targetButton.classList.remove('voice-selected-feedback');
+                      // Call selectDifficulty AFTER the feedback timeout
+                      selectDifficulty(targetDifficulty); // Proceed to next step
+                  }, 750); // Wait 750ms (adjust timing as needed)
+
+              } else {
+                  // Fallback if button DOM element not found
+                  console.warn("Target difficulty button not found for feedback:", targetDifficulty);
+                  selectDifficulty(targetDifficulty); // Proceed without feedback
+              }
+              // --- End Visual Feedback ---
+
           } else {
               // If no mapping found, log it
               console.log("No matching difficulty found for voice command:", commandLower);
           }
           break; // End of DIFFICULTY_SELECT case
+      // ***** END OF UPDATED BLOCK *****
 
-      case 'AWAITING_ANSWER':
+
+      case 'AWAITING_ANSWER': // This part remains the same
           // Define the mapping for answer letters (lowercase voice command to uppercase key)
           const answerMap = {
               "a": "A",
@@ -291,16 +361,16 @@ window.processVoiceCommand = (command) => {
                // If command wasn't a, b, c, or d, log it
               console.log("No matching answer option (A, B, C, D) found for voice command:", commandLower);
           }
-          break; // End of Youtube case
+          break; // End of AWAITING_ANSWER case
 
-      case 'SHOWING_ANSWER':
+      case 'SHOWING_ANSWER': // This part remains the same
           // Currently, the quiz automatically moves to the next question after a delay.
           // We don't need to process commands like "next" here unless we change that logic.
           // For now, just ignore commands received while the answer is shown.
           console.log("Ignoring voice command while showing answer.");
           break; // End of SHOWING_ANSWER case
 
-      default:
+      default: // This part remains the same
            // Handle commands that might be global, or log unexpected state issues
            if (commandLower === "home") { // Example: Global command to go home
                 console.log("Match: Going home");
