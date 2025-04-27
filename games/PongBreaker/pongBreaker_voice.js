@@ -5,7 +5,9 @@ import { startGame, initGame, audioCtx } from './pongBreaker_game.js';
 
 // --- Constants ---
 const VOSK_SERVER_URL = "ws://localhost:8765";
-const VOSK_BUFFER_SIZE = 4096;
+// For a potential optimization, we reduce the buffer size 
+// const VOSK_BUFFER_SIZE = 4096;
+const VOSK_BUFFER_SIZE = 1024;
 const VOICE_COMMANDS = {
   LEFT: 'left', RIGHT: 'right', START: 'start', STOP: 'stop', EXIT: 'exit'
 };
