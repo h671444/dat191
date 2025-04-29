@@ -6,45 +6,45 @@
           "question": "Hva heter hovedstaden i Norge?",
           "difficulty": "lett",
           "answers": {
-            "A": "Oslo",
+            "A": "Trondheim",
             "B": "Bergen",
-            "C": "Trondheim",
-            "D": "Stavanger"
+            "C": "Stavanger",
+            "D": "Oslo"
           },
-          "correct": "A"
+          "correct": "D"
         },
         {
           "question": "Hvilken farge har det norske flagget?",
           "difficulty": "lett",
           "answers": {
             "A": "Blå og hvit",
-            "B": "Rød, hvit og blå",
-            "C": "Gul og grønn",
+            "B": "Gul og grønn",
+            "C": "Rød, hvit og blå",
             "D": "Svart og rød"
           },
-          "correct": "B"
+          "correct": "C"
         },
         {
           "question": "Hva er Norges nasjonaldag?",
           "difficulty": "lett",
           "answers": {
             "A": "8. mai",
-            "B": "17. mai",
-            "C": "24. juni",
+            "B": "24. juni",
+            "C": "17. mai",
             "D": "4. juli"
           },
-          "correct": "B"
+          "correct": "C"
         },
         {
           "question": "Hva heter verdens største hav?",
           "difficulty": "middels",
           "answers": {
-            "A": "Atlanterhavet",
-            "B": "Stillehavet",
+            "A": "Nordishavet",
+            "B": "Atlanterhavet",
             "C": "Det indiske hav",
-            "D": "Nordishavet"
+            "D": "Stillehavet"
           },
-          "correct": "B"
+          "correct": "D"
         },
         {
           "question": "Hvilket språk snakkes hovedsakelig i Brasil?",
@@ -62,9 +62,9 @@
           "difficulty": "lett",
           "answers": {
             "A": "Mount Everest",
-            "B": "K2",
-            "C": "Kangchenjunga",
-            "D": "Lhotse"
+            "B": "Lhotse",
+            "C": "K2",
+            "D": "Kangchenjunga"
           },
           "correct": "A"
         },
@@ -73,9 +73,9 @@
           "difficulty": "lett",
           "answers": {
             "A": "Egypt",
-            "B": "Mexico",
+            "B": "India",
             "C": "Peru",
-            "D": "India"
+            "D": "Mexico"
           },
           "correct": "A"
         },
@@ -83,67 +83,67 @@
           "question": "Hva er hovedstaden i Frankrike?",
           "difficulty": "lett",
           "answers": {
-            "A": "Paris",
-            "B": "Lyon",
-            "C": "Marseille",
-            "D": "Toulouse"
+            "A": "Toulouse",
+            "B": "Paris",
+            "C": "Lyon",
+            "D": "Marseille"
           },
-          "correct": "A"
+          "correct": "B"
         },
         {
           "question": "Hvilket år startet andre verdenskrig?",
           "difficulty": "middels",
           "answers": {
-            "A": "1935",
-            "B": "1939",
-            "C": "1941",
-            "D": "1945"
+            "A": "1945",
+            "B": "1941",
+            "C": "1935",
+            "D": "1939"
           },
-          "correct": "B"
+          "correct": "D"
         },
         {
           "question": "Hvilken elv er den lengste i verden?",
           "difficulty": "middels",
           "answers": {
-            "A": "Nilen",
+            "A": "Mississippi",
             "B": "Amazonas",
-            "C": "Yangtze",
-            "D": "Mississippi"
+            "C": "Nilen",
+            "D": "Yangtze"
           },
-          "correct": "A"
+          "correct": "C"
         },
         {
           "question": "Hvem skrev 'Romeo og Julie'?",
           "difficulty": "lett",
           "answers": {
-            "A": "William Shakespeare",
+            "A": "Jane Austen",
             "B": "Charles Dickens",
-            "C": "Jane Austen",
-            "D": "Mark Twain"
+            "C": "Mark Twain",
+            "D": "William Shakespeare"
           },
-          "correct": "A"
+          "correct": "D"
         },
         {
           "question": "Hvilket dyr kalles ofte 'kongen av dyrene'?",
           "difficulty": "lett",
           "answers": {
-            "A": "Løven",
-            "B": "Elefanten",
-            "C": "Bjørnen",
-            "D": "Hesten"
+            "A": "Bjørnen",
+            "B": "Hesten",
+            "C": "Elefanten",
+            "D": "Løven"
           },
-          "correct": "A"
+          "correct": "D"
         },
         {
           "question": "Hva er det kjemiske symbolet for gull?",
           "difficulty": "lett",
           "answers": {
-            "A": "Au",
-            "B": "Ag",
-            "C": "Gd",
-            "D": "Go"
+            "A": "Ag",
+            "B": "Go",
+            "C": "Au",
+            "D": "Gd"
           },
-          "correct": "A"
+          "correct": "C"
         },
         {
           "question": "Hvilken planet er nærmest solen?",
@@ -151,8 +151,8 @@
           "answers": {
             "A": "Merkur",
             "B": "Venus",
-            "C": "Jorden",
-            "D": "Mars"
+            "C": "Mars",
+            "D": "Jorden"
           },
           "correct": "A"
         },
@@ -160,9 +160,9 @@
           "question": "Hvilket land produserer mest kaffe i verden?",
           "difficulty": "middels",
           "answers": {
-            "A": "Colombia",
+            "A": "Etiopia",
             "B": "Brasil",
-            "C": "Etiopia",
+            "C": "Colombia",
             "D": "Vietnam"
           },
           "correct": "B"
@@ -171,67 +171,67 @@
           "question": "Hvilket element har atomnummer 1?",
           "difficulty": "lett",
           "answers": {
-            "A": "Hydrogen",
-            "B": "Helium",
-            "C": "Oksygen",
-            "D": "Karbondioksid"
+            "A": "Oksygen",
+            "B": "Karbondioksid",
+            "C": "Helium",
+            "D": "Hydrogen"
           },
-          "correct": "A"
+          "correct": "D"
         },
         {
           "question": "Hva heter verdens største ørken?",
           "difficulty": "vanskelig",
           "answers": {
-            "A": "Antarktis",
-            "B": "Sahara",
-            "C": "Gobi",
+            "A": "Sahara",
+            "B": "Gobi",
+            "C": "Antarktis",
             "D": "Arabiske ørken"
           },
-          "correct": "A"
+          "correct": "C"
         },
         {
           "question": "Hvilket hav ligger mellom Afrika og Australia?",
           "difficulty": "middels",
           "answers": {
-            "A": "Det indiske hav",
-            "B": "Stillehavet",
-            "C": "Atlanterhavet",
-            "D": "Nordishavet"
+            "A": "Nordishavet",
+            "B": "Atlanterhavet",
+            "C": "Det indiske hav",
+            "D": "Stillehavet"
           },
-          "correct": "A"
+          "correct": "C"
         },
         {
           "question": "Hva heter forfatteren av 'Harry Potter'?",
           "difficulty": "lett",
           "answers": {
-            "A": "J.K. Rowling",
-            "B": "Stephen King",
+            "A": "Stephen King",
+            "B": "J.K. Rowling",
             "C": "J.R.R. Tolkien",
             "D": "George R.R. Martin"
           },
-          "correct": "A"
+          "correct": "B"
         },
         {
           "question": "Hvilket år ble den første månelandingen gjennomført?",
           "difficulty": "lett",
           "answers": {
-            "A": "1965",
-            "B": "1969",
-            "C": "1972",
-            "D": "1959"
+            "A": "1959",
+            "B": "1965",
+            "C": "1969",
+            "D": "1972"
           },
-          "correct": "B"
+          "correct": "C"
         },
         {
           "question": "Hvilken sport er mest populær globalt?",
           "difficulty": "lett",
           "answers": {
-            "A": "Fotball",
-            "B": "Basketball",
-            "C": "Cricket",
-            "D": "Tennis"
+            "A": "Basketball",
+            "B": "Fotball",
+            "C": "Tennis",
+            "D": "Cricket"
           },
-          "correct": "A"
+          "correct": "B"
         },
         {
           "question": "Hva er den største byen i USA etter befolkning?",
@@ -239,8 +239,8 @@
           "answers": {
             "A": "New York",
             "B": "Los Angeles",
-            "C": "Chicago",
-            "D": "Houston"
+            "C": "Houston",
+            "D": "Chicago"
           },
           "correct": "A"
         },
@@ -248,43 +248,43 @@
           "question": "Hvilket land har flest innbyggere i verden?",
           "difficulty": "lett",
           "answers": {
-            "A": "India",
+            "A": "Indonesia",
             "B": "USA",
-            "C": "Kina",
-            "D": "Indonesia"
+            "C": "India",
+            "D": "Kina"
           },
-          "correct": "C"
+          "correct": "D"
         },
         {
           "question": "Hva kalles instrumentet som har tangenter og strenger?",
           "difficulty": "lett",
           "answers": {
-            "A": "Piano",
-            "B": "Gitar",
-            "C": "Fiolin",
-            "D": "Trommer"
+            "A": "Gitar",
+            "B": "Piano",
+            "C": "Trommer",
+            "D": "Fiolin"
           },
-          "correct": "A"
+          "correct": "B"
         },
         {
           "question": "Hvilken forfatter skrev 'Sult'?",
           "difficulty": "middels",
           "answers": {
-            "A": "Knut Hamsun",
-            "B": "Henrik Ibsen",
-            "C": "Jens Bjørneboe",
-            "D": "Sigrid Undset"
+            "A": "Henrik Ibsen",
+            "B": "Jens Bjørneboe",
+            "C": "Sigrid Undset",
+            "D": "Knut Hamsun"
           },
-          "correct": "A"
+          "correct": "D"
         },
         {
           "question": "Hva er hovedstaden i Italia?",
           "difficulty": "lett",
           "answers": {
             "A": "Roma",
-            "B": "Milano",
-            "C": "Napoli",
-            "D": "Venezia"
+            "B": "Napoli",
+            "C": "Venezia",
+            "D": "Milano"
           },
           "correct": "A"
         },
@@ -292,76 +292,76 @@
           "question": "Hvilket land er kjent for tulipaner og vindmøller?",
           "difficulty": "lett",
           "answers": {
-            "A": "Nederland",
-            "B": "Belgia",
+            "A": "Belgia",
+            "B": "Nederland",
             "C": "Danmark",
             "D": "Tyskland"
           },
-          "correct": "A"
+          "correct": "B"
         },
         {
           "question": "Hvilket grunnstoff har det kjemiske symbolet O?",
           "difficulty": "lett",
           "answers": {
-            "A": "Oksygen",
-            "B": "Gull",
+            "A": "Karbondioksid",
+            "B": "Oksygen",
             "C": "Hydrogen",
-            "D": "Karbondioksid"
+            "D": "Gull"
           },
-          "correct": "A"
+          "correct": "B"
         },
         {
           "question": "Hvilken planet er kjent som den røde planeten?",
           "difficulty": "lett",
           "answers": {
-            "A": "Mars",
-            "B": "Jupiter",
-            "C": "Saturn",
+            "A": "Jupiter",
+            "B": "Saturn",
+            "C": "Mars",
             "D": "Venus"
           },
-          "correct": "A"
+          "correct": "C"
         },
         {
           "question": "Hva er hovedstaden i Spania?",
           "difficulty": "lett",
           "answers": {
-            "A": "Barcelona",
-            "B": "Madrid",
-            "C": "Sevilla",
-            "D": "Valencia"
+            "A": "Sevilla",
+            "B": "Valencia",
+            "C": "Madrid",
+            "D": "Barcelona"
           },
-          "correct": "B"
+          "correct": "C"
         },
         {
           "question": "Hvilken skuespiller spilte hovedrollen i 'Forrest Gump'?",
           "difficulty": "middels",
           "answers": {
-            "A": "Tom Hanks",
-            "B": "Brad Pitt",
-            "C": "Johnny Depp",
-            "D": "Leonardo DiCaprio"
+            "A": "Brad Pitt",
+            "B": "Johnny Depp",
+            "C": "Leonardo DiCaprio",
+            "D": "Tom Hanks"
           },
-          "correct": "A"
+          "correct": "D"
         },
         {
           "question": "Hva er det største kontinentet i verden?",
           "difficulty": "lett",
           "answers": {
-            "A": "Asia",
-            "B": "Afrika",
+            "A": "Afrika",
+            "B": "Asia",
             "C": "Nord-Amerika",
             "D": "Europa"
           },
-          "correct": "A"
+          "correct": "B"
         },
         {
           "question": "Hvilket språk snakkes i Kina?",
           "difficulty": "lett",
           "answers": {
             "A": "Mandarin",
-            "B": "Kantonesisk",
-            "C": "Engelsk",
-            "D": "Japansk"
+            "B": "Japansk",
+            "C": "Kantonesisk",
+            "D": "Engelsk"
           },
           "correct": "A"
         },
@@ -369,21 +369,21 @@
           "question": "Hva heter det berømte klokketårnet i London?",
           "difficulty": "lett",
           "answers": {
-            "A": "Big Ben",
+            "A": "Buckingham Palace",
             "B": "Tower Bridge",
-            "C": "London Eye",
-            "D": "Buckingham Palace"
+            "C": "Big Ben",
+            "D": "London Eye"
           },
-          "correct": "A"
+          "correct": "C"
         },
         {
           "question": "Hvilken amerikansk stat er kjent for Hollywood?",
           "difficulty": "lett",
           "answers": {
-            "A": "New York",
-            "B": "Florida",
+            "A": "Texas",
+            "B": "New York",
             "C": "California",
-            "D": "Texas"
+            "D": "Florida"
           },
           "correct": "C"
         },
@@ -391,34 +391,34 @@
           "question": "Hvilken by kalles ofte 'Den evige by'?",
           "difficulty": "lett",
           "answers": {
-            "A": "Roma",
+            "A": "Paris",
             "B": "Athen",
             "C": "Jerusalem",
-            "D": "Paris"
+            "D": "Roma"
           },
-          "correct": "A"
+          "correct": "D"
         },
         {
           "question": "Hvem malte 'Mona Lisa'?",
           "difficulty": "lett",
           "answers": {
-            "A": "Leonardo da Vinci",
-            "B": "Michelangelo",
-            "C": "Raphael",
-            "D": "Donatello"
+            "A": "Donatello",
+            "B": "Raphael",
+            "C": "Michelangelo",
+            "D": "Leonardo da Vinci"
           },
-          "correct": "A"
+          "correct": "D"
         },
         {
           "question": "Hva er verdens største øy?",
           "difficulty": "middels",
           "answers": {
-            "A": "Grønland",
-            "B": "New Guinea",
-            "C": "Borneo",
-            "D": "Madagaskar"
+            "A": "Borneo",
+            "B": "Grønland",
+            "C": "Madagaskar",
+            "D": "New Guinea"
           },
-          "correct": "A"
+          "correct": "B"
         },
         {
           "question": "Hvilken metall er kjent for å ruste?",
@@ -426,8 +426,8 @@
           "answers": {
             "A": "Jern",
             "B": "Aluminium",
-            "C": "Kobber",
-            "D": "Sølv"
+            "C": "Sølv",
+            "D": "Kobber"
           },
           "correct": "A"
         },
@@ -435,45 +435,45 @@
           "question": "Hva er hovedstaden i Japan?",
           "difficulty": "lett",
           "answers": {
-            "A": "Tokyo",
-            "B": "Osaka",
-            "C": "Kyoto",
-            "D": "Hiroshima"
+            "A": "Osaka",
+            "B": "Kyoto",
+            "C": "Hiroshima",
+            "D": "Tokyo"
           },
-          "correct": "A"
+          "correct": "D"
         },
         {
           "question": "Hvilket år ble Berlinmuren revet?",
           "difficulty": "middels",
           "answers": {
-            "A": "1987",
-            "B": "1989",
-            "C": "1991",
-            "D": "1993"
+            "A": "1991",
+            "B": "1993",
+            "C": "1989",
+            "D": "1987"
           },
-          "correct": "B"
+          "correct": "C"
         },
         {
           "question": "Hva heter prosessen der planter lager sin egen mat?",
           "difficulty": "lett",
           "answers": {
-            "A": "Fotosyntese",
-            "B": "Respirasjon",
+            "A": "Respirasjon",
+            "B": "Fotosyntese",
             "C": "Kjemisk omdannelse",
             "D": "Fordamping"
           },
-          "correct": "A"
+          "correct": "B"
         },
         {
           "question": "Hvilket land er kjent for fjorder?",
           "difficulty": "lett",
           "answers": {
-            "A": "Norge",
+            "A": "Chile",
             "B": "Canada",
-            "C": "Chile",
+            "C": "Norge",
             "D": "New Zealand"
           },
-          "correct": "A"
+          "correct": "C"
         },
         {
           "question": "Hvem var den første mannen på månen?",
@@ -490,197 +490,197 @@
           "question": "Hva heter verdens lengste elv?",
           "difficulty": "middels",
           "answers": {
-            "A": "Nilen",
-            "B": "Amazonas",
+            "A": "Amazonas",
+            "B": "Mississippi",
             "C": "Yangtze",
-            "D": "Mississippi"
+            "D": "Nilen"
           },
-          "correct": "A"
+          "correct": "D"
         },
         {
           "question": "Hvilken by er kjent som 'Nordens Paris'?",
           "difficulty": "lett",
           "answers": {
-            "A": "København",
+            "A": "Helsinki",
             "B": "Oslo",
-            "C": "Stockholm",
-            "D": "Helsinki"
+            "C": "København",
+            "D": "Stockholm"
           },
-          "correct": "A"
+          "correct": "C"
         },
         {
           "question": "Hva er den største innsjøen i verden?",
           "difficulty": "middels",
           "answers": {
-            "A": "Kaspihavet",
+            "A": "Bajkalsjøen",
             "B": "Lake Superior",
             "C": "Victoriasjøen",
-            "D": "Bajkalsjøen"
+            "D": "Kaspihavet"
           },
-          "correct": "A"
+          "correct": "D"
         },
         {
           "question": "Hvilken oppfinnelse er Alexander Graham Bell kjent for?",
           "difficulty": "lett",
           "answers": {
-            "A": "Telefonen",
+            "A": "Datamaskinen",
             "B": "Radioen",
             "C": "Telegrafen",
-            "D": "Datamaskinen"
+            "D": "Telefonen"
           },
-          "correct": "A"
+          "correct": "D"
         },
         {
           "question": "Hva er verdens mest folkerike by?",
           "difficulty": "middels",
           "answers": {
-            "A": "Tokyo",
-            "B": "Delhi",
-            "C": "Shanghai",
-            "D": "São Paulo"
+            "A": "Shanghai",
+            "B": "São Paulo",
+            "C": "Delhi",
+            "D": "Tokyo"
           },
-          "correct": "A"
+          "correct": "D"
         },
         {
           "question": "Hvilket kontinent ligger Egypt i?",
           "difficulty": "lett",
           "answers": {
-            "A": "Afrika",
-            "B": "Asia",
-            "C": "Europa",
-            "D": "Sør-Amerika"
+            "A": "Asia",
+            "B": "Afrika",
+            "C": "Sør-Amerika",
+            "D": "Europa"
           },
-          "correct": "A"
+          "correct": "B"
         },
         {
           "question": "Hvilken planet har ringer?",
           "difficulty": "lett",
           "answers": {
-            "A": "Saturn",
+            "A": "Uranus",
             "B": "Jupiter",
-            "C": "Uranus",
+            "C": "Saturn",
             "D": "Neptun"
           },
-          "correct": "A"
+          "correct": "C"
         },
         {
           "question": "Hva er det kjemiske symbolet for sølv?",
           "difficulty": "middels",
           "answers": {
-            "A": "Ag",
-            "B": "Au",
-            "C": "Si",
-            "D": "Pb"
+            "A": "Au",
+            "B": "Ag",
+            "C": "Pb",
+            "D": "Si"
           },
-          "correct": "A"
+          "correct": "B"
         },
         {
           "question": "Hvilket land vant fotball-VM i 2018?",
           "difficulty": "middels",
           "answers": {
-            "A": "Kroatia",
-            "B": "Brasil",
-            "C": "Frankrike",
-            "D": "Tyskland"
+            "A": "Frankrike",
+            "B": "Tyskland",
+            "C": "Kroatia",
+            "D": "Brasil"
           },
-          "correct": "C"
+          "correct": "A"
         },
         {
           "question": "Hva er hovedstaden i Australia?",
           "difficulty": "lett",
           "answers": {
-            "A": "Sydney",
-            "B": "Melbourne",
-            "C": "Canberra",
+            "A": "Melbourne",
+            "B": "Canberra",
+            "C": "Sydney",
             "D": "Perth"
           },
-          "correct": "C"
+          "correct": "B"
         },
         {
           "question": "Hvilken film vant Oscar for beste film i 1994?",
           "difficulty": "vanskelig",
           "answers": {
-            "A": "Schindler's List",
-            "B": "Forrest Gump",
-            "C": "Pulp Fiction",
-            "D": "The Shawshank Redemption"
+            "A": "Forrest Gump",
+            "B": "Schindler's List",
+            "C": "The Shawshank Redemption",
+            "D": "Pulp Fiction"
           },
-          "correct": "A"
+          "correct": "B"
         },
         {
           "question": "Hva er hovedstaden i Canada?",
           "difficulty": "lett",
           "answers": {
-            "A": "Toronto",
-            "B": "Ottawa",
-            "C": "Vancouver",
-            "D": "Montreal"
+            "A": "Vancouver",
+            "B": "Toronto",
+            "C": "Montreal",
+            "D": "Ottawa"
           },
-          "correct": "B"
+          "correct": "D"
         },
         {
           "question": "Hvilket instrument måler temperatur?",
           "difficulty": "lett",
           "answers": {
-            "A": "Termometer",
-            "B": "Barometer",
-            "C": "Hygrometer",
-            "D": "Anemometer"
+            "A": "Anemometer",
+            "B": "Hygrometer",
+            "C": "Barometer",
+            "D": "Termometer"
           },
-          "correct": "A"
+          "correct": "D"
         },
         {
           "question": "Hvilken gass puster vi inn for å overleve?",
           "difficulty": "lett",
           "answers": {
-            "A": "Oksygen",
+            "A": "Karbondioksid",
             "B": "Nitrogen",
-            "C": "Karbondioksid",
+            "C": "Oksygen",
             "D": "Helium"
           },
-          "correct": "A"
+          "correct": "C"
         },
         {
           "question": "Hvilken organisasjon jobber med internasjonal helse?",
           "difficulty": "middels",
           "answers": {
-            "A": "WHO",
-            "B": "UNICEF",
-            "C": "Røde Kors",
-            "D": "Leger Uten Grenser"
+            "A": "Røde Kors",
+            "B": "WHO",
+            "C": "Leger Uten Grenser",
+            "D": "UNICEF"
           },
-          "correct": "A"
+          "correct": "B"
         },
         {
           "question": "Hvem oppfant lyspæren?",
           "difficulty": "lett",
           "answers": {
-            "A": "Thomas Edison",
-            "B": "Nikola Tesla",
-            "C": "Alexander Graham Bell",
+            "A": "Alexander Graham Bell",
+            "B": "Thomas Edison",
+            "C": "Nikola Tesla",
             "D": "James Watt"
           },
-          "correct": "A"
+          "correct": "B"
         },
         {
           "question": "Hvilket land er kjent for sushi?",
           "difficulty": "lett",
           "answers": {
-            "A": "Kina",
-            "B": "Japan",
-            "C": "Sør-Korea",
-            "D": "Thailand"
+            "A": "Thailand",
+            "B": "Sør-Korea",
+            "C": "Kina",
+            "D": "Japan"
           },
-          "correct": "B"
+          "correct": "D"
         },
         {
           "question": "Hva heter den lengste elven i Norge?",
           "difficulty": "lett",
           "answers": {
             "A": "Glomma",
-            "B": "Lågen",
-            "C": "Numedalslågen",
-            "D": "Tana"
+            "B": "Numedalslågen",
+            "C": "Tana",
+            "D": "Lågen"
           },
           "correct": "A"
         },
@@ -688,23 +688,23 @@
           "question": "Hvilket dyr er det største pattedyret?",
           "difficulty": "lett",
           "answers": {
-            "A": "Blåhval",
+            "A": "Havhest",
             "B": "Elefant",
             "C": "Hvalross",
-            "D": "Havhest"
+            "D": "Blåhval"
           },
-          "correct": "A"
+          "correct": "D"
         },
         {
           "question": "Hva heter verdens største land etter areal?",
           "difficulty": "lett",
           "answers": {
             "A": "Canada",
-            "B": "USA",
-            "C": "Russland",
-            "D": "Kina"
+            "B": "Russland",
+            "C": "Kina",
+            "D": "USA"
           },
-          "correct": "C"
+          "correct": "B"
         },
         {
           "question": "Hvilken planet kalles for 'Jordens søster'?",
@@ -712,8 +712,8 @@
           "answers": {
             "A": "Venus",
             "B": "Mars",
-            "C": "Merkur",
-            "D": "Jupiter"
+            "C": "Jupiter",
+            "D": "Merkur"
           },
           "correct": "A"
         },
@@ -721,21 +721,21 @@
           "question": "Hvem malte 'Nattverden'?",
           "difficulty": "middels",
           "answers": {
-            "A": "Leonardo da Vinci",
-            "B": "Vincent van Gogh",
-            "C": "Pablo Picasso",
+            "A": "Vincent van Gogh",
+            "B": "Pablo Picasso",
+            "C": "Leonardo da Vinci",
             "D": "Salvador Dalí"
           },
-          "correct": "A"
+          "correct": "C"
         },
         {
           "question": "Hvilket år ble FN grunnlagt?",
           "difficulty": "lett",
           "answers": {
-            "A": "1918",
-            "B": "1939",
+            "A": "1939",
+            "B": "1950",
             "C": "1945",
-            "D": "1950"
+            "D": "1918"
           },
           "correct": "C"
         },
@@ -754,53 +754,53 @@
           "question": "Hva er hovedstaden i Russland?",
           "difficulty": "middels",
           "answers": {
-            "A": "St. Petersburg",
-            "B": "Moskva",
-            "C": "Kazan",
-            "D": "Sochi"
+            "A": "Sochi",
+            "B": "Kazan",
+            "C": "Moskva",
+            "D": "St. Petersburg"
           },
-          "correct": "B"
+          "correct": "C"
         },
         {
           "question": "Hvilket land er kjent for å produsere champagne?",
           "difficulty": "lett",
           "answers": {
-            "A": "Italia",
-            "B": "Spania",
-            "C": "Frankrike",
-            "D": "Tyskland"
+            "A": "Spania",
+            "B": "Tyskland",
+            "C": "Italia",
+            "D": "Frankrike"
           },
-          "correct": "C"
+          "correct": "D"
         },
         {
           "question": "Hva er det kjemiske symbolet for natrium?",
           "difficulty": "lett",
           "answers": {
-            "A": "Na",
-            "B": "N",
-            "C": "Nb",
-            "D": "Ni"
+            "A": "Ni",
+            "B": "Nb",
+            "C": "N",
+            "D": "Na"
           },
-          "correct": "A"
+          "correct": "D"
         },
         {
           "question": "Hvilken forfatter skrev 'Et dukkehjem'?",
           "difficulty": "middels",
           "answers": {
-            "A": "Henrik Ibsen",
+            "A": "Bjørnstjerne Bjørnson",
             "B": "Knut Hamsun",
-            "C": "Bjørnstjerne Bjørnson",
+            "C": "Henrik Ibsen",
             "D": "Sigrid Undset"
           },
-          "correct": "A"
+          "correct": "C"
         },
         {
           "question": "Hvilken frukt er kjent for sitt høye kaliuminnhold?",
           "difficulty": "lett",
           "answers": {
             "A": "Banan",
-            "B": "Eple",
-            "C": "Appelsin",
+            "B": "Appelsin",
+            "C": "Eple",
             "D": "Druer"
           },
           "correct": "A"
@@ -809,45 +809,45 @@
           "question": "Hva heter verdens lengste fjellkjede?",
           "difficulty": "middels",
           "answers": {
-            "A": "Appalacherne",
+            "A": "Himalaya",
             "B": "Rocky Mountains",
-            "C": "Andesfjellene",
-            "D": "Himalaya"
+            "C": "Appalacherne",
+            "D": "Andesfjellene"
           },
-          "correct": "C"
+          "correct": "D"
         },
         {
           "question": "Hvilket hav grenser til både Europa og Afrika?",
           "difficulty": "lett",
           "answers": {
-            "A": "Middelhavet",
-            "B": "Det indiske hav",
-            "C": "Atlanterhavet",
-            "D": "Stillehavet"
+            "A": "Det indiske hav",
+            "B": "Middelhavet",
+            "C": "Stillehavet",
+            "D": "Atlanterhavet"
           },
-          "correct": "A"
+          "correct": "B"
         },
         {
           "question": "Hvilken elv renner gjennom London?",
           "difficulty": "lett",
           "answers": {
-            "A": "Themsen",
-            "B": "Seine",
-            "C": "Rhinen",
-            "D": "Elben"
+            "A": "Elben",
+            "B": "Themsen",
+            "C": "Seine",
+            "D": "Rhinen"
           },
-          "correct": "A"
+          "correct": "B"
         },
         {
           "question": "Hvem var den første kvinnen i verdensrommet?",
           "difficulty": "middels",
           "answers": {
             "A": "Sally Ride",
-            "B": "Valentina Tereshkova",
-            "C": "Mae Jemison",
+            "B": "Mae Jemison",
+            "C": "Valentina Tereshkova",
             "D": "Kalpana Chawla"
           },
-          "correct": "B"
+          "correct": "C"
         },
         {
           "question": "Hva heter prosessen der vann går fra væske til damp?",
@@ -864,87 +864,87 @@
           "question": "Hvilket land er kjent for fjellkjeden Alpene?",
           "difficulty": "lett",
           "answers": {
-            "A": "Sveits",
+            "A": "Japan",
             "B": "Brasil",
-            "C": "Japan",
+            "C": "Sveits",
             "D": "Egypt"
           },
-          "correct": "A"
+          "correct": "C"
         },
         {
           "question": "Hvilket år ble den første iPhone lansert?",
           "difficulty": "lett",
           "answers": {
-            "A": "2005",
-            "B": "2007",
-            "C": "2009",
-            "D": "2011"
+            "A": "2009",
+            "B": "2011",
+            "C": "2007",
+            "D": "2005"
           },
-          "correct": "B"
+          "correct": "C"
         },
         {
           "question": "Hvilket land er hjemmet til kenguruer?",
           "difficulty": "lett",
           "answers": {
-            "A": "India",
-            "B": "Australia",
-            "C": "Afrika",
-            "D": "Sør-Amerika"
+            "A": "Australia",
+            "B": "Afrika",
+            "C": "Sør-Amerika",
+            "D": "India"
           },
-          "correct": "B"
+          "correct": "A"
         },
         {
           "question": "Hva er den største innsjøen i Afrika?",
           "difficulty": "middels",
           "answers": {
-            "A": "Victoriasjøen",
-            "B": "Tanganyikasjøen",
+            "A": "Tanganyikasjøen",
+            "B": "Victoriasjøen",
             "C": "Titicacasjøen",
             "D": "Malawisjøen"
           },
-          "correct": "A"
+          "correct": "B"
         },
         {
           "question": "Hvem skrev 'Hamlet'?",
           "difficulty": "lett",
           "answers": {
-            "A": "William Shakespeare",
-            "B": "Christopher Marlowe",
+            "A": "John Milton",
+            "B": "William Shakespeare",
             "C": "Ben Jonson",
-            "D": "John Milton"
+            "D": "Christopher Marlowe"
           },
-          "correct": "A"
+          "correct": "B"
         },
         {
           "question": "Hvilket språk snakkes i Portugal?",
           "difficulty": "lett",
           "answers": {
-            "A": "Portugisisk",
+            "A": "Italiensk",
             "B": "Spansk",
-            "C": "Italiensk",
+            "C": "Portugisisk",
             "D": "Fransk"
           },
-          "correct": "A"
+          "correct": "C"
         },
         {
           "question": "Hva heter det berømte klokketårnet i Pisa?",
           "difficulty": "lett",
           "answers": {
-            "A": "Det skjeve tårnet i Pisa",
+            "A": "Campanile di Pisa",
             "B": "Torre di Pisa",
             "C": "Pisa-klokketårnet",
-            "D": "Campanile di Pisa"
+            "D": "Det skjeve tårnet i Pisa"
           },
-          "correct": "A"
+          "correct": "D"
         },
         {
           "question": "Hvilket land er kjent for ballett og vodka?",
           "difficulty": "lett",
           "answers": {
-            "A": "Polen",
+            "A": "Italia",
             "B": "Russland",
             "C": "USA",
-            "D": "Italia"
+            "D": "Polen"
           },
           "correct": "B"
         },
@@ -952,21 +952,21 @@
           "question": "Hvilket instrument har 88 tangenter?",
           "difficulty": "lett",
           "answers": {
-            "A": "Piano",
-            "B": "Orgel",
-            "C": "Synthesizer",
-            "D": "Keyboard"
+            "A": "Keyboard",
+            "B": "Piano",
+            "C": "Orgel",
+            "D": "Synthesizer"
           },
-          "correct": "A"
+          "correct": "B"
         },
         {
           "question": "Hvilken by er kjent som 'The Big Apple'?",
           "difficulty": "lett",
           "answers": {
-            "A": "Los Angeles",
+            "A": "Chicago",
             "B": "New York",
-            "C": "Chicago",
-            "D": "Miami"
+            "C": "Miami",
+            "D": "Los Angeles"
           },
           "correct": "B"
         },
@@ -974,65 +974,65 @@
           "question": "Hvem oppdaget penicillin?",
           "difficulty": "middels",
           "answers": {
-            "A": "Alexander Fleming",
+            "A": "Robert Koch",
             "B": "Louis Pasteur",
-            "C": "Robert Koch",
+            "C": "Alexander Fleming",
             "D": "Marie Curie"
           },
-          "correct": "A"
+          "correct": "C"
         },
         {
           "question": "Hvilket land er kjent for fjellandskap som Himalaya?",
           "difficulty": "middels",
           "answers": {
             "A": "Bhutan",
-            "B": "Nepal",
-            "C": "Tibet",
-            "D": "Pakistan"
+            "B": "Tibet",
+            "C": "Pakistan",
+            "D": "Nepal"
           },
-          "correct": "B"
+          "correct": "D"
         },
         {
           "question": "Hvilken by var vertskap for de olympiske leker i 2000?",
           "difficulty": "lett",
           "answers": {
-            "A": "Atlanta",
-            "B": "Sydney",
-            "C": "Athen",
-            "D": "Beijing"
+            "A": "Sydney",
+            "B": "Athen",
+            "C": "Beijing",
+            "D": "Atlanta"
           },
-          "correct": "B"
+          "correct": "A"
         },
         {
           "question": "Hva kalles prosessen der organismer bryter ned mat for energi?",
           "difficulty": "middels",
           "answers": {
-            "A": "Cellulær respirasjon",
-            "B": "Fotosyntese",
-            "C": "Fermentering",
-            "D": "Osmose"
+            "A": "Osmose",
+            "B": "Cellulær respirasjon",
+            "C": "Fotosyntese",
+            "D": "Fermentering"
           },
-          "correct": "A"
+          "correct": "B"
         },
         {
           "question": "Hvilket kontinent er kjent for sin ørken, Sahara?",
           "difficulty": "lett",
           "answers": {
-            "A": "Afrika",
+            "A": "Australia",
             "B": "Asia",
-            "C": "Australia",
+            "C": "Afrika",
             "D": "Nord-Amerika"
           },
-          "correct": "A"
+          "correct": "C"
         },
         {
           "question": "Hva heter den største øya i Middelhavet?",
           "difficulty": "middels",
           "answers": {
             "A": "Sicilia",
-            "B": "Sardinia",
-            "C": "Kypros",
-            "D": "Korsika"
+            "B": "Kypros",
+            "C": "Korsika",
+            "D": "Sardinia"
           },
           "correct": "A"
         },
@@ -1040,43 +1040,43 @@
           "question": "Hvilket år ble internett offisielt tilgjengelig for allmennheten?",
           "difficulty": "middels",
           "answers": {
-            "A": "1989",
-            "B": "1991",
-            "C": "1995",
-            "D": "2000"
+            "A": "1991",
+            "B": "2000",
+            "C": "1989",
+            "D": "1995"
           },
-          "correct": "B"
+          "correct": "A"
         },
         {
           "question": "Hvem skrev 'Den lille prinsen'?",
           "difficulty": "lett",
           "answers": {
-            "A": "Antoine de Saint-Exupéry",
-            "B": "J.K. Rowling",
-            "C": "Ernest Hemingway",
-            "D": "F. Scott Fitzgerald"
+            "A": "Ernest Hemingway",
+            "B": "F. Scott Fitzgerald",
+            "C": "J.K. Rowling",
+            "D": "Antoine de Saint-Exupéry"
           },
-          "correct": "A"
+          "correct": "D"
         },
         {
           "question": "Hva er det kjemiske symbolet for kobber?",
           "difficulty": "middels",
           "answers": {
-            "A": "Cu",
-            "B": "Co",
-            "C": "Cr",
-            "D": "Cb"
+            "A": "Cr",
+            "B": "Cu",
+            "C": "Cb",
+            "D": "Co"
           },
-          "correct": "A"
+          "correct": "B"
         },
         {
           "question": "Hvilket land arrangerte verdensutstillingen i 1889?",
           "difficulty": "vanskelig",
           "answers": {
-            "A": "USA",
+            "A": "Tyskland",
             "B": "Frankrike",
             "C": "Storbritannia",
-            "D": "Tyskland"
+            "D": "USA"
           },
           "correct": "B"
         },
@@ -1085,8 +1085,8 @@
           "difficulty": "middels",
           "answers": {
             "A": "Sublimasjon",
-            "B": "Kondensering",
-            "C": "Smelting",
+            "B": "Smelting",
+            "C": "Kondensering",
             "D": "Fordamping"
           },
           "correct": "A"
@@ -1095,42 +1095,42 @@
           "question": "Hvilket år ble den første datamaskinen bygget?",
           "difficulty": "vanskelig",
           "answers": {
-            "A": "1936",
-            "B": "1943",
+            "A": "1943",
+            "B": "1960",
             "C": "1951",
-            "D": "1960"
+            "D": "1936"
           },
-          "correct": "A"
+          "correct": "D"
         },
         {
           "question": "Hvilket konsept innen kvantefysikk beskriver partikler som eksisterer i flere tilstander samtidig?",
           "difficulty": "vanskelig",
           "answers": {
             "A": "Entanglement",
-            "B": "Superposisjon",
-            "C": "Kvantetunneling",
+            "B": "Kvantetunneling",
+            "C": "Superposisjon",
             "D": "Kvantisering"
           },
-          "correct": "B"
+          "correct": "C"
         },
         {
           "question": "Hvilken filosofisk retning understreker at virkeligheten er en konstruksjon av individuelle persepsjoner?",
           "difficulty": "vanskelig",
           "answers": {
-            "A": "Realismen",
-            "B": "Konstruktivisme",
-            "C": "Naturalisme",
-            "D": "Eksistensialisme"
+            "A": "Konstruktivisme",
+            "B": "Eksistensialisme",
+            "C": "Realismen",
+            "D": "Naturalisme"
           },
-          "correct": "B"
+          "correct": "A"
         },
         {
           "question": "Hvilken matematisk teori er grunnlaget for moderne kryptografi?",
           "difficulty": "vanskelig",
           "answers": {
-            "A": "Algebraisk topologi",
+            "A": "Differensialligninger",
             "B": "Tallteori",
-            "C": "Differensialligninger",
+            "C": "Algebraisk topologi",
             "D": "Geometri"
           },
           "correct": "B"
@@ -1139,32 +1139,32 @@
           "question": "Hvilket elementært prinsipp i termodynamikk forklarer uunngåeligheten av prosesser?",
           "difficulty": "vanskelig",
           "answers": {
-            "A": "Første lov om termodynamikk",
-            "B": "Andre lov om termodynamikk",
-            "C": "Tredje lov om termodynamikk",
-            "D": "Nullte lov om termodynamikk"
+            "A": "Tredje lov om termodynamikk",
+            "B": "Nullte lov om termodynamikk",
+            "C": "Første lov om termodynamikk",
+            "D": "Andre lov om termodynamikk"
           },
-          "correct": "B"
+          "correct": "D"
         },
         {
           "question": "Hvilken historisk figur er kjent for sin filosofi om 'den gyldne middelvei'?",
           "difficulty": "vanskelig",
           "answers": {
-            "A": "Platon",
-            "B": "Aristoteles",
-            "C": "Sokrates",
+            "A": "Sokrates",
+            "B": "Platon",
+            "C": "Aristoteles",
             "D": "Confucius"
           },
-          "correct": "B"
+          "correct": "C"
         },
         {
           "question": "Hvilken kunstner var en ledende figur i ekspresjonismen, kjent for sitt fargerike og følelsesladede uttrykk?",
           "difficulty": "vanskelig",
           "answers": {
-            "A": "Pablo Picasso",
+            "A": "Henri Matisse",
             "B": "Edvard Munch",
-            "C": "Henri Matisse",
-            "D": "Salvador Dalí"
+            "C": "Salvador Dalí",
+            "D": "Pablo Picasso"
           },
           "correct": "B"
         },
@@ -1173,52 +1173,52 @@
           "difficulty": "vanskelig",
           "answers": {
             "A": "Tilfeldighet",
-            "B": "Naturlig utvalg",
-            "C": "Kreationisme",
-            "D": "Lamarckisme"
+            "B": "Kreationisme",
+            "C": "Lamarckisme",
+            "D": "Naturlig utvalg"
           },
-          "correct": "B"
+          "correct": "D"
         },
         {
           "question": "Hvilket økonomisk prinsipp beskriver hvordan ressurser fordeles i en markedsøkonomi?",
           "difficulty": "vanskelig",
           "answers": {
-            "A": "Monopol",
-            "B": "Tilbud og etterspørsel",
-            "C": "Proteksjonisme",
+            "A": "Proteksjonisme",
+            "B": "Monopol",
+            "C": "Tilbud og etterspørsel",
             "D": "Planøkonomi"
           },
-          "correct": "B"
+          "correct": "C"
         },
         {
           "question": "Hvilken hendelse i historien førte til oppløsningen av det osmanske riket?",
           "difficulty": "vanskelig",
           "answers": {
-            "A": "Første verdenskrig",
+            "A": "Den kalde krigen",
             "B": "Andre verdenskrig",
             "C": "Napoleonskrigene",
-            "D": "Den kalde krigen"
+            "D": "Første verdenskrig"
           },
-          "correct": "A"
+          "correct": "D"
         },
         {
           "question": "Hvilken oppdagelse av en naturkatastrofe bidro til utviklingen av moderne seismologi?",
           "difficulty": "vanskelig",
           "answers": {
             "A": "Lissabon jordskjelv 1755",
-            "B": "San Francisco jordskjelvet 1906",
-            "C": "Tokyo jordskjelvet 1923",
+            "B": "Tokyo jordskjelvet 1923",
+            "C": "San Francisco jordskjelvet 1906",
             "D": "Tangshan jordskjelvet 1976"
           },
-          "correct": "B"
+          "correct": "C"
         },
         {
           "question": "Hvilket land var det første til å sende en satellitt ut i verdensrommet?",
           "difficulty": "vanskelig",
           "answers": {
-            "A": "USA",
+            "A": "Kina",
             "B": "Sovjetunionen",
-            "C": "Kina",
+            "C": "USA",
             "D": "Frankrike"
           },
           "correct": "B"
@@ -1229,10 +1229,10 @@
           "answers": {
             "A": "Middelalderen",
             "B": "Renessansen",
-            "C": "Opplysningstiden",
-            "D": "Industrialiseringen"
+            "C": "Industrialiseringen",
+            "D": "Opplysningstiden"
           },
-          "correct": "C"
+          "correct": "D"
         },
         {
           "question": "Hvilket romfartøy var det første til å lande på månen?",
@@ -1240,8 +1240,8 @@
           "answers": {
             "A": "Apollo 11",
             "B": "Apollo 13",
-            "C": "Soyuz 1",
-            "D": "Challenger"
+            "C": "Challenger",
+            "D": "Soyuz 1"
           },
           "correct": "A"
         },
@@ -1249,34 +1249,34 @@
           "question": "Hvilken klassisk musiker komponerte symfonien ofte referert til som 'Skjebnesymfonien'?",
           "difficulty": "vanskelig",
           "answers": {
-            "A": "Wolfgang Amadeus Mozart",
-            "B": "Ludwig van Beethoven",
+            "A": "Franz Schubert",
+            "B": "Wolfgang Amadeus Mozart",
             "C": "Johann Sebastian Bach",
-            "D": "Franz Schubert"
+            "D": "Ludwig van Beethoven"
           },
-          "correct": "B"
+          "correct": "D"
         },
         {
           "question": "Hvilket geologisk fenomen forklarer dannelsen av fjellkjeder som Himalaya?",
           "difficulty": "vanskelig",
           "answers": {
-            "A": "Erosjon",
-            "B": "Vulkanisme",
-            "C": "Platetektonikk",
-            "D": "Sedimentasjon"
+            "A": "Sedimentasjon",
+            "B": "Platetektonikk",
+            "C": "Vulkanisme",
+            "D": "Erosjon"
           },
-          "correct": "C"
+          "correct": "B"
         },
         {
           "question": "Hvilken teknologisk innovasjon revolusjonerte kommunikasjon på 1800-tallet?",
           "difficulty": "vanskelig",
           "answers": {
-            "A": "Telefonen",
-            "B": "Telegrafen",
-            "C": "Radioen",
-            "D": "Datamaskinen"
+            "A": "Telegrafen",
+            "B": "Datamaskinen",
+            "C": "Telefonen",
+            "D": "Radioen"
           },
-          "correct": "B"
+          "correct": "A"
         },
         {
           "question": "Hvilket bysantinsk lovverk hadde stor påvirkning på senere europeisk rett, og hva kalles det?",
@@ -1293,34 +1293,34 @@
           "question": "Hvilken tysk filosof skrev 'Critique of Pure Reason' og endret epistemologien fundamentalt?",
           "difficulty": "vanskelig",
           "answers": {
-            "A": "Georg Wilhelm Friedrich Hegel",
-            "B": "Immanuel Kant",
+            "A": "Immanuel Kant",
+            "B": "Georg Wilhelm Friedrich Hegel",
             "C": "Friedrich Nietzsche",
             "D": "Arthur Schopenhauer"
           },
-          "correct": "B"
+          "correct": "A"
         },
         {
           "question": "Hvilken kunstretning utfordret tradisjonelle representasjoner og ble populær med kunstnere som Picasso og Braque?",
           "difficulty": "vanskelig",
           "answers": {
-            "A": "Surrealisme",
-            "B": "Ekspresjonisme",
-            "C": "Kubisme",
-            "D": "Futurisme"
+            "A": "Ekspresjonisme",
+            "B": "Kubisme",
+            "C": "Futurisme",
+            "D": "Surrealisme"
           },
-          "correct": "C"
+          "correct": "B"
         },
         {
           "question": "Hvilken internasjonal avtale fra 1957 la grunnlaget for det som senere ble Den europeiske union?",
           "difficulty": "vanskelig",
           "answers": {
-            "A": "Maastricht-traktaten",
-            "B": "Lissabon-traktaten",
-            "C": "Roma-traktaten",
+            "A": "Lissabon-traktaten",
+            "B": "Roma-traktaten",
+            "C": "Maastricht-traktaten",
             "D": "Schengen-avtalen"
           },
-          "correct": "C"
+          "correct": "B"
         }
       ]
     },
@@ -1330,56 +1330,980 @@
           "question": "Hva er den kjemiske formelen for vann?",
           "difficulty": "lett",
           "answers": {
-            "A": "H2O",
-            "B": "O2",
-            "C": "CO2",
-            "D": "H2"
+            "A": "H2",
+            "B": "CO2",
+            "C": "O2",
+            "D": "H2O"
           },
-          "correct": "A"
+          "correct": "D"
         },
         {
           "question": "Hvor mange planeter er det i vårt solsystem?",
           "difficulty": "middels",
           "answers": {
-            "A": "7",
-            "B": "8",
-            "C": "9",
-            "D": "10"
+            "A": "10",
+            "B": "9",
+            "C": "8",
+            "D": "7"
           },
-          "correct": "B"
+          "correct": "C"
         },
         {
           "question": "Hva er grunnstoffet med kjemisk symbol Fe?",
           "difficulty": "middels",
           "answers": {
             "A": "Fluor",
-            "B": "Jern",
-            "C": "Fosfor",
-            "D": "Francium"
+            "B": "Fosfor",
+            "C": "Francium",
+            "D": "Jern"
           },
-          "correct": "B"
+          "correct": "D"
         },
         {
           "question": "Hva er den største planeten i solsystemet vårt?",
           "difficulty": "vanskelig",
           "answers": {
-            "A": "Mars",
-            "B": "Jorden",
-            "C": "Jupiter",
-            "D": "Saturn"
+            "A": "Jupiter",
+            "B": "Saturn",
+            "C": "Mars",
+            "D": "Jorden"
           },
-          "correct": "C"
+          "correct": "A"
         },
         {
           "question": "Hva er Newtons tredje lov?",
           "difficulty": "vanskelig",
           "answers": {
-            "A": "For hver kraft er det en like stor og motsatt rettet kraft",
-            "B": "Energien kan verken skapes eller ødelegges",
-            "C": "Lysets hastighet er konstant i vakuum",
+            "A": "Energien kan verken skapes eller ødelegges",
+            "B": "Lysets hastighet er konstant i vakuum",
+            "C": "For hver kraft er det en like stor og motsatt rettet kraft",
             "D": "Elektroner beveger seg i faste baner rundt atomkjernen"
           },
+          "correct": "C"
+        },
+        {
+          "question": "Hva er SI-enheten for elektrisk motstand?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Watt",
+            "B": "Ampere",
+            "C": "Ohm",
+            "D": "Volt"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "Hva kalles prosessen der vann går fra væske til damp ved overflaten av en væske?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Fordampning",
+            "B": "Sublimasjon",
+            "C": "Smelting",
+            "D": "Kondensasjon"
+          },
           "correct": "A"
+        },
+        {
+          "question": "Hvilket av disse er en edelgass?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Oksygen",
+            "B": "Hydrogen",
+            "C": "Nitrogen",
+            "D": "Helium"
+          },
+          "correct": "D"
+        },
+        {
+          "question": "Hva er pH-verdien til nøytralt vann?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "5",
+            "B": "14",
+            "C": "0",
+            "D": "7"
+          },
+          "correct": "D"
+        },
+        {
+          "question": "Hva heter planeten som ligger nærmest jorden i solsystemet?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Venus",
+            "B": "Mars",
+            "C": "Jupiter",
+            "D": "Merkur"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hvilken gass er nødvendig for forbrenning?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Helium",
+            "B": "Oksygen",
+            "C": "Karbondioksid",
+            "D": "Nitrogen"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "Hva kalles en reaksjon der et stoff kombineres med oksygen for å danne karbondioksid og vann?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Hydrolyse",
+            "B": "Reduksjon",
+            "C": "Oksidasjon",
+            "D": "Fotosyntese"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "Hvilket instrument måler atmosfærisk trykk?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Barometer",
+            "B": "Anemometer",
+            "C": "Termometer",
+            "D": "Hygrometer"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hva er den kjemiske formelen for ammoniakk?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "CH4",
+            "B": "NH3",
+            "C": "HCl",
+            "D": "CO2"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "Hva heter prosessen der planter omdanner karbondioksid til oksygen?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Celleånding",
+            "B": "Fermentering",
+            "C": "Osmose",
+            "D": "Fotosyntese"
+          },
+          "correct": "D"
+        },
+        {
+          "question": "Hvilken enhet måler elektrisk strøm?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Ampere",
+            "B": "Joule",
+            "C": "Watt",
+            "D": "Volt"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hva kalles en gruppe celler med samme struktur og funksjon?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Organelle",
+            "B": "Vev",
+            "C": "Molekyl",
+            "D": "Organ"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "Hvilket organ i kroppen filtrerer blod for å fjerne avfallsstoffer?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Nyrer",
+            "B": "Lever",
+            "C": "Lunger",
+            "D": "Hjerte"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hva kalles den energien som er lagret i et objekt på grunn av dets høyde?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Termisk energi",
+            "B": "Potensiell energi",
+            "C": "Kjemisk energi",
+            "D": "Kinetisk energi"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "Hvilken bølge har lengre bølgelengde enn synlig lys?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Gammastråling",
+            "B": "Ultrafiolett",
+            "C": "Infrarød",
+            "D": "Røntgen"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "Hva er den primære gassen i jordens atmosfære?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Karbondioksid",
+            "B": "Argon",
+            "C": "Nitrogen",
+            "D": "Oksygen"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "Hva er den kjemiske formelen for hydrogenperoksid?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "H2O",
+            "B": "HO2",
+            "C": "H2O2",
+            "D": "H2"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "Hvilket apparat brukes for å måle elektrisk spenning?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Barometer",
+            "B": "Voltmeter",
+            "C": "Ohmmeter",
+            "D": "Amperemeter"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "Hvilket grunnstoff har atomnummer 6?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Oksygen",
+            "B": "Karbon",
+            "C": "Nitrogen",
+            "D": "Fosfor"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "Hva kalles effekten der lys bøyes når det passerer fra ett medium til et annet?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Diffraksjon",
+            "B": "Refleksjon",
+            "C": "Brytning",
+            "D": "Interferens"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "Hva kalles den minste enhet av et grunnstoff som beholder dets kjemiske egenskaper?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Atom",
+            "B": "Molekyl",
+            "C": "Ion",
+            "D": "Partikkel"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hvilken lov sier at innfallsvinkel = refleksjonsvinkel ved speiling?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Ohms lov",
+            "B": "Refleksjonsloven",
+            "C": "Refraksjonsloven",
+            "D": "Newtons første lov"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "Hvilken gass brukes i tradisjonelle neonlys?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Argon",
+            "B": "Neon",
+            "C": "Krypton",
+            "D": "Helium"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "Hva kalles endringen fra gass til væske?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Smelting",
+            "B": "Sublimasjon",
+            "C": "Kondensasjon",
+            "D": "Fordampning"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "Hvilket instrument måler luftfuktighet?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Hygrometer",
+            "B": "Anemometer",
+            "C": "Termometer",
+            "D": "Barometer"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hva heter hastigheten som kreves for å unnslippe jordens gravitasjon?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Vindhastighet",
+            "B": "Lydhastighet",
+            "C": "Flukthastighet",
+            "D": "Lyshastighet"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "Hva kalles et stoff som leder elektrisitet dårlig?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Isolator",
+            "B": "Superleder",
+            "C": "Halvleder",
+            "D": "Leder"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hvilket av disse materialene er magnetisk?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Plast",
+            "B": "Tre",
+            "C": "Glass",
+            "D": "Jern"
+          },
+          "correct": "D"
+        },
+        {
+          "question": "Hva kalles prosessen der et fast stoff går direkte over i gassform?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Fordampning",
+            "B": "Smelting",
+            "C": "Sublimasjon",
+            "D": "Kondensasjon"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "Hvilken del av atomet inneholder protoner og nøytroner?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Elektronsky",
+            "B": "Orbital",
+            "C": "Kjerne",
+            "D": "Skall"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "Hva beskriver begrepet «halveringstid» i radioaktivt henfall?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "Tiden det tar før 50 % av kjerneaktiviteten er borte",
+            "B": "Tiden før alle kjerner har desintegrert",
+            "C": "Tiden det tar for masse å halveres",
+            "D": "Tiden for rekkevidden til strålingen"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hvilket kjennetegn har en eksoterm kjemisk reaksjon?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "Den har konstant temperatur",
+            "B": "Den krever høyere trykk",
+            "C": "Den avgir varme",
+            "D": "Den absorberer varme"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "Hvilket organelle i eukaryote celler produserer mest ATP?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "Endoplasmatisk retikulum",
+            "B": "Golgi-apparatet",
+            "C": "Ribosomer",
+            "D": "Mitokondrier"
+          },
+          "correct": "D"
+        },
+        {
+          "question": "Hva kalles det ytre laget av jordens atmosfære?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "Troposfæren",
+            "B": "Stratosfæren",
+            "C": "Mesosfæren",
+            "D": "Termosfæren"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "Hva er den primære funksjonen til hemoglobin i blodet?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "Filtrering av avfallsstoffer",
+            "B": "Regulering av kroppstemperatur",
+            "C": "Transport av oksygen",
+            "D": "Blodkoagulering"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "Hvilket grunnleggende fysikkprinsipp uttrykkes ved Ohms lov?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "P = V × I",
+            "B": "I = V / R",
+            "C": "V = I × R",
+            "D": "R = V / I"
+          },
+          "correct": "D"
+        },
+        {
+          "question": "Hva måler en refraktometer?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "Trykk",
+            "B": "pH-verdi",
+            "C": "Temperatur",
+            "D": "Brytningsindeks"
+          },
+          "correct": "D"
+        },
+        {
+          "question": "Hva beskriver Bernoullis prinsipp?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "Summen av trykk, kinetisk og potensiell energi er konstant langs en strømlinje",
+            "B": "Vann koker ved 100 °C ved havnivå",
+            "C": "Trykk øker med økende hastighet",
+            "D": "Energi kan verken skapes eller ødelegges"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hvilket grunnstoff har høyest elektronegativitet?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "Oksygen",
+            "B": "Klor",
+            "C": "Nitrogen",
+            "D": "Fluor"
+          },
+          "correct": "D"
+        },
+        {
+          "question": "Hva er hovedforskjellen mellom en syre og en base i Brønsted–Lowry-teorien?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "Syre donerer protoner, base mottar protoner",
+            "B": "Syre mottar protoner, base donerer protoner",
+            "C": "Syre avgir elektroner, base mottar elektroner",
+            "D": "Syre har lav pH, base har høy pH"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hva er en pikometer en måleenhet for?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "Masse",
+            "B": "Tid",
+            "C": "Temperatur",
+            "D": "Lengde"
+          },
+          "correct": "D"
+        },
+        {
+          "question": "Hva kalles prosessen der en celle deler seg til to identiske datterceller?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "Meiose",
+            "B": "Fagocytose",
+            "C": "Mitose",
+            "D": "Endocytose"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "Hvilket fenomen forklarer regnbuens farger?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "Diffraksjon",
+            "B": "Refleksjon",
+            "C": "Interferens",
+            "D": "Refraksjon"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hva er densiteten til vann ved 4 °C (omtrentlig)?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "0,9 g/cm³",
+            "B": "1,0 g/cm³",
+            "C": "1,1 g/cm³",
+            "D": "1,2 g/cm³"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "Hva kaller man kraften som holder elektroner i bane rundt atomkjernen?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "Gravitasjonskraft",
+            "B": "Sentripetalkraft",
+            "C": "Coulombkraft",
+            "D": "Kjerne-kraft"
+          },
+          "correct": "D"
+        },
+        {
+          "question": "Hvilken formel beskriver idealgassloven?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "PV = nRT",
+            "B": "P + V = nRT",
+            "C": "P = nRT",
+            "D": "V = nRT"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hvilket trinn i næringskjeden kalles primærprodusenter?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "Toppkonsumenter",
+            "B": "Primærprodusenter",
+            "C": "Primærkonsumenter",
+            "D": "Sekundærkonsumenter"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "Hva kalles overgangen fra væske til fast stoff?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "Kondensasjon",
+            "B": "Smelting",
+            "C": "Frysing",
+            "D": "Sublimasjon"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "Hvilken bølge har kortest bølgelengde?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "Radiobølger",
+            "B": "Synlig lys",
+            "C": "Infrarød",
+            "D": "Gammastråling"
+          },
+          "correct": "D"
+        },
+        {
+          "question": "Hvilket organelle er ansvarlig for proteinsyntese?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "Mitokondrier",
+            "B": "Lysosomer",
+            "C": "Ribosomer",
+            "D": "Cellekjernen"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "Hva er navnet på prosessen der en celle bruker oksygen for å frigjøre energi fra glukose?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "Glykolyse",
+            "B": "Krebssyklus",
+            "C": "Fotosyntese",
+            "D": "Celleånding"
+          },
+          "correct": "D"
+        },
+        {
+          "question": "Hvilket av følgende måles i Siemens?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "Spenning",
+            "B": "Ledningsevne",
+            "C": "Resistans",
+            "D": "Strøm"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "Hva kaller man materialets evne til å gjenvinne form etter deformasjon?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "Plastisitet",
+            "B": "Viskositet",
+            "C": "Elastisitet",
+            "D": "Duktilitet"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "Hvilken syre har den kjemiske formelen H2SO4?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "Saltsyre",
+            "B": "Fosforsyre",
+            "C": "Nitrøs syre",
+            "D": "Svovelsyre"
+          },
+          "correct": "D"
+        },
+        {
+          "question": "Hva er jordens indre kjerne hovedsakelig sammensatt av?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "Kobber",
+            "B": "Jern",
+            "C": "Bly",
+            "D": "Nikkel"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "Hva beskriver Heisenbergs uskarphetsrelasjon?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "Posisjon og fart kan måles presist samtidig",
+            "B": "Posisjon og impuls kan ikke måles presist samtidig",
+            "C": "Energi og tid er uavhengige størrelser",
+            "D": "Partikkel- og bølgeegenskaper er eksklusive"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "Hvilken naturkonstant representerer lysets hastighet i vakuum?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "G",
+            "B": "h",
+            "C": "c",
+            "D": "k"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "Hva er Avogadros tall?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "6,022×10²³ partikler per mol",
+            "B": "9,81 m/s²",
+            "C": "3,00×10⁸ m/s",
+            "D": "1,38×10⁻²³ J/K"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hvilken eksponent har temperatur i Stefan–Boltzmann-loven for svart kroppsstråling?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "T²",
+            "B": "T³",
+            "C": "T⁵",
+            "D": "T⁴"
+          },
+          "correct": "D"
+        },
+        {
+          "question": "Hva beskriver Hubbles lov?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "Forholdet mellom energi og frekvens",
+            "B": "At galakser beveger seg vekk med hastighet proporsjonal med avstand",
+            "C": "Massen–energi-ekvivalens",
+            "D": "Tidevannseffekter på jorden"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "Hva kalles prosessen der en kvark kombineres med en antikvark for å danne fotoner?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "Parproduksjon",
+            "B": "Hadronisering",
+            "C": "Annihilasjon",
+            "D": "Kvark-tunneling"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "Hva kalles perioden like etter Big Bang der universet ekspanderte eksponentielt?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "Inflasjon",
+            "B": "Rekombinasjon",
+            "C": "Nukleosyntese",
+            "D": "Store Smellen"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hva er det minste kjente bosonet i partikkelfysikkens standardmodell?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "W-boson",
+            "B": "Z-boson",
+            "C": "Gluon",
+            "D": "Higgs-boson"
+          },
+          "correct": "D"
+        },
+        {
+          "question": "Hvilken enhet bruker man for Plancks konstant?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "Joule",
+            "B": "eV",
+            "C": "joule·sekund",
+            "D": "Newton"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "Hva kalles kvantemekanisk fenomen der partikler passerer gjennom energibarrierer?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "Fotoelektrisk effekt",
+            "B": "Compton-spredning",
+            "C": "Kvantetunneling",
+            "D": "Cherenkov-stråling"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "Hva uttrykker Schrödingerlikningen i kvantemekanikk?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "Tidsutviklingen av bølgefunksjonen",
+            "B": "Loven om energikonservering",
+            "C": "Relasjonen mellom energi og masse",
+            "D": "Partikkelspredning i felt"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hva definerer Reynoldstallet i fluidmekanikk?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "Forholdet mellom inertial- og viskøse krefter",
+            "B": "Forholdet mellom varmeledning og diffusjon",
+            "C": "Forholdet mellom trykk og temperatur",
+            "D": "Forholdet mellom tetthet og volum"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hvilket prinsipp sier at summen av strømmene inn i et nodal punkt er null?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "Kirchhoffs spenningslov",
+            "B": "Kirchhoffs strømlov",
+            "C": "Ohms lov",
+            "D": "Lenz’ lov"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "Hva kalles bevegelseslikningen for fluider under påvirkning av krefter?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "Euler–Lagrange-likningen",
+            "B": "Bernoullis ligning",
+            "C": "Navier–Stokes-ligningene",
+            "D": "Laplaces ligning"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "Hva er bremsestråling (bremsstrahlung)?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "Emisjon av fotoner når elektroner bremses i atomkjerner",
+            "B": "Absorpsjon av røntgenstråling i materialer",
+            "C": "Spredning av synlig lys i atmosfæren",
+            "D": "Produksjon av gammastråling i solen"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hvilken konstant forbinder masse og energi i relativitetsteorien?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "Plancks konstant",
+            "B": "Boltzmanns konstant",
+            "C": "Gravitasjonskonstanten",
+            "D": "Lyshastigheten"
+          },
+          "correct": "D"
+        },
+        {
+          "question": "Hva kalles en kvantetilstand som er en lineær kombinasjon av flere basisstater?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "Entanglement",
+            "B": "Superposisjon",
+            "C": "Korrelasjon",
+            "D": "Koherens"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "Hvilket prinsipp sier at naturlover er de samme i alle inertialsystemer?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "Energi–tid uskarphet",
+            "B": "Kvantemekanisk superposisjon",
+            "C": "Spesiell relativitet",
+            "D": "General relativitet"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "Hva kalles prosessen hvor atomkjerner spaltes til lettere kjerner?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "Fusjon",
+            "B": "Spalting",
+            "C": "Transmutasjon",
+            "D": "Ionisering"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hvilken kraft formidles av gluoner?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "Elektromagnetisk kraft",
+            "B": "Svak kjernekraft",
+            "C": "Gravitasjonskraft",
+            "D": "Sterk kjernekraft"
+          },
+          "correct": "D"
+        },
+        {
+          "question": "Hvilken lov sier at strålingsintensiteten for en svart kropp er proporsjonal med fjerde potens av temperatur?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "Weins forskyvningslov",
+            "B": "Plancks strålingsteori",
+            "C": "Kirchhoffs lov",
+            "D": "Stefan–Boltzmann-loven"
+          },
+          "correct": "D"
+        },
+        {
+          "question": "Hva kalles kvantefeltteoretisk beregning i diagramform?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "Feynmandiagram",
+            "B": "Bohrmodellen",
+            "C": "Klassisk baneanalyse",
+            "D": "Schrödingerkart"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hvilken enhet måler magnetisk fluks?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "Weber",
+            "B": "Tesla",
+            "C": "Henry",
+            "D": "Gauss"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hva kalles sammenkoblingen av elektriske og magnetiske felt i en bølge?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "Ampères lov",
+            "B": "Faradays lov",
+            "C": "Gauss’ lov for magnetisme",
+            "D": "Maxwells korrigerte Ampère-lov"
+          },
+          "correct": "D"
+        },
+        {
+          "question": "Hva kalles den laveste energitilstanden til et atom?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "Eksitert tilstand",
+            "B": "Ioniseringstilstand",
+            "C": "Grunntilstand",
+            "D": "Resonanstilstand"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "Hvilken ligning beskriver bevegelsen til en fri partikkel i kvantemekanikk?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "Pauli-likningen",
+            "B": "Dirac-likningen",
+            "C": "Schrödingerlikningen",
+            "D": "Klein–Gordon-likningen"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "Hva kalles en prosess der et stoff tar opp varme uten temperaturøkning?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "Faseovergang",
+            "B": "Adiabatiske prosess",
+            "C": "Isoterm prosess",
+            "D": "Isobar prosess"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hva er Hubble-konstanten et mål på?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "Universets tetthet",
+            "B": "Stjerners luminositet",
+            "C": "Universets ekspansjonshastighet per avstand",
+            "D": "Bakgrunnsstrålingens temperatur"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "Hvilken lov beskriver forholdet mellom strøm, spenning og motstand i en krets?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "Kirchhoffs lov",
+            "B": "Faradays lov",
+            "C": "Ohms lov",
+            "D": "Lenz’ lov"
+          },
+          "correct": "C"
         }
       ]
     },
@@ -1389,12 +2313,12 @@
           "question": "Hvem var den første kongen av Norge?",
           "difficulty": "lett",
           "answers": {
-            "A": "Harald Hårfagre",
-            "B": "Olav Tryggvason",
-            "C": "Håkon den gode",
-            "D": "Magnus Lagabøte"
+            "A": "Håkon den gode",
+            "B": "Magnus Lagabøte",
+            "C": "Harald Hårfagre",
+            "D": "Olav Tryggvason"
           },
-          "correct": "A"
+          "correct": "C"
         },
         {
           "question": "Hvilket år ble den amerikanske uavhengighetserklæringen signert?",
@@ -1402,8 +2326,8 @@
           "answers": {
             "A": "1776",
             "B": "1789",
-            "C": "1804",
-            "D": "1812"
+            "C": "1812",
+            "D": "1804"
           },
           "correct": "A"
         },
@@ -1411,21 +2335,21 @@
           "question": "Hvilket år startet andre verdenskrig?",
           "difficulty": "middels",
           "answers": {
-            "A": "1935",
-            "B": "1939",
-            "C": "1941",
-            "D": "1945"
+            "A": "1939",
+            "B": "1941",
+            "C": "1945",
+            "D": "1935"
           },
-          "correct": "B"
+          "correct": "A"
         },
         {
           "question": "Hvilken historisk hendelse fant sted den 9. november 1989?",
           "difficulty": "vanskelig",
           "answers": {
-            "A": "Månelandingen",
+            "A": "Den franske revolusjonen",
             "B": "Berlinmurens fall",
-            "C": "Slutten på første verdenskrig",
-            "D": "Den franske revolusjonen"
+            "C": "Månelandingen",
+            "D": "Slutten på første verdenskrig"
           },
           "correct": "B"
         },
@@ -1433,12 +2357,1002 @@
           "question": "Hva het hovedstaden i det romerske riket?",
           "difficulty": "vanskelig",
           "answers": {
-            "A": "Athen",
-            "B": "Roma",
+            "A": "Roma",
+            "B": "Athen",
             "C": "Konstantinopel",
             "D": "Kartago"
           },
+          "correct": "A"
+        },
+        {
+          "question": "Hvilket år ble Norge medlem av FN?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "1945",
+            "B": "1919",
+            "C": "1950",
+            "D": "1939"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hvem var den første presidenten i USA?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "George Washington",
+            "B": "Thomas Jefferson",
+            "C": "John Adams",
+            "D": "James Madison"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hvem var statsminister i Storbritannia under andre verdenskrig?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Winston Churchill",
+            "B": "Neville Chamberlain",
+            "C": "Clement Attlee",
+            "D": "Anthony Eden"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hvilken hendelse fant sted den 6. juni 1944?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "D-dagen",
+            "B": "Slaget ved Somme",
+            "C": "Slaget ved Stalingrad",
+            "D": "Angrepet på Pearl Harbor"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hvem var den siste tsaren av Russland?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Nikolai II",
+            "B": "Alexander III",
+            "C": "Nicholas I",
+            "D": "Peter den store"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hvilket år ble Berlinmuren revet?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "1989",
+            "B": "1991",
+            "C": "1987",
+            "D": "1993"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hvem var statsminister i Norge under andre verdenskrig?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Johan Nygaardsvold",
+            "B": "Vidkun Quisling",
+            "C": "Einar Gerhardsen",
+            "D": "Christian Michelsen"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hvilken traktat avsluttet første verdenskrig?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Versailles-traktaten",
+            "B": "Saint-Germain-traktaten",
+            "C": "Brest-Litovsk-traktaten",
+            "D": "Neuilly-traktaten"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hvem var leder for Sovjetunionen under andre verdenskrig?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Vladimir Lenin",
+            "B": "Leon Trotsky",
+            "C": "Nikita Khrusjtsjov",
+            "D": "Josef Stalin"
+          },
           "correct": "B"
+        },
+        {
+          "question": "Hva kalles attentatet i Sarajevo som utløste første verdenskrig?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Angrepet på Pearl Harbor",
+            "B": "Galileos husarrest",
+            "C": "Napoleonskrigene",
+            "D": "Attentatet på Franz Ferdinand"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "Hvem var dronning av England fra 1558 til 1603?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Mary I",
+            "B": "Anne",
+            "C": "Elizabeth I",
+            "D": "Victoria"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "Hvem var leder av den franske revolusjonens radikale fase?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Napoleon Bonaparte",
+            "B": "Georges Danton",
+            "C": "Louis XVI",
+            "D": "Maximilien Robespierre"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "Hvem var keiser av Frankrike under Napoleonskrigene?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Louis XVIII",
+            "B": "Charles de Gaulle",
+            "C": "Napoleon III",
+            "D": "Napoleon Bonaparte"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "Hvilket år startet den industrielle revolusjon i Storbritannia?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "1700",
+            "B": "1800",
+            "C": "1850",
+            "D": "1760"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "Hvem var pave da Martin Luther startet reformasjonen?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Gregorius I",
+            "B": "Urban II",
+            "C": "Pius XII",
+            "D": "Leo X"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "Hvilket land var det første som gav kvinner stemmerett?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "USA",
+            "B": "Storbritannia",
+            "C": "Australia",
+            "D": "New Zealand"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "Hvem oppdaget penicillin?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Louis Pasteur",
+            "B": "Robert Koch",
+            "C": "Marie Curie",
+            "D": "Alexander Fleming"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "Hvilket år startet den spanske borgerkrigen?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "1914",
+            "B": "1929",
+            "C": "1945",
+            "D": "1936"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "Hvem var det første mennesket i verdensrommet?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Neil Armstrong",
+            "B": "Buzz Aldrin",
+            "C": "Valentina Tereshkova",
+            "D": "Yuri Gagarin"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "Hvilken by ble ødelagt av atombomben i 1945?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Nagasaki",
+            "B": "Tokyo",
+            "C": "Osaka",
+            "D": "Hiroshima"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "Hvem regnes som grunnleggeren av Roma ifølge legenden?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Remus",
+            "B": "Aeneas",
+            "C": "Romulus",
+            "D": "Cincinnatus"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "Hvem var dronning i England fra 1837 til 1901?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Elizabeth II",
+            "B": "Anne",
+            "C": "Mary I",
+            "D": "Victoria"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "Hva het skipet som fraktet de første pilegrimene til Amerika i 1620?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Santa Maria",
+            "B": "Endeavour",
+            "C": "Beagle",
+            "D": "Mayflower"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "Hvilket år ble den amerikanske borgerkrigen avsluttet?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "1861",
+            "B": "1870",
+            "C": "1855",
+            "D": "1865"
+          },
+          "correct": "D"
+        },
+        {
+          "question": "Hvem var statsleder i Tyskland under andre verdenskrig?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Paul von Hindenburg",
+            "B": "Heinrich Himmler",
+            "C": "Joseph Goebbels",
+            "D": "Adolf Hitler"
+          },
+          "correct": "D"
+        },
+        {
+          "question": "Hva skjedde i USA den 11. september 2001?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Guvernørvalg i New York",
+            "B": "Finanskrise",
+            "C": "Keiserens dåp",
+            "D": "Terrorangrep på World Trade Center"
+          },
+          "correct": "D"
+        },
+        {
+          "question": "Hvilket år startet borgerkrigen i USA?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "1850",
+            "B": "1870",
+            "C": "1880",
+            "D": "1861"
+          },
+          "correct": "D"
+        },
+        {
+          "question": "Hvem var statsminister i Storbritannia fra 1979 til 1990?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "John Major",
+            "B": "Winston Churchill",
+            "C": "Tony Blair",
+            "D": "Margaret Thatcher"
+          },
+          "correct": "D"
+        },
+        {
+          "question": "Hvem inspirerte til ikke-voldskamp i India?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Jawaharlal Nehru",
+            "B": "Indira Gandhi",
+            "C": "Rabindranath Tagore",
+            "D": "Mahatma Gandhi"
+          },
+          "correct": "D"
+        },
+        {
+          "question": "Hvem var president i USA under andre verdenskrig?",
+          "difficulty": "lett",
+          "answers": {
+            "A": "Harry S. Truman",
+            "B": "Dwight D. Eisenhower",
+            "C": "Theodore Roosevelt",
+            "D": "Franklin D. Roosevelt"
+          },
+          "correct": "D"
+        },
+        {
+          "question": "Hvilket år ble unionsoppløsningen mellom Norge og Sverige vedtatt?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "1905",
+            "B": "1814",
+            "C": "1914",
+            "D": "1945"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hvem var statsminister i Storbritannia ved utbruddet av første verdenskrig?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "David Lloyd George",
+            "B": "Stanley Baldwin",
+            "C": "Herbert Asquith",
+            "D": "Winston Churchill"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "Hva het den norrøne lovsamlingen vedtatt av Magnus Lagabøte?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "Gulatingloven",
+            "B": "Frostatingloven",
+            "C": "Olgatingloven",
+            "D": "Borgartingloven"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "Hvem var konge av Norge under Svartedauden i 1349?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "Haakon V Magnusson",
+            "B": "Olav Håkonsson",
+            "C": "Håkon VI Magnusson",
+            "D": "Magnus Eriksson"
+          },
+          "correct": "D"
+        },
+        {
+          "question": "I hvilken by ble Julius Cæsar myrdet i 44 f.Kr.?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "Alexandria",
+            "B": "Korint",
+            "C": "Roma",
+            "D": "Efe"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "Hvilket år ble Berlinmuren bygd?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "1959",
+            "B": "1961",
+            "C": "1963",
+            "D": "1955"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "Hvem var den første kvinnen i verdensrommet?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "Mae Jemison",
+            "B": "Sally Ride",
+            "C": "Kalpana Chawla",
+            "D": "Valentina Tereshkova"
+          },
+          "correct": "D"
+        },
+        {
+          "question": "Hvilken traktat avsluttet første verdenskrig?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "Brest-Litovsk-traktaten",
+            "B": "Versaillestraktaten",
+            "C": "Saint-Germain-traktaten",
+            "D": "Trianon-traktaten"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "Hvilket år ble NATO stiftet?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "1945",
+            "B": "1949",
+            "C": "1951",
+            "D": "1955"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "Hvem erklærte seg selv som keiser av Frankrike i 1804?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "Louis XVI",
+            "B": "Napoleon Bonaparte",
+            "C": "Charles X",
+            "D": "Louis XVIII"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "I hvilket år oppdaget Christopher Columbus Amerika?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "1488",
+            "B": "1519",
+            "C": "1502",
+            "D": "1492"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "Hvilken konge signerte Magna Carta i 1215?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "Johannes uten land",
+            "B": "Richard Løvehjerte",
+            "C": "Henry III",
+            "D": "Edward I"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hvem ble leder for Sovjetunionen etter Lenins død i 1924?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "Leon Trotsky",
+            "B": "Nikita Khrusjtsjov",
+            "C": "Vladimir Lenin",
+            "D": "Josef Stalin"
+          },
+          "correct": "D"
+        },
+        {
+          "question": "Hvilket år ble forbudstiden (prohibisjon) i USA opphevet?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "1933",
+            "B": "1920",
+            "C": "1941",
+            "D": "1950"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hvem var norsk statsminister under andre verdenskrig?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "Vidkun Quisling",
+            "B": "Johan Nygaardsvold",
+            "C": "Einar Gerhardsen",
+            "D": "Christian Michelsen"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "Hvem var romersk keiser da Jesus antas å ha blitt født?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "Tiberius",
+            "B": "Caligula",
+            "C": "Claudius",
+            "D": "Augustus"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "Hvem ledet oktoberrevolusjonen i Russland i 1917?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "Joseph Stalin",
+            "B": "Nikolai Bukharin",
+            "C": "Vladimir Lenin",
+            "D": "Leon Trotsky"
+          },
+          "correct": "D"
+        },
+        {
+          "question": "Hvilket år åpnet Suezkanalen for skipsfart?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "1869",
+            "B": "1881",
+            "C": "1875",
+            "D": "1859"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hvilket attentat i Sarajevo i 1914 utløste første verdenskrig?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "Attentatet på Franz Ferdinand",
+            "B": "Anarkistattentatet i London",
+            "C": "Bankkrakket i 1929",
+            "D": "Lausannetraktaten"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "Hvilket land sendte opp Sputnik 1 i 1957?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "USA",
+            "B": "Sovjetunionen",
+            "C": "Frankrike",
+            "D": "Storbritannia"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "Hvem var den siste tsaren av Russland?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "Alexander III",
+            "B": "Nikolai II",
+            "C": "Peter den store",
+            "D": "Nicholas I"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "Hva kalles perioden 1536–1814 da Norge var i union med Danmark?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "Kalmarunionen",
+            "B": "Dansketiden",
+            "C": "Unionstiden",
+            "D": "Reformasjonen"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "I hvilket år startet den amerikanske borgerkrigen?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "1848",
+            "B": "1861",
+            "C": "1850",
+            "D": "1870"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "Hvem var den første presidenten i USA?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "Thomas Jefferson",
+            "B": "Abraham Lincoln",
+            "C": "John Adams",
+            "D": "George Washington"
+          },
+          "correct": "D"
+        },
+        {
+          "question": "Hvilken epoke kalles perioden da germanske stammer invaderte Romerriket?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "Renessansen",
+            "B": "Opplysningstiden",
+            "C": "Folkevandringstiden",
+            "D": "Industrialiseringen"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "Hvilket år ble FN opprettet?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "1919",
+            "B": "1945",
+            "C": "1939",
+            "D": "1950"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "Hvem grunnla Ming-dynastiet i Kina?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "Qin Shi Huang",
+            "B": "Zhu Yuanzhang",
+            "C": "Kublai Khan",
+            "D": "Yongle-keiseren"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "I hvilket år startet den franske revolusjonen?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "1776",
+            "B": "1789",
+            "C": "1799",
+            "D": "1812"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hvilken by regnes som renessansens fødested på 1400-tallet?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "Roma",
+            "B": "Firenze",
+            "C": "Venezia",
+            "D": "Milano"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "I hvilket år startet den industrielle revolusjon i Storbritannia?",
+          "difficulty": "middels",
+          "answers": {
+            "A": "1700",
+            "B": "1760",
+            "C": "1800",
+            "D": "1850"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hvilket år ble Westfalerfreden signert?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "1648",
+            "B": "1650",
+            "C": "1638",
+            "D": "1660"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hvem grunnla Umayyad-kalifatet i 661?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "Muawiya I",
+            "B": "Abd al-Malik",
+            "C": "Umar ibn al-Khattab",
+            "D": "Ali ibn Abi Talib"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "I hvilket år slo Martin Luther opp sine 95 teser på kirkedøren i Wittenberg?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "1517",
+            "B": "1515",
+            "C": "1521",
+            "D": "1505"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hvilket slag i 1066 avgjorde den normanniske erobringen av England?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "1066",
+            "B": "1055",
+            "C": "1087",
+            "D": "1075"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hvilken doktrine ble kunngjort i 1823 for å forhindre europeisk kolonisering i Amerika?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "Monroe-doktrinen",
+            "B": "Truman-doktrinen",
+            "C": "Brezhnev-doktrinen",
+            "D": "Reagan-doktrinen"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hvem var FN-generalsekretær under Cubakrisen i 1962?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "Dag Hammarskjöld",
+            "B": "Trygve Lie",
+            "C": "U Thant",
+            "D": "Kurt Waldheim"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hvilket land var det første som ga kvinner full stemmerett (1893)?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "Australia",
+            "B": "Norge",
+            "C": "Storbritannia",
+            "D": "New Zealand"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hvilket årstall markerer slaget ved Lepanto mellom kristne og osmanske styrker?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "1571",
+            "B": "1580",
+            "C": "1565",
+            "D": "1592"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hvilken traktat i 1494 delte den nye verden mellom Spania og Portugal?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "1492",
+            "B": "1494",
+            "C": "1500",
+            "D": "1488"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "Hvem erobret Inkariket og fengslet keiser Atahualpa i 1532?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "Hernán Cortés",
+            "B": "Francisco Pizarro",
+            "C": "Hernando de Soto",
+            "D": "Vasco Núñez de Balboa"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "Hva var kodenavnet for den allierte invasjonen av Normandie i 1944?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "Operasjon Market Garden",
+            "B": "Operation Overlord",
+            "C": "Operasjon Torch",
+            "D": "Operasjon Husky"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "I hvilket år ble slaget ved Austerlitz utkjempet?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "1804",
+            "B": "1803",
+            "C": "1805",
+            "D": "1806"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "Hvem ble kronet som keiser av det tysk-romerske riket i 962?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "962",
+            "B": "954",
+            "C": "971",
+            "D": "982"
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hvem utropte Haiti til selvstendig republikk i 1804?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "Toussaint Louverture",
+            "B": "Jean-Jacques Dessalines",
+            "C": "Henri Christophe",
+            "D": "Alexandre Pétion"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "Hvilket år ble dronning Victoria utropt til keiserinne av India?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "1857",
+            "B": "1876",
+            "C": "1867",
+            "D": "1885"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "I hvilket år kodifiserte keiser Justinian I Corpus Juris Civilis?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "529",
+            "B": "534",
+            "C": "542",
+            "D": "558"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "Hva kalles slaget i 312 der Konstantin den store beseiret Maxentius?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "312",
+            "B": "324",
+            "C": "306",
+            "D": "316"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "I hvilket år ble Jamestown, den første permanente engelske bosetningen i Amerika, grunnlagt?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "1606",
+            "B": "1607",
+            "C": "1610",
+            "D": "1612"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "I hvilket år ble den romerske republikken omgjort til keiserdømme under Augustus?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "27 f.Kr.",
+            "B": "31 f.Kr.",
+            "C": "14 e.Kr.",
+            "D": "44 f.Kr."
+          },
+          "correct": "A"
+        },
+        {
+          "question": "Hvem beseiret Hannibal i slaget ved Zama i 202 f.Kr.?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "Hannibal Barca",
+            "B": "Scipio Africanus",
+            "C": "Julius Cæsar",
+            "D": "Alexander den store"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "Hvilket dynasti ble grunnlagt av Qin Shi Huang i 221 f.Kr.?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "Han-dynastiet",
+            "B": "Qin-dynastiet",
+            "C": "Tang-dynastiet",
+            "D": "Zhou-dynastiet"
+          },
+          "correct": "B"
+        },
+        {
+          "question": "Hvem ble myrdet i Sarajevo i 1914 og utløste første verdenskrig?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "Gavrilo Princip",
+            "B": "Kaiser Wilhelm II",
+            "C": "Franz Ferdinand",
+            "D": "Woodrow Wilson"
+          },
+          "correct": "C"
+        },
+        {
+          "question": "Hvem ledet den britiske flåten i slaget ved Trafalgar i 1805?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "Arthur Wellesley",
+            "B": "Frederick Maitland",
+            "C": "Edward Hawke",
+            "D": "Horatio Nelson"
+          },
+          "correct": "D"
+        },
+        {
+          "question": "Hvilken konge innførte enevelde i Danmark–Norge i 1660?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "Christian IV",
+            "B": "Christian V",
+            "C": "Gustav III",
+            "D": "Frederik III"
+          },
+          "correct": "D"
+        },
+        {
+          "question": "I hvilket år ble St. Petersburg grunnlagt av Peter den store?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "1712",
+            "B": "1698",
+            "C": "1705",
+            "D": "1703"
+          },
+          "correct": "D"
+        },
+        {
+          "question": "Hvem etablerte Kamakura-shogunatet i Japan i 1192?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "Minamoto no Yorimoto",
+            "B": "Tokugawa Ieyasu",
+            "C": "Oda Nobunaga",
+            "D": "Minamoto no Yoritomo"
+          },
+          "correct": "D"
+        },
+        {
+          "question": "Hvilken pave proklamerte første korstoget i 1095?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "Gregorius VII",
+            "B": "Innocent III",
+            "C": "Paschal II",
+            "D": "Urban II"
+          },
+          "correct": "D"
+        },
+        {
+          "question": "Hvem erobret Konstantinopel i 1453?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "Suleiman den store",
+            "B": "Bayezid II",
+            "C": "Selim I",
+            "D": "Mehmed II"
+          },
+          "correct": "D"
+        },
+        {
+          "question": "I hvilket år ble Unionen mellom England og Skottland vedtatt (Act of Union)?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "1710",
+            "B": "1715",
+            "C": "1701",
+            "D": "1707"
+          },
+          "correct": "D"
+        },
+        {
+          "question": "Hvem ble gjeninnsatt som konge av Frankrike etter Napoleons fall i 1815?",
+          "difficulty": "vanskelig",
+          "answers": {
+            "A": "Louis XVI",
+            "B": "Charles X",
+            "C": "Napoleon II",
+            "D": "Louis XVIII"
+          },
+          "correct": "D"
         }
       ]
     }
