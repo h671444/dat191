@@ -3,7 +3,7 @@ const WebSocket = require('ws');
 
 // Set up the real serial port
 const port = new SerialPort({
-  path: '/dev/ttys014', // Replace with the correct serial port path
+  path: '/dev/ttys003', // Replace with the correct serial port path
   baudRate: 9600,       // Match the baud rate of your device
 });
 
