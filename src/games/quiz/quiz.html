@@ -27,26 +27,32 @@
         <p>NordicNeuroLabs</p>
     </div>
     <div class="nav-right">
-        <button class="nav-home-btn" onclick="returnToHome()">Hjem</button>
+        <!-- Home button removed from here -->
     </div>
 </header>
   
     <!-- Wrapper for main content -->
     <div class="quiz-content-wrapper"> 
       
+      <!-- Home button moved here -->
+      <button class="nav-home-btn" onclick="returnToHome()">Hjem</button>
+
       <!-- Existing quiz sections go inside the wrapper -->
       <div id="category-selection">
           <h2>Velg en kategori</h2>
           <div id="categories"></div>
-          <button id="tilfeldige-sporsmaal" onclick="selectCategory('Tilfeldig spørsmål')">Tilfeldig spørsmål</button>
+          <button id="tilfeldige-sporsmaal" onclick="selectCategory('Tilfeldig spørsmål')" hidden>Tilfeldig spørsmål</button>
+
       </div>
+
 
       <div id="difficulty-selection" hidden="true">
         <h2>Velg en vanskelighetsgrad</h2>
-        <div id="difficulties"></div>
-        <button class="difficulty-btn" onclick="selectDifficulty('lett')">Lett</button>
-        <button class="difficulty-btn" onclick="selectDifficulty('middels')">Middels</button>
-        <button class="difficulty-btn" onclick="selectDifficulty('vanskelig')">Vanskelig</button>
+        <div id="difficulties">
+          <button class="difficulty-btn dwell-target" onclick="selectDifficulty('lett')">Lett</button>
+          <button class="difficulty-btn dwell-target" onclick="selectDifficulty('middels')">Middels</button>
+          <button class="difficulty-btn dwell-target" onclick="selectDifficulty('vanskelig')">Vanskelig</button>
+        </div>
       </div>
 
       <div id="quiz-area" hidden="true">

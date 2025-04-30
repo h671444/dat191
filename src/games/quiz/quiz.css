@@ -3,7 +3,7 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden; /* Strictly prevent scrolling */
+  overflow: hidden;
 }
 
 body {
@@ -11,9 +11,9 @@ body {
   background-color: #437EF6;
   color: white;
   text-align: center;
-  display: flex; /* Use flexbox for layout */
+  display: flex; 
   flex-direction: column;
-  height: 100vh; /* Ensure body takes full viewport height */
+  height: 100vh; 
 }
 
 header {
@@ -24,12 +24,12 @@ header {
   padding: 10px 20px;
   background-color: #222224;
   color: white;
-  position: fixed; /* Keep header fixed */
+  position: fixed; 
   top: 0;
   left: 0;
-  height: 80px; /* Keep consistent height */
+  height: 80px; 
   z-index: 1000;
-  flex-shrink: 0; /* Prevent header from shrinking */
+  flex-shrink: 0; 
 }
 
 .nav-left {
@@ -44,78 +44,87 @@ header {
   line-height: 80px;
 }
 
-.nav-right {
-  display: flex;
-  align-items: center;
-  margin-left: auto; 
-  margin-right: 50px;
-}
-
 .nav-home-btn {
-  background-color: #0095ff;
+  position: fixed; 
+  top: 100px; 
+  right: 20px; 
+  z-index: 1001; 
+  width: auto; 
+  background-color: #222224; 
   color: white;
-  border: none;
-  padding: 18px 30px;
-  font-size: 1.6rem;
-  border-radius: 10px;
+  border: none; 
+  padding: 30px 50px; 
+  font-size: 2.2rem; 
+  border-radius: 15px; 
   cursor: pointer;
   transition: background 0.3s ease-in-out, transform 0.2s;
   line-height: 1.2;
 }
 
 .nav-home-btn:hover {
-  background-color: #0080e6;
+  background-color: #444; 
   transform: scale(1.05);
 }
 
-/* shared button styles */
-button {
-  width: 100%;
-  padding: 20px; 
-  font-size: 1.6rem; 
-  border-radius: 12px;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-}
-
-.category-btn, .difficulty-btn {
+/* Shared styles for Category, Difficulty, and Random buttons */
+.category-btn, 
+#difficulty-selection .difficulty-btn,
+#tilfeldige-sporsmaal
+{
   background: #44475a; 
   color: white;
-  margin: 14px 0;
+  padding: 60px 70px; 
+  font-size: 2.5rem; 
+  border-radius: 25px; 
+  border: none; 
+  cursor: pointer; 
+  transition: all 0.3s ease; 
+  min-height: auto; 
+  text-align: center; 
+  flex-grow: 1; 
+  flex-basis: 250px; 
+  margin: 10px 5px; 
 }
 
-.category-btn:hover, .difficulty-btn:hover {
+.category-btn:hover, 
+#difficulty-selection .difficulty-btn:hover,
+#tilfeldige-sporsmaal:hover
+{
   background: #575c70;
-  transform: scale(1.1);
+  transform: scale(1.05);
+}
+
+/* specific spacing for the Tilfeldig button */
+#tilfeldige-sporsmaal {
+    margin-top: 20px;  
+    margin-bottom: 0; 
 }
 
 /* Add a main content area wrapper style */
 .quiz-content-wrapper {
     flex-grow: 1; /* Allow this area to grow and fill space */
-    padding-top: 80px; /* Add padding equal to header height */
+    padding-top: 80px; 
     overflow-y: auto; /* Allow vertical scrolling ONLY for this content area if needed */
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center quiz area horizontally */
-    justify-content: center; /* Center quiz area vertically */
+    align-items: center; 
+    justify-content: center;
     width: 100%;
 }
 
 #quiz-area {
   background: #222224;
-  padding: 30px; /* Reasonable padding */
+  padding: 30px; 
   border-radius: 15px;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
-  width: 90%; /* Use percentage width */
-  max-width: 900px; /* Reduced max-width back down */
+  width: 90%; 
+  max-width: 900px; 
   animation: fadeIn 0.5s ease-in-out;
-  /* Remove top/bottom margin, flex wrapper handles centering */
   margin: 0 auto;
 }
 
 #question {
-  font-size: 2rem; /* Keep question size reasonable */ 
+  font-size: 2rem; 
   font-weight: bold;
   margin-bottom: 25px; 
 }
@@ -123,23 +132,23 @@ button {
 #options {
   display: grid;
   grid-template-columns: repeat(2, 1fr); 
-  gap: 40px; /* Increased gap */
-  margin-top: 35px; /* Increased margin */
+  gap: 40px; 
+  margin-top: 35px; 
 }
 
-/* Adjust option button styles for grid layout */
+/* adjust option button styles for grid layout */
 .option-btn {
   background: #44475a;
   color: white;
-  padding: 45px; /* Increased padding */
+  padding: 50px; 
   margin: 0; 
-  font-size: 2rem; /* Increased font size */
-  border-radius: 22px; /* Increased radius */
+  font-size: 2rem; 
+  border-radius: 22px; 
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
   width: 100%; 
-  min-height: 160px; /* Increased min-height */
+  min-height: 180px; 
   display: flex; 
   align-items: center;
   justify-content: center;
@@ -196,4 +205,27 @@ button {
       opacity: 1;
       transform: translateY(0);
   }
+}
+
+/* Style the containers for category and difficulty buttons */
+#categories, #difficulties {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center; 
+  gap: 10px; 
+  margin-top: 15px; 
+  padding: 0 10px; 
+  width: 100%; 
+}
+
+/* Give the parent sections a defined width */
+#category-selection, #difficulty-selection {
+    width: 100%;
+    max-width: 1000px; 
+}
+
+/* Style the headings for these sections */
+#category-selection h2, #difficulty-selection h2 {
+    margin-bottom: 20px; 
+    font-size: 2rem; 
 }

@@ -9,7 +9,7 @@ let score = 0;
 const loadQuestions = async () => {
     const response = await fetch("../../assets/data/questions.json")
     const data = await response.json();
-    console.log(data)
+    //console.log(data)
     questions = data.categories;
 
     displayCategories();
@@ -22,14 +22,16 @@ const displayCategories = () => {
   Object.keys(questions).forEach(category => {
     let btn = document.createElement("button");
     btn.innerText = category;
-    btn.classList.add("category-btn", "dwell-target");
+    btn.classList.add("category-btn");
+    btn.setAttribute("data-gaze-interactive", "true");
     btn.onclick = () => selectCategory(category);
     categoriesDiv.appendChild(btn);
   });
   
   const randomBtn = document.getElementById("tilfeldige-sporsmaal");
   if(randomBtn) {
-      randomBtn.classList.add("dwell-target");
+      randomBtn.setAttribute("data-gaze-interactive", "true");
+      randomBtn.hidden = false;
   }
 }
 
@@ -43,7 +45,7 @@ const selectCategory = (category) => {
 const selectDifficulty = (difficulty) => {
   selectedDifficulty = difficulty;
   document.querySelectorAll('#difficulty-selection .difficulty-btn').forEach(btn => {
-      btn.classList.add("dwell-target");
+      btn.setAttribute("data-gaze-interactive", "true");
   });
   loadQuiz();
 }
@@ -86,7 +88,8 @@ const showQuestion = () => {
   Object.keys(questionObj.answers).forEach(key => {
     let btn = document.createElement("button");
     btn.innerText = `${key}: ${questionObj.answers[key]}`;
-    btn.classList.add("option-btn", "dwell-target");
+    btn.classList.add("option-btn");
+    btn.setAttribute("data-gaze-interactive", "true");
     btn.onclick = () => checkAnswer(key, questionObj.correct);
     optionsDiv.appendChild(btn);
   })
@@ -134,11 +137,11 @@ const returnToHome = () => {
 // Add dwell target to static buttons after defining functions
 const homeBtn = document.querySelector(".nav-home-btn");
 if (homeBtn) {
-    homeBtn.classList.add("dwell-target");
+    homeBtn.setAttribute("data-gaze-interactive", "true");
 }
 
 document.querySelectorAll('#difficulty-selection .difficulty-btn').forEach(btn => {
-      btn.classList.add("dwell-target");
+      btn.setAttribute("data-gaze-interactive", "true");
 });
 
 // --- Start loading questions AFTER all functions are defined ---
