@@ -1,154 +1,206 @@
 let latestGazeData = null; // Stores the latest {x, y} gaze data
 
-// --- Dwell Click Simulation Settings ---
-const DWELL_TIME_MS = 2500; // Increased from 1500ms (2.5 seconds)
-const DWELL_TARGET_SELECTOR = '.dwell-target'; // CSS selector for clickable elements
-let dwellTarget = null; // The element currently being dwelled on
-let dwellStartTime = null; // Timestamp when dwelling started on the current target
-let dwellFrameRequest = null; // Stores the requestAnimationFrame ID
-// --- End Dwell Click Settings ---
+// Gaze Dot Smoothing Variables
+let dotTargetX = null;
+let dotTargetY = null;
+let dotCurrentX = null;
+let dotCurrentY = null;
+const DOT_SMOOTHING_FACTOR = 0.1; // Lower is smoother
+let dotUpdateLoopId = null;
+
+// Dwell Click Simulation Settings
+const DWELL_TIME = 1500; // Milliseconds needed to trigger click
+const DWELL_INDICATOR_COLOR = 'rgba(0, 255, 0, 0.6)';
+const DWELL_HYSTERESIS_MARGIN = 30;
+let dwellStartTime = null;
+let lastDwellElement = null;
 
 // Initialize WebGazer
 async function initializeWebGazer() {
     try {
         if (typeof webgazer === "undefined") {
-            console.error("WebGazer not loaded.");
+            console.error("WebGazer library not loaded.");
             return;
         }
-        console.log("Starting WebGazer...");
         await webgazer.setRegression('ridge')
             .setTracker('TFFacemesh')
             .showPredictionPoints(false)
+            .showVideoPreview(false)
+            .saveDataAcrossSessions(true)
             .begin();
-        
-        const gazeDot = document.getElementById('gazeDot');
-        
+
+        // Stop new click recalibration
+        if (webgazer && webgazer.params) {
+            webgazer.params.useClickRecalibration = false;
+        }
+
+        // Remove original click event listener
+        if (webgazer.params && webgazer.params.events && webgazer.params.events.click) {
+            window.removeEventListener('click', webgazer.params.events.click);
+        }
+
+        // Start the dot update loop
+        if (dotUpdateLoopId === null) {
+            updateGazeDotPosition();
+        }
+
         webgazer.setGazeListener(function(data, clock) {
-            // We only need the latest gaze data for the dwell check loop
-            latestGazeData = data;
-            
-            // Update the dot position (visual feedback for gaze location)
-            if (gazeDot && data) {
-                gazeDot.style.display = 'block';
-                gazeDot.style.left = data.x + 'px';
-                gazeDot.style.top = data.y + 'px';
-            } else if (gazeDot) {
-                 gazeDot.style.display = 'none';
+            latestGazeData = data; // Store latest raw data
+            // Update target position for smooth dot
+            if (data) {
+                dotTargetX = data.x;
+                dotTargetY = data.y;
+                // Initialize current position if first data point
+                if (dotCurrentX === null) {
+                    dotCurrentX = data.x;
+                    dotCurrentY = data.y;
+                }
             }
         });
-
-        // Start the dwell monitoring loop once WebGazer is ready
-        if (dwellFrameRequest === null) { // Ensure it only starts once
-             monitorDwell();
-             console.log('WebGazer initialized. Dwell-click monitoring started.');
-        }
+        
+        console.log('WebGazer initialized and listener set.');
 
     } catch (err) {
         console.error('Failed to initialize WebGazer:', err);
     }
 }
 
-// --- Dwell Click Monitoring Loop ---
-function monitorDwell() {
-    // Get the latest prediction data (might be null if tracking lost)
-    // Using getCurrentPrediction() might also work if setGazeListener isn't fast enough, 
-    // but latestGazeData from the listener is usually fine.
-    const prediction = latestGazeData; 
+// Initialize WebGazer automatically
+initializeWebGazer();
 
-    const gazeDot = document.getElementById('gazeDot'); // Get dot for visual feedback
+// Gaze Dot Update and Dwell Logic Loop
+function updateGazeDotPosition() {
+    const gazeDot = document.getElementById('gazeDot');
 
-    if (!prediction) {
-        // No prediction, reset dwell state
-        resetDwellState(gazeDot);
-        dwellFrameRequest = requestAnimationFrame(monitorDwell); // Keep the loop running
-        return;
-    }
+    if (dotTargetX !== null && dotTargetY !== null && gazeDot) {
+        // Interpolate current dot position towards target
+        dotCurrentX += (dotTargetX - dotCurrentX) * DOT_SMOOTHING_FACTOR;
+        dotCurrentY += (dotTargetY - dotCurrentY) * DOT_SMOOTHING_FACTOR;
 
-    const { x, y } = prediction;
-    let currentTarget = null;
+        // Update dot's visual style
+        gazeDot.style.display = 'block';
+        gazeDot.style.left = dotCurrentX + 'px';
+        gazeDot.style.top = dotCurrentY + 'px';
 
-    // Find all potential target elements on the page
-    const potentialTargets = document.querySelectorAll(DWELL_TARGET_SELECTOR);
-
-    // Check if gaze is inside any potential target
-    for (const target of potentialTargets) {
-        const rect = target.getBoundingClientRect();
-        if (x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom) {
-            currentTarget = target;
-            break; // Found the topmost target under gaze
+        // --- Dwell Click Logic with Hysteresis ---
+        let elementUnderGaze = document.elementFromPoint(dotCurrentX, dotCurrentY);
+        let dwellTargetElement = null;
+        if (elementUnderGaze) {
+            dwellTargetElement = elementUnderGaze.closest('[data-gaze-interactive="true"]');
         }
-    }
 
-    if (currentTarget) {
-        // --- Gaze is inside a target element ---
-        if (currentTarget === dwellTarget) {
-            // Still dwelling on the same target
-            const elapsedTime = Date.now() - dwellStartTime;
-            
-            // Visual Feedback: Update dwell progress (e.g., change dot size/color)
-            updateDwellFeedback(gazeDot, elapsedTime, DWELL_TIME_MS);
+        if (lastDwellElement && dwellStartTime) {
+            // Timer active: Check if gaze is still within hysteresis bounds
+            const rect = lastDwellElement.getBoundingClientRect();
+            const isWithinHysteresis = (
+                dotCurrentX >= rect.left - DWELL_HYSTERESIS_MARGIN &&
+                dotCurrentX <= rect.right + DWELL_HYSTERESIS_MARGIN &&
+                dotCurrentY >= rect.top - DWELL_HYSTERESIS_MARGIN &&
+                dotCurrentY <= rect.bottom + DWELL_HYSTERESIS_MARGIN
+            );
 
-            if (elapsedTime >= DWELL_TIME_MS) {
-                // Dwell time threshold reached!
-                console.log(`Dwell-Click Triggered on:`, currentTarget);
-                
-                // --- Special Handling for Game Cards ---
-                if (currentTarget.classList.contains('game-card')) {
-                    const link = currentTarget.querySelector('a');
-                    if (link && link.href) {
-                        console.log(`Navigating to: ${link.href}`);
-                        window.location.href = link.href; // Navigate to the link's destination
+            if (isWithinHysteresis) {
+                // Still within tolerance: Check dwell time
+                const elapsedTime = Date.now() - dwellStartTime;
+                drawDwellIndicator(lastDwellElement, elapsedTime / DWELL_TIME);
+
+                if (elapsedTime >= DWELL_TIME) {
+                    // --- Handle Dwell Completion ---
+                    if (lastDwellElement.classList.contains('game-card')) {
+                        // Special handling for game cards: navigate link
+                        const link = lastDwellElement.querySelector('a');
+                        if (link && link.href) {
+                            console.log(`Dwell: Navigating to game card link: ${link.href}`);
+                            window.location.href = link.href;
+                        } else {
+                            console.warn('Dwell: Game card activated, but no link found.');
+                        }
                     } else {
-                        console.warn('Game card clicked, but no link found inside.');
+                        // Default behavior: simulate click
+                        console.log("Dwell: Simulating click on:", lastDwellElement);
+                        lastDwellElement.click();
                     }
-                } else {
-                    // --- Default Click Behaviour for other targets ---
-                     currentTarget.click(); // Simulate the click for other elements
+                    // --- End Dwell Completion Handling ---
+                    clearDwellState(); // Reset after action
                 }
-                // --- End Special Handling ---
-                
-                resetDwellState(gazeDot);
+            } else {
+                // Moved outside hysteresis bounds: Reset
+                clearDwellState();
             }
         } else {
-            // Switched to a new target
-            resetDwellState(gazeDot);
-            dwellTarget = currentTarget;
-            dwellStartTime = Date.now();
-            console.log(`Dwelling started on:`, currentTarget);
-            // Initial visual feedback
-             updateDwellFeedback(gazeDot, 0, DWELL_TIME_MS);
+            // Timer inactive: Check if gaze ENTERED a new interactive element
+            if (dwellTargetElement) {
+                lastDwellElement = dwellTargetElement;
+                dwellStartTime = Date.now();
+                drawDwellIndicator(lastDwellElement, 0);
+            } else {
+                // Gaze is not over an interactive element
+                clearDwellState(); 
+            }
         }
-    } else {
-        // --- Gaze is not inside any target element ---
-        resetDwellState(gazeDot);
+        // --- End Dwell Click Logic ---
+
+    } else if (gazeDot) {
+        // Hide dot if no target data
+        gazeDot.style.display = 'none';
+        clearDwellState(); 
     }
 
-    // Continue the loop
-    dwellFrameRequest = requestAnimationFrame(monitorDwell);
+    // Request next frame
+    dotUpdateLoopId = requestAnimationFrame(updateGazeDotPosition);
 }
 
-function resetDwellState(gazeDot) {
-    if (dwellTarget) {
-         console.log(`Dwelling stopped on:`, dwellTarget);
+// Dwell Indicator Functions
+
+function clearDwellState() {
+    if (lastDwellElement) {
+        removeDwellIndicator(lastDwellElement);
+        lastDwellElement = null;
     }
-    dwellTarget = null;
     dwellStartTime = null;
-    // Reset visual feedback
+}
+
+function drawDwellIndicator(element, progress) {
+    const gazeDot = document.getElementById('gazeDot');
     if (gazeDot) {
-        gazeDot.style.transform = 'translate(-50%, -50%) scale(1)'; // Reset size/scale
-        gazeDot.style.backgroundColor = 'red'; // Reset color
+        gazeDot.style.backgroundColor = `rgba(0, 255, 0, ${0.4 + progress * 0.5})`; // Fade to green
+        gazeDot.style.transform = `translate(-50%, -50%) scale(${1 + progress * 0.5})`; // Grow slightly
+        gazeDot.style.transition = 'transform 0.1s ease-out, background-color 0.1s ease-out';
     }
+    // Alternative: Draw indicator on the element itself (example commented out)
+    /*
+    if (element) {
+        const outlineOffset = 5 * (1 - progress);
+        element.style.outline = `3px solid ${DWELL_INDICATOR_COLOR}`;
+        element.style.outlineOffset = `${outlineOffset}px`;
+        element.style.transition = 'outline-offset 0.1s linear'; 
+    }
+    */
 }
 
-function updateDwellFeedback(gazeDot, elapsedTime, totalTime) {
-    if (!gazeDot) return;
-    const progress = Math.min(elapsedTime / totalTime, 1); // 0 to 1
-    
-    // Example: Change color and scale
-    gazeDot.style.backgroundColor = `rgba(0, 255, 0, ${0.5 + progress * 0.5})`; // Fade to green
-    gazeDot.style.transform = `translate(-50%, -50%) scale(${1 + progress * 0.5})`; // Grow slightly
+function removeDwellIndicator(element) {
+    const gazeDot = document.getElementById('gazeDot');
+    if (gazeDot) {
+        gazeDot.style.transform = 'translate(-50%, -50%) scale(1)';
+        gazeDot.style.backgroundColor = 'rgba(255, 0, 0, 0.8)'; // Back to default red
+        gazeDot.style.transition = 'none'; // Snap back
+    }
+    // Alternative: Remove indicator from element
+    /*
+    if (element) {
+        element.style.outline = 'none';
+        element.style.outlineOffset = '0px';
+        element.style.transition = 'none';
+    }
+    */
 }
-// --- End Dwell Click Monitoring ---
 
-// Initialize WebGazer automatically when the script loads
-initializeWebGazer(); 
+// --- REMOVED: Simple Mouse Move Logger ---
+/*
+window.addEventListener('mousemove', function(event) {
+    // Log mouse coordinates sparsely to avoid flooding the console
+    // We can use a simple debounce/throttle technique if needed, but let's start simple
+    // console.log(`Mouse moved to: X=${event.clientX}, Y=${event.clientY}`); 
+    // ^ Commented out by default to avoid flooding, uncomment if needed for testing
+}, false);
+*/ 
