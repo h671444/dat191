@@ -4,7 +4,7 @@
   "description": "Eye tracking game hub",
   "main": "src/calibration.html",
   "scripts": {
-    "start": "http-server src -o calibration.html"
+    "start": "http-server src -a localhost -p 8080 -o calibration.html"
   },
   "engines": {
     "node": ">=14.0.0"
