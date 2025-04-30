@@ -5,43 +5,7 @@ let currentQuestionIndex = 0;
 let currentQuestions = [];
 let score = 0;
 
-// itialize WebGazer
-async function initializeWebGazer() {
-    try {
-        if (typeof webgazer === "undefined") {
-            console.error("WebGazer not loaded.");
-            return;
-        }
-
-        console.log("Starting WebGazer...");
-        await webgazer.setRegression('ridge')
-            .setTracker('TFFacemesh')
-            .showPredictionPoints(false)
-            .begin();
-        
-        const dot = document.getElementById('gazeDot');
-        if (dot) {
-            webgazer.setGazeListener(function(data, clock) {
-                if (data == null) return;
-                dot.style.display = 'block';
-                dot.style.left = data.x + 'px';
-                dot.style.top = data.y + 'px';
-            });
-        }
-        
-        console.log('WebGazer initialized in Quiz');
-    } catch (err) {
-        console.error('Failed to initialize WebGazer:', err);
-    }
-}
-
-// initialize everything when the page loads
-window.onload = async () => {
-    console.log("Loading quiz...");
-    await initializeWebGazer();
-    loadQuestions();
-};
-
+// Define functions first
 const loadQuestions = async () => {
     const response = await fetch("../../assets/data/questions.json")
     const data = await response.json();
@@ -58,12 +22,15 @@ const displayCategories = () => {
   Object.keys(questions).forEach(category => {
     let btn = document.createElement("button");
     btn.innerText = category;
-    btn.classList.add("category-btn");
+    btn.classList.add("category-btn", "dwell-target");
     btn.onclick = () => selectCategory(category);
     categoriesDiv.appendChild(btn);
-
-
-  })
+  });
+  
+  const randomBtn = document.getElementById("tilfeldige-sporsmaal");
+  if(randomBtn) {
+      randomBtn.classList.add("dwell-target");
+  }
 }
 
 const selectCategory = (category) => {
@@ -75,7 +42,9 @@ const selectCategory = (category) => {
 
 const selectDifficulty = (difficulty) => {
   selectedDifficulty = difficulty;
-
+  document.querySelectorAll('#difficulty-selection .difficulty-btn').forEach(btn => {
+      btn.classList.add("dwell-target");
+  });
   loadQuiz();
 }
 
@@ -117,7 +86,7 @@ const showQuestion = () => {
   Object.keys(questionObj.answers).forEach(key => {
     let btn = document.createElement("button");
     btn.innerText = `${key}: ${questionObj.answers[key]}`;
-    btn.classList.add("option-btn");
+    btn.classList.add("option-btn", "dwell-target");
     btn.onclick = () => checkAnswer(key, questionObj.correct);
     optionsDiv.appendChild(btn);
   })
@@ -161,3 +130,16 @@ const updateScore = () => {
 const returnToHome = () => {
   window.location.href = "/index.html";
 };
+
+// Add dwell target to static buttons after defining functions
+const homeBtn = document.querySelector(".nav-home-btn");
+if (homeBtn) {
+    homeBtn.classList.add("dwell-target");
+}
+
+document.querySelectorAll('#difficulty-selection .difficulty-btn').forEach(btn => {
+      btn.classList.add("dwell-target");
+});
+
+// --- Start loading questions AFTER all functions are defined ---
+loadQuestions();

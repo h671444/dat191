@@ -51,8 +51,8 @@ const calibrationPoints = [
 const calibration = {
     type: jsPsychWebgazerCalibrate,
     calibration_points: calibrationPoints,
-    //can change calibration mode to 'view' if you wish to simply look at the points instead of click
-    calibration_mode: 'click',
+    //can change calibration mode to 'view' or 'click' if you wish to simply look at the points or click
+    calibration_mode: 'view',
     repetitions_per_point: 1,
     randomize_calibration_order: true,
     instructions: `

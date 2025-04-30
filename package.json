@@ -1,6 +1,25 @@
 {
+  "name": "dat191",
+  "version": "1.0.0",
+  "description": "Eye tracking game hub",
+  "main": "src/calibration.html",
+  "scripts": {
+    "start": "http-server src -o calibration.html"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/h671444/dat191.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/h671444/dat191/issues"
+  },
+  "homepage": "https://github.com/h671444/dat191#readme",
   "dependencies": {
-    "serialport": "^13.0.0",
-    "ws": "^8.18.1"
+    "http-server": "^14.1.1"
   }
 }
