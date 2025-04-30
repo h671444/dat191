@@ -19,7 +19,7 @@ let lastDwellElement = null;
 async function initializeWebGazer() {
     try {
         if (typeof webgazer === "undefined") {
-            console.error("WebGazer library not loaded.");
+            //console.error("WebGazer library not loaded.");
             return;
         }
         await webgazer.setRegression('ridge')
@@ -58,10 +58,10 @@ async function initializeWebGazer() {
             }
         });
         
-        console.log('WebGazer initialized and listener set.');
+        //console.log('WebGazer initialized and listener set.');
 
     } catch (err) {
-        console.error('Failed to initialize WebGazer:', err);
+        //console.error('Failed to initialize WebGazer:', err);
     }
 }
 
@@ -110,14 +110,12 @@ function updateGazeDotPosition() {
                         // Special handling for game cards: navigate link
                         const link = lastDwellElement.querySelector('a');
                         if (link && link.href) {
-                            console.log(`Dwell: Navigating to game card link: ${link.href}`);
+                            //console.log(`Dwell: Navigating to game card link: ${link.href}`);
                             window.location.href = link.href;
-                        } else {
-                            console.warn('Dwell: Game card activated, but no link found.');
                         }
                     } else {
                         // Default behavior: simulate click
-                        console.log("Dwell: Simulating click on:", lastDwellElement);
+                        //console.log("Dwell: Simulating click on:", lastDwellElement);
                         lastDwellElement.click();
                     }
                     // --- End Dwell Completion Handling ---
@@ -167,15 +165,6 @@ function drawDwellIndicator(element, progress) {
         gazeDot.style.transform = `translate(-50%, -50%) scale(${1 + progress * 0.5})`; // Grow slightly
         gazeDot.style.transition = 'transform 0.1s ease-out, background-color 0.1s ease-out';
     }
-    // Alternative: Draw indicator on the element itself (example commented out)
-    /*
-    if (element) {
-        const outlineOffset = 5 * (1 - progress);
-        element.style.outline = `3px solid ${DWELL_INDICATOR_COLOR}`;
-        element.style.outlineOffset = `${outlineOffset}px`;
-        element.style.transition = 'outline-offset 0.1s linear'; 
-    }
-    */
 }
 
 function removeDwellIndicator(element) {
@@ -185,14 +174,6 @@ function removeDwellIndicator(element) {
         gazeDot.style.backgroundColor = 'rgba(255, 0, 0, 0.8)'; // Back to default red
         gazeDot.style.transition = 'none'; // Snap back
     }
-    // Alternative: Remove indicator from element
-    /*
-    if (element) {
-        element.style.outline = 'none';
-        element.style.outlineOffset = '0px';
-        element.style.transition = 'none';
-    }
-    */
 }
 
 // --- REMOVED: Simple Mouse Move Logger ---

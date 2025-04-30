@@ -72,7 +72,7 @@ const loadQuiz = () => {
 }
 
 const showQuestion = () => {
-  console.log(currentQuestions);
+  // console.log(currentQuestions);
   if (currentQuestionIndex >= currentQuestions.length) {
     alert("Quiz ferdig!");
     location.reload();

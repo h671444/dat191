@@ -46,32 +46,19 @@ const paddleSpeed = 5;
 const ballRadius = 10;
 let ballSpeed = 10;
 
-// Block Settings (Rows, Columns, Size, Padding)
-const blockRowCount = 6; // Increased from 5 to 6
+// Block Settings
+const blockRowCount = 6;
 const blockColumnCount = 8;
 const blockWidth = 75;
 const blockHeight = 20;
 const blockPadding = 10;
 const blockOffsetTop = 50;
-// Horizontal offset: center the blocks based on canvas width
 let blockOffsetLeft = (canvas.width - (blockColumnCount * (blockWidth + blockPadding)) + blockPadding) / 2;
-
-// Gaze Exit Zone Settings
-const exitZoneWidth = 200;
-const exitZoneHeight = 100;
-const exitZonePadding = 20;
-const exitZoneDwellTime = 1000;
-const exitZoneHysteresisMargin = 60;
-let gazeInExitZone = false;
-let gazeEnterTime = null;
 
 /* =================================
    Initialize Game Objects
 ================================= */
 function init() {
-  // Reset gaze exit state
-  gazeInExitZone = false;
-  gazeEnterTime = null;
   // Initialize Paddle
   paddle = {
     width: paddleWidth,
@@ -156,56 +143,6 @@ function drawHUD() {
   ctx.font = '20px Segoe UI';
   ctx.fillText('Score: ' + score, 20, 30);
   ctx.fillText('Lives: ' + lives, 150, 30);
-}
-// Draw Exit Zone
-function drawExitZone() {
-  const zoneX = canvas.width - exitZoneWidth - exitZonePadding;
-  const zoneY = exitZonePadding;
-
-  // Draw the semi-transparent box
-  ctx.fillStyle = 'rgba(255, 0, 0, 0.5)'; // Semi-transparent red
-  ctx.fillRect(zoneX, zoneY, exitZoneWidth, exitZoneHeight);
-
-  // Draw progress bar if gaze is inside
-  if (gazeInExitZone && gazeEnterTime) {
-    const elapsed = Date.now() - gazeEnterTime;
-    const progress = Math.min(elapsed / exitZoneDwellTime, 1);
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.7)'; // White progress fill
-    ctx.fillRect(zoneX, zoneY, exitZoneWidth * progress, exitZoneHeight);
-  }
-
-  // Draw outline
-  ctx.strokeStyle = '#fff';
-  ctx.lineWidth = 2;
-  ctx.strokeRect(zoneX, zoneY, exitZoneWidth, exitZoneHeight);
-
-  // Draw text
-  ctx.fillStyle = '#fff';
-  ctx.font = '16px Segoe UI';
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  ctx.fillText('EXIT', zoneX + exitZoneWidth / 2, zoneY + exitZoneHeight / 2);
-  
-  // Reset text alignment for HUD
-  ctx.textAlign = 'left'; 
-  ctx.textBaseline = 'alphabetic';
-}
-// Update and draw particles (Block destruction effect)
-function updateParticles() {
-  for (let i = particles.length - 1; i >= 0; i--) {
-    let p = particles[i];
-    p.x += p.dx;
-    p.y += p.dy;
-    p.life -= 0.02;
-    if (p.life <= 0) {
-      particles.splice(i, 1);
-    } else {
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(255,255,255,' + p.life + ')';
-      ctx.fill();
-    }
-  }
 }
 
 /* =================================
@@ -387,12 +324,8 @@ function gameLoop() {
   drawPaddle();
   drawBall();
   drawHUD();
-  drawExitZone();
   
-  // --- Gaze Control Logic --- START ---
-  checkGazeExit();
-  
-  // Paddle control based on gaze
+  // Paddle control based on gaze OR keyboard fallback
   if (typeof latestGazeData !== 'undefined' && latestGazeData !== null && latestGazeData.x !== null) {
     // Calculate the target x-position based on gaze, centered
     let targetX = latestGazeData.x - paddle.width / 2;
@@ -413,7 +346,6 @@ function gameLoop() {
     // Fallback to keyboard if gaze is not available
     movePaddle(); 
   }
-  // --- Gaze Control Logic --- END ---
   
   moveBall();
   collisionDetection();
@@ -507,66 +439,24 @@ function startGame() {
   gameLoop();
 }
 
-// Check Gaze Exit Zone Logic
-function checkGazeExit() {
-  if (typeof latestGazeData === 'undefined' || latestGazeData === null || latestGazeData.x === null) {
-    // If no gaze data, reset state
-    if (gazeInExitZone) {
-      gazeInExitZone = false;
-      gazeEnterTime = null;
-    }
-    return;
-  }
-
-  const zoneX = canvas.width - exitZoneWidth - exitZonePadding;
-  const zoneY = exitZonePadding;
-
-  // Define boundaries for the VISIBLE activation zone
-  const isInsideVisibleZone = (
-    latestGazeData.x >= zoneX &&
-    latestGazeData.x <= zoneX + exitZoneWidth &&
-    latestGazeData.y >= zoneY &&
-    latestGazeData.y <= zoneY + exitZoneHeight
-  );
-
-  // Define boundaries for the LARGER hysteresis zone
-  const hysteresisZoneX1 = zoneX - exitZoneHysteresisMargin;
-  const hysteresisZoneY1 = zoneY - exitZoneHysteresisMargin;
-  const hysteresisZoneX2 = zoneX + exitZoneWidth + exitZoneHysteresisMargin;
-  const hysteresisZoneY2 = zoneY + exitZoneHeight + exitZoneHysteresisMargin;
-
-  const isInsideHysteresisZone = (
-    latestGazeData.x >= hysteresisZoneX1 &&
-    latestGazeData.x <= hysteresisZoneX2 &&
-    latestGazeData.y >= hysteresisZoneY1 &&
-    latestGazeData.y <= hysteresisZoneY2
-  );
-
-  if (gazeInExitZone) {
-    // If timer is already active, check if gaze is STILL within the LARGER hysteresis zone
-    if (isInsideHysteresisZone) {
-      // Gaze still within tolerance, check dwell time
-      const elapsed = Date.now() - gazeEnterTime;
-      if (elapsed >= exitZoneDwellTime) {
-        // console.log("Exit zone dwell time reached (hysteresis active)."); 
-        exitGame(); 
-      }
+// Update and draw particles (Block destruction effect)
+function updateParticles() {
+  for (let i = particles.length - 1; i >= 0; i--) {
+    let p = particles[i];
+    p.x += p.dx;
+    p.y += p.dy;
+    p.life -= 0.02;
+    if (p.life <= 0) {
+      particles.splice(i, 1);
     } else {
-      // Gaze moved OUTSIDE the larger hysteresis zone, reset timer
-      gazeInExitZone = false;
-      gazeEnterTime = null;
-      // console.log("Gaze left exit zone (outside hysteresis).");
-    }
-  } else {
-    // If timer is NOT active, check if gaze ENTERS the SMALLER visible zone
-    if (isInsideVisibleZone) {
-      // Gaze just entered the visible zone, start timer
-      gazeInExitZone = true;
-      gazeEnterTime = Date.now();
-      // console.log("Gaze entered visible exit zone.");
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255,255,255,' + p.life + ')';
+      ctx.fill();
     }
   }
 }
+
 // Initialization on first load
 init();
 

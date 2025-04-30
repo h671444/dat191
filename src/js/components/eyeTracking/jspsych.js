@@ -1,4 +1,4 @@
-console.log("Clearing localStorage for fresh calibration...");
+// console.log("Clearing localStorage for fresh calibration...");
 localStorage.clear();
 
 // Initialize jsPsych with the WebGazer extension
@@ -18,7 +18,7 @@ const jsPsych = initJsPsych({
                 await jsPsych.extensions.webgazer.stopMouseCalibration();
             }
         } catch (err) {
-             console.error("Error trying to stop jsPsych mouse calibration:", err);
+             // console.error("Error trying to stop jsPsych mouse calibration:", err);
         }
         
         // store calibration points before leaving page
@@ -26,7 +26,7 @@ const jsPsych = initJsPsych({
             webgazer.storePoints(); 
         } else {
             // This might happen if webgazer failed to initialize
-            console.warn("WebGazer or webgazer.storePoints() not available to save data.");
+            // console.warn("WebGazer or webgazer.storePoints() not available to save data.");
         }
         
         window.location.replace('index.html');
