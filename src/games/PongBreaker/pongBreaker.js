@@ -1,6 +1,4 @@
-/* =================================
-   Initial Setup & Global Variables
-================================= */
+/* initial setup & global variables */
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 let particles = [];  // Array for particles
@@ -39,14 +37,14 @@ let animationId;
 const keys = { ArrowLeft: false, ArrowRight: false };
 
 // Paddle Settings
-const paddleWidth = 100;
+const paddleWidth = 300;
 const paddleHeight = 20;
 const paddleMarginBottom = 30;
-const paddleSpeed = 12;
+const paddleSpeed = 5;
 
 // Ball Settings
 const ballRadius = 10;
-let ballSpeed = 7;
+let ballSpeed = 10;
 
 // Block Settings (Rows, Columns, Size, Padding)
 const blockRowCount = 6; // Increased from 5 to 6
@@ -58,10 +56,22 @@ const blockOffsetTop = 50;
 // Horizontal offset: center the blocks based on canvas width
 let blockOffsetLeft = (canvas.width - (blockColumnCount * (blockWidth + blockPadding)) + blockPadding) / 2;
 
+// Gaze Exit Zone Settings
+const exitZoneWidth = 200;
+const exitZoneHeight = 100;
+const exitZonePadding = 20;
+const exitZoneDwellTime = 1000;
+const exitZoneHysteresisMargin = 60;
+let gazeInExitZone = false;
+let gazeEnterTime = null;
+
 /* =================================
    Initialize Game Objects
 ================================= */
 function init() {
+  // Reset gaze exit state
+  gazeInExitZone = false;
+  gazeEnterTime = null;
   // Initialize Paddle
   paddle = {
     width: paddleWidth,
@@ -96,6 +106,9 @@ function init() {
   isGameOver = false;
   isGameWin = false;
   particles = []; // Reset particles as well
+  // Reset text alignment for HUD
+  ctx.textAlign = 'left'; 
+  ctx.textBaseline = 'alphabetic';
 }
 // Return a different color for each row
 function getBlockColor(row) {
@@ -142,7 +155,40 @@ function drawHUD() {
   ctx.fillStyle = '#fff';
   ctx.font = '20px Segoe UI';
   ctx.fillText('Score: ' + score, 20, 30);
-  ctx.fillText('Lives: ' + lives, canvas.width - 100, 30);
+  ctx.fillText('Lives: ' + lives, 150, 30);
+}
+// Draw Exit Zone
+function drawExitZone() {
+  const zoneX = canvas.width - exitZoneWidth - exitZonePadding;
+  const zoneY = exitZonePadding;
+
+  // Draw the semi-transparent box
+  ctx.fillStyle = 'rgba(255, 0, 0, 0.5)'; // Semi-transparent red
+  ctx.fillRect(zoneX, zoneY, exitZoneWidth, exitZoneHeight);
+
+  // Draw progress bar if gaze is inside
+  if (gazeInExitZone && gazeEnterTime) {
+    const elapsed = Date.now() - gazeEnterTime;
+    const progress = Math.min(elapsed / exitZoneDwellTime, 1);
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.7)'; // White progress fill
+    ctx.fillRect(zoneX, zoneY, exitZoneWidth * progress, exitZoneHeight);
+  }
+
+  // Draw outline
+  ctx.strokeStyle = '#fff';
+  ctx.lineWidth = 2;
+  ctx.strokeRect(zoneX, zoneY, exitZoneWidth, exitZoneHeight);
+
+  // Draw text
+  ctx.fillStyle = '#fff';
+  ctx.font = '16px Segoe UI';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('EXIT', zoneX + exitZoneWidth / 2, zoneY + exitZoneHeight / 2);
+  
+  // Reset text alignment for HUD
+  ctx.textAlign = 'left'; 
+  ctx.textBaseline = 'alphabetic';
 }
 // Update and draw particles (Block destruction effect)
 function updateParticles() {
@@ -174,7 +220,7 @@ function movePaddle() {
     paddle.x += paddleSpeed;
   }
 }
-// Move paddle with mouse (for improved UX)
+/* // Move paddle with mouse (for improved UX) - DISABLED FOR GAZE CONTROL
 canvas.addEventListener('mousemove', function(e) {
   const rect = canvas.getBoundingClientRect();
   let mouseX = e.clientX - rect.left;
@@ -182,7 +228,7 @@ canvas.addEventListener('mousemove', function(e) {
   if (paddle.x < 0) paddle.x = 0;
   if (paddle.x + paddle.width > canvas.width) paddle.x = canvas.width - paddle.width;
 });
-// Move ball and check collisions with walls and paddle
+*/
 // Move ball and check collisions with walls and paddle
 function moveBall() {
   ball.x += ball.dx;
@@ -302,7 +348,7 @@ function collisionDetection() {
           }
           playSound(400, 'sine');
           // Generate particles (destruction effect)
-          for (let i = 0; i < 10; i++) {
+          for (let i = 0; i < 5; i++) {
             particles.push({
               x: ball.x,
               y: ball.y,
@@ -341,7 +387,34 @@ function gameLoop() {
   drawPaddle();
   drawBall();
   drawHUD();
-  movePaddle();
+  drawExitZone();
+  
+  // --- Gaze Control Logic --- START ---
+  checkGazeExit();
+  
+  // Paddle control based on gaze
+  if (typeof latestGazeData !== 'undefined' && latestGazeData !== null && latestGazeData.x !== null) {
+    // Calculate the target x-position based on gaze, centered
+    let targetX = latestGazeData.x - paddle.width / 2;
+    
+    // Clamp the target position first
+    if (targetX < 0) {
+      targetX = 0;
+    }
+    if (targetX + paddle.width > canvas.width) {
+      targetX = canvas.width - paddle.width;
+    }
+    
+    // Smoothly interpolate paddle's current x towards the target x
+    const smoothingFactor = 0.4; 
+    paddle.x += (targetX - paddle.x) * smoothingFactor;
+    
+  } else {
+    // Fallback to keyboard if gaze is not available
+    movePaddle(); 
+  }
+  // --- Gaze Control Logic --- END ---
+  
   moveBall();
   collisionDetection();
   updateParticles();
@@ -353,7 +426,7 @@ function gameLoop() {
 /* =================================
    User Input Handling
 ================================= */
-// Keyboard controls (move left/right, start/restart)
+// Keyboard controls (move left/right, start/restart, exit)
 document.addEventListener('keydown', function(e) {
   if (e.code === 'ArrowLeft' || e.code === 'ArrowRight' ||
       e.code === 'KeyA' || e.code === 'KeyD') {
@@ -366,6 +439,10 @@ document.addEventListener('keydown', function(e) {
       }
       startGame();
     }
+  }
+  // Exit with Escape key
+  if (e.code === 'Escape') {
+    exitGame(); 
   }
 });
 document.addEventListener('keyup', function(e) {
@@ -383,6 +460,26 @@ canvas.addEventListener('click', function() {
     startGame();
   }
 });
+
+// Exit Game Function
+function exitGame() {
+  // console.log("Exiting game..."); 
+  // Pause the game loop if it's running
+  if (animationId) {
+    cancelAnimationFrame(animationId);
+    animationId = null; // Clear the ID
+    isGameRunning = false; 
+    // console.log("Animation frame cancelled.");
+  }
+  // Navigate back to the main lobby/hub
+  try {
+      window.location.href = '../../index.html'; // Relative path back to game hub
+      // console.log("Redirecting to index.html..."); 
+  } catch (err) {
+      console.error("Error during redirection:", err);
+      alert("Could not redirect back to the main menu.");
+  }
+}
 
 /* =================================
    Overlay Show/Hide
@@ -410,5 +507,66 @@ function startGame() {
   gameLoop();
 }
 
+// Check Gaze Exit Zone Logic
+function checkGazeExit() {
+  if (typeof latestGazeData === 'undefined' || latestGazeData === null || latestGazeData.x === null) {
+    // If no gaze data, reset state
+    if (gazeInExitZone) {
+      gazeInExitZone = false;
+      gazeEnterTime = null;
+    }
+    return;
+  }
+
+  const zoneX = canvas.width - exitZoneWidth - exitZonePadding;
+  const zoneY = exitZonePadding;
+
+  // Define boundaries for the VISIBLE activation zone
+  const isInsideVisibleZone = (
+    latestGazeData.x >= zoneX &&
+    latestGazeData.x <= zoneX + exitZoneWidth &&
+    latestGazeData.y >= zoneY &&
+    latestGazeData.y <= zoneY + exitZoneHeight
+  );
+
+  // Define boundaries for the LARGER hysteresis zone
+  const hysteresisZoneX1 = zoneX - exitZoneHysteresisMargin;
+  const hysteresisZoneY1 = zoneY - exitZoneHysteresisMargin;
+  const hysteresisZoneX2 = zoneX + exitZoneWidth + exitZoneHysteresisMargin;
+  const hysteresisZoneY2 = zoneY + exitZoneHeight + exitZoneHysteresisMargin;
+
+  const isInsideHysteresisZone = (
+    latestGazeData.x >= hysteresisZoneX1 &&
+    latestGazeData.x <= hysteresisZoneX2 &&
+    latestGazeData.y >= hysteresisZoneY1 &&
+    latestGazeData.y <= hysteresisZoneY2
+  );
+
+  if (gazeInExitZone) {
+    // If timer is already active, check if gaze is STILL within the LARGER hysteresis zone
+    if (isInsideHysteresisZone) {
+      // Gaze still within tolerance, check dwell time
+      const elapsed = Date.now() - gazeEnterTime;
+      if (elapsed >= exitZoneDwellTime) {
+        // console.log("Exit zone dwell time reached (hysteresis active)."); 
+        exitGame(); 
+      }
+    } else {
+      // Gaze moved OUTSIDE the larger hysteresis zone, reset timer
+      gazeInExitZone = false;
+      gazeEnterTime = null;
+      // console.log("Gaze left exit zone (outside hysteresis).");
+    }
+  } else {
+    // If timer is NOT active, check if gaze ENTERS the SMALLER visible zone
+    if (isInsideVisibleZone) {
+      // Gaze just entered the visible zone, start timer
+      gazeInExitZone = true;
+      gazeEnterTime = Date.now();
+      // console.log("Gaze entered visible exit zone.");
+    }
+  }
+}
 // Initialization on first load
 init();
+

@@ -4,16 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Breakout - Ultimate UI/UX</title>
+    
+    <!-- External libraries -->
+    <script src="https://webgazer.cs.brown.edu/webgazer.js"></script>
+    
+    <!-- Eye tracking components -->
+    <script src="../../js/components/eyeTracking/webgazer.js"></script>
+    
     <!-- Link til ekstern CSS -->
     <link rel="stylesheet" href="pongBreaker.css">
   </head>
   <body>
+    <div id="gazeDot"></div>
     <!-- Game Canvas -->
     <canvas id="gameCanvas"></canvas>
     <!-- Overlay for Start/Restart -->
     <div id="overlay">Click or press Space to start</div>
-    <!-- Knapp til å forlate spillet -->
-    <button id="exitButton" style="position: absolute; top: 10px; right: 10px; padding: 10px 20px; font-size: 16px; cursor: pointer;">Exit to Lobby</button>
     <!-- Link til ekstern JavaScript (defer sørger for at skriptet kjøres etter HTML-innlastingen) -->
     <script src="pongBreaker.js" defer></script>
   </body>
