@@ -110,7 +110,7 @@ function proceedWithMicSetup() {
     }
 
     // --- Step 4: Get Microphone Access ---
-    navigator.mediaDevices.getUserMedia({ audio: true, video: false })
+    navigator.mediaDevices.getUserMedia({ audio: true, video: false }) // mic access
         .then(stream => {
             // --- Step 5: Setup Audio Processing & WebSocket (Inside .then) ---
             console.log("Microphone access granted.");
