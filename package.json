@@ -20,6 +20,9 @@
   },
   "homepage": "https://github.com/h671444/dat191#readme",
   "dependencies": {
-    "http-server": "^14.1.1"
+    "@serialport/parser-readline": "^13.0.0",
+    "http-server": "^14.1.1",
+    "serialport": "^13.0.0",
+    "ws": "^8.18.1"
   }
 }

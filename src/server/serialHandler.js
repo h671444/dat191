@@ -1,48 +1,35 @@
+// serialHandler.js
+
 const { SerialPort } = require('serialport');
+const { ReadlineParser } = require('@serialport/parser-readline');
 const WebSocket = require('ws');
+const { broadcastMessage } = require('./webSocketHandler');
 
-// Set up the real serial port
+// 1) Open the serial port
 const port = new SerialPort({
-  path: '/dev/ttys003', // Replace with the correct serial port path
-  baudRate: 9600,       // Match the baud rate of your device
+  path: '/tmp/ttyS1',
+  baudRate: 9600,
 });
 
-// Add event listener for when the serial port is open
-port.on('open', () => {
-  console.log('Serial port is open');
-});
+// 2) Set up a line-based parser
+const parser = port.pipe(new ReadlineParser({ delimiter: '\n' }));
 
-// Add error handling for the serial port
-port.on('error', (err) => {
-  console.error('Serial Port Error:', err.message);
-});
+// 3) Handle low-level serial events
+port.on('open', () => console.log('Serial port is open'));
+port.on('error', err => console.error('Serial Port Error:', err.message));
+port.on('data', data => console.log('Raw Serial Data:', data));
 
-// Set up WebSocket server
+// 4) Start the WebSocket server
 const wss = new WebSocket.Server({ port: 8080 });
-
-wss.on('connection', (ws) => {
+wss.on('listening', () => console.log('WebSocket server running on ws://localhost:8080'));
+wss.on('connection', ws => {
   console.log('WebSocket client connected');
-
-  // Forward serial data to WebSocket clients
-  port.on('data', (data) => {
-    console.log('Raw Serial Data:', data); // Log raw data as a buffer
-    const message = data.toString().trim();
-    console.log('Serial Data Received:', message);
-
-    // Forward data to WebSocket clients
-    wss.clients.forEach((client) => {
-      if (client.readyState === WebSocket.OPEN) {
-        console.log('Sending to WebSocket client:', message);
-        client.send(message);
-      } else {
-        console.log('WebSocket client not ready');
-      }
-    });
-  });
-
-  ws.on('close', () => {
-    console.log('WebSocket client disconnected');
-  });
+  ws.on('close', () => console.log('WebSocket client disconnected'));
 });
 
-console.log('WebSocket server running on ws://localhost:8080');
+// 5) Forward parsed lines — exactly once each — to all clients
+parser.on('data', line => {
+  const msg = line.trim();
+  console.log('Serial Data Received:', msg);
+  broadcastMessage(wss, msg);
+});

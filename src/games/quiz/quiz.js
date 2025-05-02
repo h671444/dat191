@@ -141,5 +141,8 @@ document.querySelectorAll('#difficulty-selection .difficulty-btn').forEach(btn =
       btn.classList.add("dwell-target");
 });
 
+
+
+
 // --- Start loading questions AFTER all functions are defined ---
 loadQuestions();
