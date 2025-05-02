@@ -1,3 +1,6 @@
+// quiz-serial.js
+// Serial-enabled quiz with per-screen default focus
+
 // --- State ---
 let questions = {};
 let selectedCategory = "";
@@ -5,109 +8,101 @@ let selectedDifficulty = "";
 let currentQuestions = [];
 let score = 0;
 
-// --- WebSocket / Serial ---
+// --- WebSocket & Serial Integration ---
 const ws = new WebSocket('ws://localhost:8080');
 ws.addEventListener('open', () => console.log('Serial WebSocket connected'));
-ws.addEventListener('message', e => {
-  const cmd = e.data.trim().toUpperCase();
-  console.log('Serial command received:', cmd);
-  handleSerialCommand(cmd);
+ws.addEventListener('message', event => {
+  const msg = event.data.trim().toUpperCase();
+  console.log('Serial command received:', msg);
+  handleSerialCommand(msg);
 });
 
 function handleSerialCommand(command) {
   switch (command) {
     case 'UP':      navigate(-1);  break;
-    case 'DOWN':    navigate( 1);  break;
+    case 'DOWN':    navigate(1);   break;
     case 'SELECT':  activate();    break;
-    default:
-      console.warn('Unknown serial command:', command);
+    default:        console.warn('Unknown serial command:', command);
   }
 }
 
-// --- Focus helpers ---
+// --- Focus Helpers ---
 
-// returns whichever screen is visible
 function getCurrentContainer() {
-  if (!document.getElementById('category-selection').hidden)
+  if (!document.getElementById('category-selection').hidden) {
     return document.getElementById('category-selection');
-  if (!document.getElementById('difficulty-selection').hidden)
+  } else if (!document.getElementById('difficulty-selection').hidden) {
     return document.getElementById('difficulty-selection');
-  return document.getElementById('quiz-area');
+  } else {
+    return document.getElementById('quiz-area');
+  }
 }
 
-// get only visible .dwell-target elements
 function getCurrentTargets() {
-  const ctr = getCurrentContainer();
-  return Array.from(ctr.querySelectorAll('.dwell-target'))
+  const container = getCurrentContainer();
+  return Array.from(container.querySelectorAll('.dwell-target'))
     .filter(el => !el.hidden)
     .filter(el => {
       const st = window.getComputedStyle(el);
-      return st.display !== 'none'
-          && st.visibility !== 'hidden';
+      return st.display !== 'none' && st.visibility !== 'hidden';
     });
 }
 
-// move the yellow outline
-function navigate(delta) {
-  const items = getCurrentTargets();
-  if (!items.length) return;
+function navigate(direction) {
+  const targets = getCurrentTargets();
+  if (!targets.length) return;
 
-  let idx = items.findIndex(el =>
-    el.classList.contains('serial-focused')
-  );
-  if (idx >= 0) items[idx].classList.remove('serial-focused');
+  let idx = targets.findIndex(el => el.classList.contains('serial-focused'));
+  if (idx >= 0) targets[idx].classList.remove('serial-focused');
 
   if (idx < 0) {
-    // first nav on this screen
-    const screen = getCurrentContainer().id;
-    idx = (screen === 'quiz-area')
-      ? Math.floor(items.length/2)
-      : 0;
+    // first nav on this screen → pick default
+    const container = getCurrentContainer();
+    idx = (container.id === 'quiz-area')
+      ? Math.floor(targets.length / 2)  // middle for quiz answers
+      : 0;                               // top for menus
   } else {
-    idx = (idx + delta + items.length) % items.length;
+    idx = (idx + direction + targets.length) % targets.length;
   }
-  items[idx].classList.add('serial-focused');
+
+  targets[idx].classList.add('serial-focused');
+  console.log('Focused on:', targets[idx]);
 }
 
-// “Click” the focused button
 function activate() {
-  const tgt = document.querySelector('.serial-focused');
-  if (tgt) tgt.click();
+  const target = document.querySelector('.serial-focused');
+  if (target) {
+    console.log('Activating:', target);
+    target.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
+  }
 }
 
-// clear old and outline the default
 function focusFirst() {
-  document.querySelectorAll('.serial-focused')
-          .forEach(el => el.classList.remove('serial-focused'));
+  // clear any old focus
+  document.querySelectorAll('.serial-focused').forEach(el => el.classList.remove('serial-focused'));
+  const targets = getCurrentTargets();
+  if (!targets.length) return;
 
-  const items = getCurrentTargets();
-  if (!items.length) return;
-
-  const screen = getCurrentContainer().id;
-  const idx = (screen === 'quiz-area')
-    ? Math.floor(items.length/2)
+  const container = getCurrentContainer();
+  const idx = (container.id === 'quiz-area')
+    ? Math.floor(targets.length / 2)
     : 0;
 
-  items[idx].classList.add('serial-focused');
-  console.log('Initial focus on:', items[idx]);
+  targets[idx].classList.add('serial-focused');
+  console.log('Initial focus:', targets[idx]);
 }
 
-// call on next microtask so DOM has updated
-function delayedFocus() {
-  setTimeout(focusFirst, 0);
-}
-
-// --- Quiz Logic ---
+// --- Quiz App Code ---
 
 async function loadQuestions() {
-  const res = await fetch('../../assets/data/questions.json');
-  const data = await res.json();
+  const resp = await fetch('../../assets/data/questions.json');
+  const data = await resp.json();
   questions = data.categories;
-  buildCategoryButtons();
-  delayedFocus();
+  displayCategories();
+  focusFirst();
 }
 
-function buildCategoryButtons() {
+function displayCategories() {
   const div = document.getElementById('categories');
   div.innerHTML = '';
   Object.keys(questions).forEach(cat => {
@@ -117,31 +112,35 @@ function buildCategoryButtons() {
     btn.onclick = () => selectCategory(cat);
     div.appendChild(btn);
   });
+  // also mark the “Tilfeldig spørsmål” button
+  document.getElementById('tilfeldige-sporsmaal').classList.add('dwell-target');
 }
 
 function selectCategory(cat) {
   selectedCategory = cat;
   document.getElementById('category-selection').hidden   = true;
   document.getElementById('difficulty-selection').hidden = false;
-  delayedFocus();  // ←–– outline “Lett” immediately
+  // defer until the DOM has repainted the newly visible buttons
+  setTimeout(focusFirst, 0);
 }
 
 function selectDifficulty(diff) {
   selectedDifficulty = diff;
-  startQuiz();
+  // ensure all three difficulty buttons are targets
+  document.querySelectorAll('.difficulty-btn')
+    .forEach(b => b.classList.add('dwell-target'));
+  loadQuiz();
 }
 
-function startQuiz() {
+function loadQuiz() {
   document.getElementById('difficulty-selection').hidden = true;
   document.getElementById('quiz-area').hidden           = false;
 
-  const allQs = (selectedCategory === 'Tilfeldig spørsmål')
+  const allQs = selectedCategory === 'Tilfeldig spørsmål'
     ? Object.values(questions).flatMap(c => c.questions)
     : questions[selectedCategory].questions;
 
-  currentQuestions = shuffle(
-    allQs.filter(q => q.difficulty === selectedDifficulty)
-  );
+  currentQuestions = shuffle(allQs.filter(q => q.difficulty === selectedDifficulty));
   showQuestion();
 }
 
@@ -157,23 +156,24 @@ function showQuestion() {
 
   const opts = document.getElementById('options');
   opts.innerHTML = '';
-  Object.entries(q.answers).forEach(([key, text]) => {
+  Object.entries(q.answers).forEach(([k, text]) => {
     const b = document.createElement('button');
-    b.innerText   = `${key}: ${text}`;
-    b.className   = 'option-btn dwell-target';
-    b.onclick     = () => checkAnswer(key, q.correct);
+    b.innerText    = `${k}: ${text}`;
+    b.className    = 'option-btn dwell-target';
+    b.onclick      = () => checkAnswer(k, q.correct);
     opts.appendChild(b);
   });
 
-  delayedFocus();  // ←–– outline center answer on load
+  // defer first focus on this new quiz-page
+  setTimeout(focusFirst, 0);
 }
 
 function checkAnswer(sel, corr) {
-  document.querySelectorAll('.option-btn').forEach(b => {
+  const btns = document.querySelectorAll('.option-btn');
+  btns.forEach(b => {
     b.disabled = true;
     if (b.innerText.startsWith(corr)) b.classList.add('correct');
-    if (b.innerText.startsWith(sel))
-      b.classList.add(sel === corr ? 'correct' : 'incorrect');
+    if (b.innerText.startsWith(sel))  b.classList.add(sel === corr ? 'correct' : 'incorrect');
   });
   if (sel === corr) score++;
   setTimeout(showQuestion, 2000);
@@ -187,5 +187,8 @@ function returnToHome() {
   window.location.href = '/index.html';
 }
 
-// start it up
+// mark the home‐button as a dwell-target
+document.querySelector('.nav-home-btn')?.classList.add('dwell-target');
+
+// kick things off
 loadQuestions();
