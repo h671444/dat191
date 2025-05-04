@@ -72,6 +72,7 @@ const calibration = {
     calibration_mode: 'view',
     repetitions_per_point: 1,
     randomize_calibration_order: false,
+    time_to_saccade: 500,
     instructions: `
         <div class="calibration-text">
             <p>Nå skal vi kalibrere øyesporingen.</p>
