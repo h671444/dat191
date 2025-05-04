@@ -71,7 +71,7 @@ const calibration = {
     // can be 'view' or 'click'
     calibration_mode: 'view',
     repetitions_per_point: 1,
-    randomize_calibration_order: true,
+    randomize_calibration_order: false,
     instructions: `
         <div class="calibration-text">
             <p>Nå skal vi kalibrere øyesporingen.</p>
