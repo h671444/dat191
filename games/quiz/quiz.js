@@ -110,21 +110,21 @@ const showQuestion = () => {
 };
 
 
-// --- Core Logic Functions ---
+// Core Logic Functions 
 
 const selectCategory = (category) => {
     console.log("Category selected:", category);
     selectedCategory = category;
     displayDifficulties();
 };
-window.selectCategory = selectCategory; // <-- ADD THIS LINE
+window.selectCategory = selectCategory; 
 
 const selectDifficulty = (difficulty) => {
     console.log("Difficulty selected:", difficulty);
     selectedDifficulty = difficulty;
     prepareQuizQuestions();
 };
-window.selectDifficulty = selectDifficulty; // <-- ADD THIS LINE
+window.selectDifficulty = selectDifficulty; 
 
 const prepareQuizQuestions = () => {
     let availableQuestions = [];
@@ -219,9 +219,7 @@ const updateScore = () => {
 };
 
 // Make this globally accessible for the voice module to call
-// Make this globally accessible for the voice module to call
-// Make this globally accessible for the voice module to call
-// Make this globally accessible for the voice module to call
+
 window.processVoiceCommand = (command) => {
   // Log the raw command received and the current state for debugging
   console.log(`Processing voice command: "${command}" in state: ${currentQuizState}`);
@@ -236,9 +234,9 @@ window.processVoiceCommand = (command) => {
           // Define the mapping from English voice command to Norwegian category name
           const categoryMap = {
               "general knowledge": "Generell Kunnskap",
-              "history": "Historie",         // TODO: Ensure mapping exists for all categories in JSON/Python grammar
-              "geography": "Geografi",       // TODO: Ensure mapping exists for all categories in JSON/Python grammar
-              "science": "Vitenskap",        // TODO: Ensure mapping exists for all categories in JSON/Python grammar
+              "history": "Historie",         
+              "geography": "Geografi",       
+              "science": "Vitenskap",        
               "random question": "Tilfeldig spørsmål" // Mapping for the random button
           };
           // Find the Norwegian category name corresponding to the English command
@@ -288,8 +286,6 @@ window.processVoiceCommand = (command) => {
           }
           break; // End of CATEGORY_SELECT case
 
-
-      // ***** THIS IS THE UPDATED BLOCK *****
       case 'DIFFICULTY_SELECT':
            // Define the mapping from English voice command to Norwegian difficulty value
           const difficultyMap = {
