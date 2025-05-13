@@ -9,7 +9,7 @@ const DOT_SMOOTHING_FACTOR = 0.1; // Lower is smoother
 let dotUpdateLoopId = null;
 
 // Dwell Click Simulation Settings
-const DWELL_TIME = 1500; // Milliseconds needed to trigger click
+const DWELL_TIME = 2500; // Milliseconds needed to trigger click
 const DWELL_INDICATOR_COLOR = 'rgba(0, 255, 0, 0.6)';
 const DWELL_HYSTERESIS_MARGIN = 30;
 let dwellStartTime = null;
@@ -17,17 +17,39 @@ let lastDwellElement = null;
 
 // Initialize WebGazer
 async function initializeWebGazer() {
+    console.log("[webgazer.js] Attempting to initialize WebGazer on this page...");
     try {
         if (typeof webgazer === "undefined") {
-            //console.error("WebGazer library not loaded.");
+            console.error("[webgazer.js] WebGazer library not loaded.");
             return;
         }
+
+        // --- DIAGNOSTIC LOGS ---
+        if (typeof webgazer.getCameraConstraints === 'function') {
+            const currentConstraints = webgazer.getCameraConstraints();
+            console.log("[webgazer.js] Current camera constraints at start of initializeWebGazer:", currentConstraints);
+        } else {
+            console.log("[webgazer.js] webgazer.getCameraConstraints is not a function at start.");
+        }
+        if (typeof webgazer.isReady === 'function') {
+            console.log("[webgazer.js] webgazer.isReady() at start of initializeWebGazer:", webgazer.isReady());
+        }
+        // --- END DIAGNOSTIC LOGS ---
+
+        // selectUSBcamera.js should have already run and set camera constraints.
+        console.log("[webgazer.js] Assuming selectUSBcamera.js has set constraints. Proceeding to begin().");
+
+        console.log("[webgazer.js] Calling webgazer.begin()..."); 
         await webgazer.setRegression('ridge')
             .setTracker('TFFacemesh')
             .showPredictionPoints(false)
-            .showVideoPreview(false)
-            .saveDataAcrossSessions(true)
-            .begin();
+            .showVideoPreview(true) // Keep true for visual confirmation initially
+            .saveDataAcrossSessions(true) // Restore to true for proper operation
+            .begin()
+            .catch(err => {
+                console.error('[webgazer.js] WebGazer failed to begin:', err);
+                // Potentially display a user-friendly error message here
+            });
 
         // Stop new click recalibration
         if (webgazer && webgazer.params) {
@@ -46,11 +68,9 @@ async function initializeWebGazer() {
 
         webgazer.setGazeListener(function(data, clock) {
             latestGazeData = data; // Store latest raw data
-            // Update target position for smooth dot
             if (data) {
                 dotTargetX = data.x;
                 dotTargetY = data.y;
-                // Initialize current position if first data point
                 if (dotCurrentX === null) {
                     dotCurrentX = data.x;
                     dotCurrentY = data.y;
@@ -58,15 +78,12 @@ async function initializeWebGazer() {
             }
         });
         
-        //console.log('WebGazer initialized and listener set.');
+        console.log("[webgazer.js] WebGazer initialization flow complete. Listener set.");
 
     } catch (err) {
-        //console.error('Failed to initialize WebGazer:', err);
+        console.error('[webgazer.js] General error in initializeWebGazer:', err);
     }
 }
-
-// Initialize WebGazer automatically
-initializeWebGazer();
 
 // Gaze Dot Update and Dwell Logic Loop
 function updateGazeDotPosition() {
