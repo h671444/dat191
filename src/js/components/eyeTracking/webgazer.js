@@ -9,7 +9,7 @@ const DOT_SMOOTHING_FACTOR = 0.1; // Lower is smoother
 let dotUpdateLoopId = null;
 
 // Dwell Click Simulation Settings
-const DWELL_TIME = 2500; // Milliseconds needed to trigger click
+const DWELL_TIME = 2000; // Milliseconds needed to trigger click
 const DWELL_INDICATOR_COLOR = 'rgba(0, 255, 0, 0.6)';
 const DWELL_HYSTERESIS_MARGIN = 30;
 let dwellStartTime = null;
@@ -69,10 +69,12 @@ async function initializeWebGazer() {
         webgazer.setGazeListener(function(data, clock) {
             latestGazeData = data; // Store latest raw data
             if (data) {
-                dotTargetX = data.x;
+                // Mirror X coordinate for mirrored layout
+                let mirroredX = window.innerWidth - data.x;
+                dotTargetX = mirroredX;
                 dotTargetY = data.y;
                 if (dotCurrentX === null) {
-                    dotCurrentX = data.x;
+                    dotCurrentX = mirroredX;
                     dotCurrentY = data.y;
                 }
             }
@@ -100,7 +102,9 @@ function updateGazeDotPosition() {
         gazeDot.style.top = dotCurrentY + 'px';
 
         // --- Dwell Click Logic with Hysteresis ---
-        let elementUnderGaze = document.elementFromPoint(dotCurrentX, dotCurrentY);
+        // Use unmirrored X for hit-testing
+        let hitTestX = window.innerWidth - dotCurrentX;
+        let elementUnderGaze = document.elementFromPoint(hitTestX, dotCurrentY);
         let dwellTargetElement = null;
         if (elementUnderGaze) {
             dwellTargetElement = elementUnderGaze.closest('[data-gaze-interactive="true"]');
@@ -109,9 +113,10 @@ function updateGazeDotPosition() {
         if (lastDwellElement && dwellStartTime) {
             // Timer active: Check if gaze is still within hysteresis bounds
             const rect = lastDwellElement.getBoundingClientRect();
+            let dwellTestX = window.innerWidth - dotCurrentX;
             const isWithinHysteresis = (
-                dotCurrentX >= rect.left - DWELL_HYSTERESIS_MARGIN &&
-                dotCurrentX <= rect.right + DWELL_HYSTERESIS_MARGIN &&
+                dwellTestX >= rect.left - DWELL_HYSTERESIS_MARGIN &&
+                dwellTestX <= rect.right + DWELL_HYSTERESIS_MARGIN &&
                 dotCurrentY >= rect.top - DWELL_HYSTERESIS_MARGIN &&
                 dotCurrentY <= rect.bottom + DWELL_HYSTERESIS_MARGIN
             );
