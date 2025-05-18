@@ -1,31 +1,34 @@
-# NordicNeuroLabs Game Hub
+# Eye Tracking Game Hub
 
 A web-based game hub featuring educational games with eye-tracking capabilities. Currently includes:
 - Quiz Game: Test your knowledge across various categories and difficulty levels
 - Pong Breaker: A classic brick breaker game with a twist
 
-## About
-This project was developed as part of DAT191 at HVL.
+## Features
+- Eye tracking integration using WebGazer.js
+- Quiz Game with multiple categories and difficulty levels
+- Pong Breaker game with eye-tracking controls
+- Calibration system for accurate eye tracking
 
 ## Project Structure
 ```
 dat191/
-├── src/              # Source code
-│   ├── index.html    # Main game hub page
-│   ├── css/          # Stylesheets
-│   ├── js/          # JavaScript files
-│   └── games/       # Individual game implementations
-├── assets/          # Static assets
-│   ├── images/      # Images and graphics
-│   │   ├── logo/    # Brand logos
-│   │   └── games/   # Game-specific images
-│   └── data/        # JSON and other data files
-└── node_modules/    # Dependencies (generated)
+├── src/                    # Source code
+│   ├── index.html         # Main game hub page
+│   ├── calibration.html   # Eye tracking calibration page
+│   ├── css/              # Stylesheets
+│   ├── js/               # JavaScript files
+│   │   └── components/   # Modular components
+│   │       └── eyeTracking/  # Eye tracking related code
+│   └── games/            # Individual game implementations
+├── assets/               # Static assets
+└── node_modules/        # Dependencies (generated)
 ```
 
 ## Prerequisites
-- Node.js (v14 or higher recommended)
+- Node.js (v14 or higher)
 - npm (comes with Node.js)
+- Modern web browser with webcam support
 
 ## Installation
 
@@ -47,7 +50,14 @@ Start the development server:
 npm start
 ```
 
-The application will be available at `http://localhost:8080`
+The application will be available at `http://localhost:8080/calibration.html`
+
+## Technologies Used
+- HTML5/CSS3
+- JavaScript (ES6+)
+- jsPsych for experiment management
+- WebGazer.js for eye tracking
+- EyeGesturesLite for gaze data processing
 
 ## Games
 
@@ -68,8 +78,3 @@ The application will be available at `http://localhost:8080`
 - JavaScript
 - WebGazer.js for eye-tracking functionality
 
-## Contributing
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
-
-## License
-This project is licensed under the ISC License - see the [LICENSE](LICENSE) file for details.
