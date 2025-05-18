@@ -25,15 +25,12 @@ const jsPsych = initJsPsych({
         if (typeof webgazer !== 'undefined' && typeof webgazer.storePoints === 'function') {
             webgazer.storePoints(); 
         } else {
-            // This might happen if webgazer failed to initialize
             // console.warn("WebGazer or webgazer.storePoints() not available to save data.");
         }
         
         window.location.replace('index.html');
     }
 });
-
-// --- Timeline Setup --- 
 
 const welcome = {
     type: jsPsychHtmlKeyboardResponse,

@@ -1,32 +1,15 @@
 /* initial setup & global variables */
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
-let particles = [];  // Array for particles
+let particles = []; 
 
-// Set canvas size to match window size
 function resizeCanvas() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-  // Recalculate block offset
 }
 resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
 
-// Sound playback: AudioContext activated after user interaction
-const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-function playSound(frequency, type = 'sine') {
-  const osc = audioCtx.createOscillator();
-  const gain = audioCtx.createGain();
-  osc.connect(gain);
-  gain.connect(audioCtx.destination);
-  osc.type = type;
-  osc.frequency.value = frequency;
-  osc.start();
-  gain.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.1);
-  osc.stop(audioCtx.currentTime + 0.1);
-}
-
-// In-game objects & variables
 let paddle, ball, blocks = [];
 let score = 0;
 let lives = 3;
@@ -36,17 +19,14 @@ let isGameWin = false;
 let animationId;
 const keys = { ArrowLeft: false, ArrowRight: false };
 
-// Paddle Settings
 const paddleWidth = 300;
 const paddleHeight = 20;
 const paddleMarginBottom = 30;
 const paddleSpeed = 5;
 
-// Ball Settings
 const ballRadius = 10;
 let ballSpeed = 10;
 
-// Block Settings
 const blockRowCount = 6;
 const blockColumnCount = 8;
 const blockWidth = 75;
@@ -55,11 +35,8 @@ const blockPadding = 10;
 const blockOffsetTop = 50;
 let blockOffsetLeft = (canvas.width - (blockColumnCount * (blockWidth + blockPadding)) + blockPadding) / 2;
 
-/* =================================
-   Initialize Game Objects
-================================= */
 function init() {
-  // Initialize Paddle
+
   paddle = {
     width: paddleWidth,
     height: paddleHeight,
@@ -67,7 +44,7 @@ function init() {
     y: canvas.height - paddleMarginBottom - paddleHeight,
     color: '#ff4757'
   };
-  // Initialize Ball (positioned at the center above the paddle)
+
   ball = {
     x: canvas.width / 2,
     y: paddle.y - ballRadius,
@@ -77,7 +54,7 @@ function init() {
     dy: -ballSpeed,
     color: '#ffa502'
   };
-  // Initialize Blocks
+  // initialize blocks
   blocks = [];
   blockOffsetLeft = (canvas.width - (blockColumnCount * (blockWidth + blockPadding)) + blockPadding) / 2;
   for (let r = 0; r < blockRowCount; r++) {
@@ -92,21 +69,17 @@ function init() {
   lives = 3;
   isGameOver = false;
   isGameWin = false;
-  particles = []; // Reset particles as well
-  // Reset text alignment for HUD
+  particles = [];
+
   ctx.textAlign = 'left'; 
   ctx.textBaseline = 'alphabetic';
 }
-// Return a different color for each row
+
 function getBlockColor(row) {
   const colors = ['#1abc9c', '#2ecc71', '#3498db', '#9b59b6', '#e67e22'];
   return colors[row % colors.length];
 }
 
-/* =================================
-   Drawing Functions
-================================= */
-// Draw Paddle
 function drawPaddle() {
   ctx.fillStyle = paddle.color;
   ctx.fillRect(paddle.x, paddle.y, paddle.width, paddle.height);
@@ -115,7 +88,7 @@ function drawPaddle() {
   ctx.lineWidth = 2;
   ctx.strokeRect(paddle.x, paddle.y, paddle.width, paddle.height);
 }
-// Draw Ball
+
 function drawBall() {
   ctx.beginPath();
   ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
@@ -123,7 +96,7 @@ function drawBall() {
   ctx.fill();
   ctx.closePath();
 }
-// Draw Blocks
+
 function drawBlocks() {
   for (let r = 0; r < blockRowCount; r++) {
     for (let c = 0; c < blockColumnCount; c++) {
@@ -137,7 +110,7 @@ function drawBlocks() {
     }
   }
 }
-// Draw HUD (Score & Lives)
+
 function drawHUD() {
   ctx.fillStyle = '#fff';
   ctx.font = '20px Segoe UI';
@@ -145,10 +118,8 @@ function drawHUD() {
   ctx.fillText('Lives: ' + lives, 150, 30);
 }
 
-/* =================================
-   Game Logic (Movement & Collision Detection)
-================================= */
-// Move paddle (keyboard controls)
+
+// move paddle (keyboard controls)
 function movePaddle() {
   if ((keys.ArrowLeft || keys.KeyA) && paddle.x > 0) {
     paddle.x -= paddleSpeed;
@@ -157,38 +128,30 @@ function movePaddle() {
     paddle.x += paddleSpeed;
   }
 }
-/* // Move paddle with mouse (for improved UX) - DISABLED FOR GAZE CONTROL
-canvas.addEventListener('mousemove', function(e) {
-  const rect = canvas.getBoundingClientRect();
-  let mouseX = e.clientX - rect.left;
-  paddle.x = mouseX - paddle.width / 2;
-  if (paddle.x < 0) paddle.x = 0;
-  if (paddle.x + paddle.width > canvas.width) paddle.x = canvas.width - paddle.width;
-});
-*/
-// Move ball and check collisions with walls and paddle
+
+// move ball and check collisions with walls and paddle
 function moveBall() {
   ball.x += ball.dx;
   ball.y += ball.dy;
 
-  // Collision with left/right walls
+  // collision with left/right walls
   if (ball.x + ball.radius > canvas.width || ball.x - ball.radius < 0) {
     ball.dx = -ball.dx;
     playSound(200, 'sine');
   }
-  // Collision with ceiling
+  // collision with ceiling
   if (ball.y - ball.radius < 0) {
     ball.dy = -ball.dy;
     playSound(200, 'sine');
   }
-  // Collision detection with paddle
+  // collision detection with paddle
   if (
     ball.y + ball.radius > paddle.y && 
     ball.y - ball.radius < paddle.y + paddle.height &&
     ball.x + ball.radius > paddle.x && 
     ball.x - ball.radius < paddle.x + paddle.width
   ) {
-    // Calculate overlaps
+    // calculate overlaps
     let overlapLeft = ball.x + ball.radius - paddle.x;
     let overlapRight = (paddle.x + paddle.width) - (ball.x - ball.radius);
     let overlapTop = ball.y + ball.radius - paddle.y;
@@ -198,52 +161,49 @@ function moveBall() {
     let minOverlap = Math.min(overlapLeft, overlapRight, overlapTop, overlapBottom);
     
     if (minOverlap === overlapTop) {
-      // Hit top of paddle
+      // hit top of paddle
       let collidePoint = ball.x - (paddle.x + paddle.width / 2);
       collidePoint = collidePoint / (paddle.width / 2);
-      let angle = collidePoint * (Math.PI / 3); // Max 60° bounce angle
+      let angle = collidePoint * (Math.PI / 3); // max 60 degree bounce angle
       ball.dx = ball.speed * Math.sin(angle);
       ball.dy = -ball.speed * Math.cos(angle);
-      // Position adjustment: move ball above paddle
+      // position adjustment: move ball above paddle
       ball.y = paddle.y - ball.radius;
-      // Check and correct horizontal overlap (for corners)
+      // check and correct horizontal overlap (for corners)
       if (ball.x + ball.radius > paddle.x + paddle.width) {
-        ball.x = paddle.x + paddle.width + ball.radius; // Right edge
+        ball.x = paddle.x + paddle.width + ball.radius; // right edge
       } else if (ball.x - ball.radius < paddle.x) {
-        ball.x = paddle.x - ball.radius; // Left edge
+        ball.x = paddle.x - ball.radius; // left edge
       }
     } else if (minOverlap === overlapLeft) {
-      // Hit left side
-      ball.dx = -Math.abs(ball.dx); // Bounce left
-      ball.x = paddle.x - ball.radius; // Move ball left of paddle
-      // Add slight vertical nudge if dy is small (shallow angle)
+      // hit left side
+      ball.dx = -Math.abs(ball.dx); 
+      ball.x = paddle.x - ball.radius; 
+      // add slight vertical nudge if dy is small
       if (Math.abs(ball.dy) < 1) {
-        ball.dy = -2; // Small upward push
+        ball.dy = -2; 
       }
-      // Correct vertical overlap if near top
+      // correct vertical overlap if near top
       if (ball.y + ball.radius > paddle.y) {
         ball.y = paddle.y - ball.radius;
       }
     } else if (minOverlap === overlapRight) {
-      // Hit right side
-      ball.dx = Math.abs(ball.dx); // Bounce right
-      ball.x = paddle.x + paddle.width + ball.radius; // Move ball right of paddle
-      // Add slight vertical nudge if dy is small
+      // hit right side
+      ball.dx = Math.abs(ball.dx); 
+      ball.x = paddle.x + paddle.width + ball.radius; 
+      // add slight vertical nudge if dy is small
       if (Math.abs(ball.dy) < 1) {
-        ball.dy = -2; // Small upward push
+        ball.dy = -2; 
       }
-      // Correct vertical overlap if near top
+      // correct vertical overlap if near top
       if (ball.y + ball.radius > paddle.y) {
         ball.y = paddle.y - ball.radius;
       }
     } else if (minOverlap === overlapBottom) {
-      // Hit bottom (unlikely since paddle is at bottom of screen)
+      // hit bottom
       ball.dy = Math.abs(ball.dy);
       ball.y = paddle.y + paddle.height + ball.radius;
     }
-    
-    // Play sound (should only trigger once per real collision now)
-    playSound(300, 'sine');
   }
   // Ball reaches bottom of screen → decrease life
   if (ball.y + ball.radius > canvas.height) {
@@ -257,7 +217,7 @@ function moveBall() {
     }
   }
 }
-// Collision detection with blocks
+// collision detection with blocks
 function collisionDetection() {
   for (let r = 0; r < blockRowCount; r++) {
     for (let c = 0; c < blockColumnCount; c++) {
@@ -268,15 +228,15 @@ function collisionDetection() {
           ball.y - ball.radius < b.y + blockHeight &&
           ball.y + ball.radius > b.y
         ) {
-          // Determine which side the ball hit
+          // determine which side the ball hit
           if (ball.x > b.x && ball.x < b.x + blockWidth) {
-            ball.dy = -ball.dy; // Hit top or bottom
+            ball.dy = -ball.dy; // hit top or bottom
           } else {
-            ball.dx = -ball.dx; // Hit left or right
+            ball.dx = -ball.dx; // hit left or right
           }
           b.status = 0;
           score += 10;
-          // Increase ball speed every 50 points, up to a max of 10
+          // increase ball speed every 50 points, up to a max of 10
           if (score % 50 === 0 && ball.speed < 10) {
             let scalingFactor = (ball.speed + 0.5) / ball.speed;
             ball.dx *= scalingFactor;
@@ -284,7 +244,7 @@ function collisionDetection() {
             ball.speed += 0.5;
           }
           playSound(400, 'sine');
-          // Generate particles (destruction effect)
+          // generate particles (destruction effect)
           for (let i = 0; i < 5; i++) {
             particles.push({
               x: ball.x,
@@ -295,7 +255,7 @@ function collisionDetection() {
               life: 1
             });
           }
-          // Check win condition
+          // check win condition
           if (score === blockRowCount * blockColumnCount * 10) {
             isGameWin = true;
             isGameRunning = false;
@@ -306,7 +266,7 @@ function collisionDetection() {
     }
   }
 }
-// Reset ball and paddle positions on life loss
+
 function resetBallAndPaddle() {
   paddle.x = (canvas.width - paddle.width) / 2;
   ball.x = canvas.width / 2;
@@ -315,9 +275,6 @@ function resetBallAndPaddle() {
   ball.dy = -ball.speed;
 }
 
-/* =================================
-   Main Game Loop
-================================= */
 function gameLoop() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawBlocks();
@@ -325,12 +282,11 @@ function gameLoop() {
   drawBall();
   drawHUD();
   
-  // Paddle control based on gaze OR keyboard fallback
+  // paddle control based on gaze or keyboard fallback
   if (typeof latestGazeData !== 'undefined' && latestGazeData !== null && latestGazeData.x !== null) {
     // Calculate the target x-position based on gaze, centered
     let targetX = latestGazeData.x - paddle.width / 2;
     
-    // Clamp the target position first
     if (targetX < 0) {
       targetX = 0;
     }
@@ -338,12 +294,12 @@ function gameLoop() {
       targetX = canvas.width - paddle.width;
     }
     
-    // Smoothly interpolate paddle's current x towards the target x
+    // smoothly interpolate paddle's current x towards the target x
     const smoothingFactor = 0.4; 
     paddle.x += (targetX - paddle.x) * smoothingFactor;
     
   } else {
-    // Fallback to keyboard if gaze is not available
+    // fallback to keyboard if gaze is not available
     movePaddle(); 
   }
   
@@ -355,10 +311,7 @@ function gameLoop() {
   }
 }
 
-/* =================================
-   User Input Handling
-================================= */
-// Keyboard controls (move left/right, start/restart, exit)
+// keyboard controls (move left/right, start/restart, exit)
 document.addEventListener('keydown', function(e) {
   if (e.code === 'ArrowLeft' || e.code === 'ArrowRight' ||
       e.code === 'KeyA' || e.code === 'KeyD') {
@@ -372,7 +325,7 @@ document.addEventListener('keydown', function(e) {
       startGame();
     }
   }
-  // Exit with Escape key
+  // exit with Escape key
   if (e.code === 'Escape') {
     exitGame(); 
   }
@@ -383,7 +336,7 @@ document.addEventListener('keyup', function(e) {
     keys[e.code] = false;
   }
 });
-// Click on canvas to start/restart the game
+// click on canvas to start/restart the game
 canvas.addEventListener('click', function() {
   if (!isGameRunning) {
     if (isGameOver || isGameWin) {
@@ -393,19 +346,19 @@ canvas.addEventListener('click', function() {
   }
 });
 
-// Exit Game Function
+// exit game function
 function exitGame() {
   // console.log("Exiting game..."); 
-  // Pause the game loop if it's running
+  // pause the game loop if it's running
   if (animationId) {
     cancelAnimationFrame(animationId);
     animationId = null; // Clear the ID
     isGameRunning = false; 
     // console.log("Animation frame cancelled.");
   }
-  // Navigate back to the main lobby/hub
+  // navigate back to the main lobby/hub
   try {
-      window.location.href = '../../index.html'; // Relative path back to game hub
+      window.location.href = '../../index.html'; 
       // console.log("Redirecting to index.html..."); 
   } catch (err) {
       console.error("Error during redirection:", err);
@@ -413,9 +366,7 @@ function exitGame() {
   }
 }
 
-/* =================================
-   Overlay Show/Hide
-================================= */
+
 function showOverlay(message) {
   const overlay = document.getElementById('overlay');
   overlay.innerHTML = message;
@@ -430,16 +381,14 @@ function hideOverlay() {
   }, 300);
 }
 
-/* =================================
-   Start Game
-================================= */
+
 function startGame() {
   hideOverlay();
   isGameRunning = true;
   gameLoop();
 }
 
-// Update and draw particles (Block destruction effect)
+// update and draw particles (block destruction effect)
 function updateParticles() {
   for (let i = particles.length - 1; i >= 0; i--) {
     let p = particles[i];
@@ -457,6 +406,5 @@ function updateParticles() {
   }
 }
 
-// Initialization on first load
 init();
 
