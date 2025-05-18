@@ -1,5 +1,4 @@
-// console.log("Clearing localStorage for fresh calibration...");
-localStorage.clear();
+// localStorage.clear(); // Removed: selectUSBcamera.js handles fresh ID setting.
 
 // Initialize jsPsych with the WebGazer extension
 const jsPsych = initJsPsych({
@@ -7,7 +6,7 @@ const jsPsych = initJsPsych({
         { 
             type: jsPsychExtensionWebgazer,
             params: { 
-                save_data_across_sessions: true
+                auto_initialize: false // Let WebGazer sleep until we open it later
             }
         }
     ],
@@ -28,6 +27,17 @@ const jsPsych = initJsPsych({
             // console.warn("WebGazer or webgazer.storePoints() not available to save data.");
         }
         
+        // Release the camera track before navigating
+        if (typeof webgazer !== 'undefined' && typeof webgazer.endVideo === 'function') {
+            try {
+                console.log("[jspsych.js] Attempting to end video before navigating...");
+                await webgazer.endVideo(); // free the camera
+                console.log("[jspsych.js] Video ended.");
+            } catch (e) {
+                console.warn("[jspsych.js] Error calling webgazer.endVideo() on finish:", e);
+            }
+        }
+
         window.location.replace('index.html');
     }
 });
@@ -44,14 +54,43 @@ const welcome = {
     `
 };
 
-const init_camera = {
-    type: jsPsychWebgazerInitCamera,
-    instructions: `
-        <div class="calibration-text">
-            <p>For å aktivere øyesporing trenger vi tilgang til webkameraet ditt.</p>
+/* 1 ── choose / confirm the correct camera once */
+const pick_cam = {
+  type: jsPsychInitializeCamera,
+  // device_id: '9af0d43fa559598f92be014a2b3ac71999fd737558cb257626490d34414cff53', // Removed: selectUSBcamera.js should set it, or user picks
+
+  async on_finish(d) {
+    // d.device_id is from jsPsychInitializeCamera if UI was shown and user picked.
+    // localStorage.getItem('selectedUSBdeviceId') is from our selectUSBcamera.js helper.
+    const finalDeviceId = localStorage.getItem('selectedUSBdeviceId') || d.device_id;
+    
+    if (finalDeviceId) {
+        console.log("[jspsych.js pick_cam.on_finish] Confirming constraints for deviceId:", finalDeviceId);
+        await webgazer.setCameraConstraints({
+          video: { deviceId: { exact: finalDeviceId } }
+        });
+    } else {
+        console.warn("[jspsych.js pick_cam.on_finish] No deviceId available to set constraints.");
+    }
+    // No longer storing wgDeviceId here, selectUSBcamera.js handles setting selectedUSBdeviceId for index.html
+  },
+
+  instructions: `
+    <div class="calibration-text">
             <p>Vennligst plasser ansiktet ditt i midten av kamera slik at boksen lyser grønt.</p>
             <p>Klikk på "Tillat" hvis nettleseren ber om tilgang til kameraet ditt.</p>
-        </div>
+    </div>`
+};
+
+/* 2 ── WebGazer starts *after* constraints are set */
+const init_camera = { 
+    type: jsPsychWebgazerInitCamera,
+    instructions: `
+    <div class="calibration-text">
+        <p>For å aktivere øyesporing trenger vi tilgang til webkameraet ditt.</p>
+        <p>Vennligst plasser ansiktet ditt i midten av kamera slik at boksen lyser grønt.</p>
+        <p>Klikk på "Tillat" hvis nettleseren ber om tilgang til kameraet ditt.</p>
+    </div>
     `
 };
 
@@ -65,10 +104,10 @@ const calibrationPoints = [
 const calibration = {
     type: jsPsychWebgazerCalibrate,
     calibration_points: calibrationPoints,
-    // can be 'view' or 'click'
     calibration_mode: 'view',
     repetitions_per_point: 1,
-    randomize_calibration_order: true,
+    randomize_calibration_order: false,
+    time_to_saccade: 500,
     instructions: `
         <div class="calibration-text">
             <p>Nå skal vi kalibrere øyesporingen.</p>
@@ -105,6 +144,5 @@ const final_message = {
 };
 
 // Build and run the timeline
-const timeline = [welcome, init_camera, calibration, validation, final_message];
+const timeline = [welcome, pick_cam, init_camera, calibration, validation, final_message];
 jsPsych.run(timeline);
-  

@@ -9,36 +9,54 @@ const DOT_SMOOTHING_FACTOR = 0.1; // Lower is smoother
 let dotUpdateLoopId = null;
 
 // dwell click simulation settings
-const DWELL_TIME = 1500; // Milliseconds needed to trigger click
+const DWELL_TIME = 1500; 
 const DWELL_INDICATOR_COLOR = 'rgba(0, 255, 0, 0.6)';
 const DWELL_HYSTERESIS_MARGIN = 30;
 let dwellStartTime = null;
 let lastDwellElement = null;
 
 async function initializeWebGazer() {
+    console.log("[webgazer.js] Attempting to initialize WebGazer on this page...");
     try {
         if (typeof webgazer === "undefined") {
-            //console.error("WebGazer library not loaded.");
+            console.error("[webgazer.js] WebGazer library not loaded.");
             return;
         }
+
+        if (typeof webgazer.getCameraConstraints === 'function') {
+            const currentConstraints = webgazer.getCameraConstraints();
+            console.log("[webgazer.js] Current camera constraints at start of initializeWebGazer:", currentConstraints);
+        } else {
+            console.log("[webgazer.js] webgazer.getCameraConstraints is not a function at start.");
+        }
+        if (typeof webgazer.isReady === 'function') {
+            console.log("[webgazer.js] webgazer.isReady() at start of initializeWebGazer:", webgazer.isReady());
+        }
+
+        // selectUSBcamera.js
+        console.log("[webgazer.js] Assuming selectUSBcamera.js has set constraints. Proceeding to begin().");
+
+        console.log("[webgazer.js] Calling webgazer.begin()..."); 
         await webgazer.setRegression('ridge')
             .setTracker('TFFacemesh')
             .showPredictionPoints(false)
-            .showVideoPreview(false)
-            .saveDataAcrossSessions(true)
-            .begin();
+            .showVideoPreview(true) //
+            .saveDataAcrossSessions(true) 
+            .begin()
+            .catch(err => {
+                console.error('[webgazer.js] WebGazer failed to begin:', err);
+            });
 
-        // Stop new click recalibration
+        // stop new click recalibration
         if (webgazer && webgazer.params) {
             webgazer.params.useClickRecalibration = false;
         }
 
-        // Remove original click event listener
+        // remove original click event listener
         if (webgazer.params && webgazer.params.events && webgazer.params.events.click) {
             window.removeEventListener('click', webgazer.params.events.click);
         }
 
-        // Start the dot update loop
         if (dotUpdateLoopId === null) {
             updateGazeDotPosition();
         }
@@ -46,20 +64,21 @@ async function initializeWebGazer() {
         webgazer.setGazeListener(function(data, clock) {
             latestGazeData = data; 
             if (data) {
-                dotTargetX = data.x;
+                let mirroredX = window.innerWidth - data.x;
+                dotTargetX = mirroredX;
                 dotTargetY = data.y;
 
                 if (dotCurrentX === null) {
-                    dotCurrentX = data.x;
+                    dotCurrentX = mirroredX;
                     dotCurrentY = data.y;
                 }
             }
         });
         
-        //console.log('WebGazer initialized and listener set.');
+        console.log("[webgazer.js] WebGazer initialization flow complete. Listener set.");
 
     } catch (err) {
-        //console.error('Failed to initialize WebGazer:', err);
+        console.error('[webgazer.js] General error in initializeWebGazer:', err);
     }
 }
 
@@ -73,12 +92,13 @@ function updateGazeDotPosition() {
         dotCurrentX += (dotTargetX - dotCurrentX) * DOT_SMOOTHING_FACTOR;
         dotCurrentY += (dotTargetY - dotCurrentY) * DOT_SMOOTHING_FACTOR;
 
-        // Update dot's visual style
         gazeDot.style.display = 'block';
         gazeDot.style.left = dotCurrentX + 'px';
         gazeDot.style.top = dotCurrentY + 'px';
 
-        let elementUnderGaze = document.elementFromPoint(dotCurrentX, dotCurrentY);
+        // Use unmirrored X for hit-testing
+        let hitTestX = window.innerWidth - dotCurrentX;
+        let elementUnderGaze = document.elementFromPoint(hitTestX, dotCurrentY);
         let dwellTargetElement = null;
         if (elementUnderGaze) {
             dwellTargetElement = elementUnderGaze.closest('[data-gaze-interactive="true"]');
@@ -87,22 +107,23 @@ function updateGazeDotPosition() {
         if (lastDwellElement && dwellStartTime) {
             // check if gaze is still within hysteresis bounds
             const rect = lastDwellElement.getBoundingClientRect();
+            let dwellTestX = window.innerWidth - dotCurrentX;
             const isWithinHysteresis = (
-                dotCurrentX >= rect.left - DWELL_HYSTERESIS_MARGIN &&
-                dotCurrentX <= rect.right + DWELL_HYSTERESIS_MARGIN &&
+                dwellTestX >= rect.left - DWELL_HYSTERESIS_MARGIN &&
+                dwellTestX <= rect.right + DWELL_HYSTERESIS_MARGIN &&
                 dotCurrentY >= rect.top - DWELL_HYSTERESIS_MARGIN &&
                 dotCurrentY <= rect.bottom + DWELL_HYSTERESIS_MARGIN
             );
 
             if (isWithinHysteresis) {
-                // Still within tolerance: Check dwell time
+                // check dwell time
                 const elapsedTime = Date.now() - dwellStartTime;
                 drawDwellIndicator(lastDwellElement, elapsedTime / DWELL_TIME);
 
                 if (elapsedTime >= DWELL_TIME) {
 
                     if (lastDwellElement.classList.contains('game-card')) {
-                        // Special handling for game cards: navigate link
+                        // handling for game cards
                         const link = lastDwellElement.querySelector('a');
                         if (link && link.href) {
                             //console.log(`Dwell: Navigating to game card link: ${link.href}`);
