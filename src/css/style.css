@@ -142,7 +142,6 @@ footer{
     font-size: 14px;
 }
 
-/* eye tracking dot */
 #gazeDot {
     position: fixed;
     width: 40px;
@@ -153,7 +152,7 @@ footer{
     pointer-events: none;
     transform: translate(-50%, -50%);
     z-index: 999999;
-    display: none; /* initially hidden until webgazer sets it to block */
+    display: none; 
     box-shadow: 0 0 15px 5px rgba(255, 0, 0, 0.5);
     filter: blur(2px);
 }

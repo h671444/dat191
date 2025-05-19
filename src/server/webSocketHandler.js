@@ -9,7 +9,7 @@ function setupWebSocketServer(port, onMessageCallback) {
     ws.on('message', (message) => {
       console.log('Message from WebSocket client:', message);
       if (onMessageCallback) {
-        onMessageCallback(message); // Pass the message to the callback
+        onMessageCallback(message); 
       }
     });
 

@@ -1,75 +1,103 @@
-# NordicNeuroLabs Game Hub
+# NordicNeuroLabs Button Input System
 
-A web-based game hub featuring educational games with eye-tracking capabilities. Currently includes:
-- Quiz Game: Test your knowledge across various categories and difficulty levels
-- Pong Breaker: A classic brick breaker game with a twist
+This repository contains a Node.js-based system for testing and evaluating the button input method via serial communication. The setup is designed for technical evaluation of latency, precision, and reliability of button-based input, as used in MR-compatible environments.
+
+---
 
 ## About
-This project was developed as part of DAT191 at HVL.
+
+This project is a submodule of DAT191 at HVL, focusing exclusively on the button input method. It enables simulation, logging, and analysis of button presses sent over a serial port, with results broadcast to web clients via WebSocket.
+
+---
 
 ## Project Structure
+
 ```
 dat191/
-├── src/              # Source code
-│   ├── index.html    # Main game hub page
-│   ├── css/          # Stylesheets
-│   ├── js/          # JavaScript files
-│   └── games/       # Individual game implementations
-├── assets/          # Static assets
-│   ├── images/      # Images and graphics
-│   │   ├── logo/    # Brand logos
-│   │   └── games/   # Game-specific images
-│   └── data/        # JSON and other data files
-└── node_modules/    # Dependencies (generated)
+├── src/
+│   ├── games/
+│   │   └── quiz/
+│   │       ├── quiz-serial.css
+│   │       ├── quiz-serial.html
+│   │       └── quiz-serial.js
+│   └── server/
+│       ├── serialHandler.js
+│       ├── serialInputHandler.js
+│       └── webSocketHandler.js
+├── scripts/
+│   └── simulate_buttons.sh         # (If present) Bash script for simulating button presses
+├── package.json
+├── package-lock.json
+└── README.md
 ```
+
+---
 
 ## Prerequisites
+
 - Node.js (v14 or higher recommended)
-- npm (comes with Node.js)
+- socat (for creating virtual serial ports on macOS/Linux)
+- Bash (for running simulation script)
 
-## Installation
+---
 
-1. Clone the repository:
+## Setup & Usage
+
+### 1. Create Virtual Serial Ports
+
+Open a terminal and run:
 ```bash
-git clone https://github.com/h671444/dat191.git
-cd dat191
+socat -d -d pty,raw,echo=0 pty,raw,echo=0
 ```
+Note the two device names printed (e.g., `/dev/ttys011` and `/dev/ttys012`).
 
-2. Install dependencies:
+### 2. Configure the Server
+
+Edit `src/server/serialHandler.js` and set the `path` to one of the virtual ports (e.g., `/dev/ttys011`).
+
+### 3. Install Dependencies
+
+From the project root:
 ```bash
 npm install
 ```
 
-## Running the Application
+### 4. Start the Server
 
-Start the development server:
 ```bash
-npm start
+node src/server/serialHandler.js
+```
+You should see:
+```
+WebSocket server running on ws://localhost:8080
+Serial port is open
 ```
 
-The application will be available at `http://localhost:8080`
+### 5. Simulate Button Presses
 
-## Games
+If you have the script `scripts/simulate_buttons.sh`, set `PORT` to the other virtual port (e.g., `/dev/ttys012`), then run:
+```bash
+bash scripts/simulate_buttons.sh
+```
+This will send a series of simulated button presses to the server.
 
-### Quiz Game
-- Multiple categories of questions
-- Three difficulty levels: Easy, Medium, Hard
-- Score tracking
-- Eye-tracking integration for accessibility
+### 6. View Results
 
-### Pong Breaker
-- Classic brick breaker gameplay
-- Eye-tracking controls
-- Progressive difficulty
+Latency and command logs will appear in the terminal running `serialHandler.js`.  
+You can analyze these logs to evaluate system responsiveness.
+
+---
 
 ## Technologies Used
-- HTML5
-- CSS3
-- JavaScript
-- WebGazer.js for eye-tracking functionality
 
-## Contributing
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
+- Node.js
+- WebSocket
+- serialport (npm package)
+- socat (for virtual serial ports)
+- Bash
+
+---
 
 ## License
+
 This project is licensed under the ISC License - see the [LICENSE](LICENSE) file for details.

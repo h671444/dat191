@@ -1,14 +1,10 @@
-// quiz-serial.js
-// Serial-enabled quiz with per-screen default focus
 
-// --- State ---
 let questions = {};
 let selectedCategory = "";
 let selectedDifficulty = "";
 let currentQuestions = [];
 let score = 0;
 
-// --- WebSocket & Serial Integration ---
 const ws = new WebSocket('ws://localhost:8080');
 ws.addEventListener('open', () => console.log('Serial WebSocket connected'));
 ws.addEventListener('message', (event) => {
@@ -20,20 +16,20 @@ ws.addEventListener('message', (event) => {
 function handleSerialCommand(command) {
   switch (command) {
     case 'UP':
-      navigate(-1); // Move up in the list
+      navigate(-1);
       break;
     case 'DOWN':
-      navigate(1); // Move down in the list
+      navigate(1);
       break;
     case 'SELECT':
-      activate(); // Select the currently focused option
+      activate();
       break;
     default:
       console.warn('Unknown serial command:', command);
   }
 }
 
-// --- Focus Helpers ---
+
 
 function getCurrentContainer() {
   if (!document.getElementById('category-selection').hidden) {
@@ -63,11 +59,10 @@ function navigate(direction) {
   if (idx >= 0) targets[idx].classList.remove('serial-focused');
 
   if (idx < 0) {
-    // First navigation on this screen → pick default
+    
     const container = getCurrentContainer();
-    idx = container.id === 'quiz-area' ? Math.floor(targets.length / 2) : 0; // Middle for quiz answers, top for menus
-  } else {
-    idx = (idx + direction + targets.length) % targets.length; // Loop around
+    idx = container.id === 'quiz-area' ? Math.floor(targets.length / 2) : 0; 
+    idx = (idx + direction + targets.length) % targets.length;
   }
 
   targets[idx].classList.add('serial-focused');
@@ -83,7 +78,7 @@ function activate() {
 }
 
 function focusFirst() {
-  // Clear any old focus
+
   document.querySelectorAll('.serial-focused').forEach((el) => el.classList.remove('serial-focused'));
   const targets = getCurrentTargets();
   if (!targets.length) return;
@@ -95,10 +90,10 @@ function focusFirst() {
   console.log('Initial focus:', targets[idx]);
 }
 
-// --- Quiz App Code ---
+
 
 async function loadQuestions() {
-  const resp = await fetch('../../assets/data/questions.json'); // Correct path
+  const resp = await fetch('../../assets/data/questions.json'); 
   const data = await resp.json();
   questions = data.categories;
   displayCategories();
@@ -115,7 +110,7 @@ function displayCategories() {
     btn.onclick = () => selectCategory(cat);
     div.appendChild(btn);
   });
-  // Also mark the “Tilfeldig spørsmål” button
+  
   document.getElementById('tilfeldige-sporsmaal').classList.add('dwell-target');
 }
 
@@ -123,13 +118,13 @@ function selectCategory(cat) {
   selectedCategory = cat;
   document.getElementById('category-selection').hidden = true;
   document.getElementById('difficulty-selection').hidden = false;
-  // Defer until the DOM has repainted the newly visible buttons
+  
   setTimeout(focusFirst, 0);
 }
 
 function selectDifficulty(diff) {
   selectedDifficulty = diff;
-  // Ensure all three difficulty buttons are targets
+  
   document.querySelectorAll('.difficulty-btn').forEach((b) => b.classList.add('dwell-target'));
   loadQuiz();
 }
@@ -167,7 +162,7 @@ function showQuestion() {
     opts.appendChild(b);
   });
 
-  // Defer first focus on this new quiz-page
+
   setTimeout(focusFirst, 0);
 }
 
@@ -190,8 +185,8 @@ function returnToHome() {
   window.location.href = '/index.html';
 }
 
-// Mark the home‐button as a dwell-target
+
 document.querySelector('.nav-home-btn')?.classList.add('dwell-target');
 
-// Kick things off
+
 loadQuestions();

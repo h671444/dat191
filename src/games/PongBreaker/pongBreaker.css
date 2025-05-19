@@ -1,4 +1,4 @@
-/* Reset & Basic Setup */
+
 * {
     margin: 0;
     padding: 0;
@@ -11,14 +11,13 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
   
-  /* Canvas fills the entire screen */
+  
   canvas {
     display: block;
     background: #222;
     margin: 0 auto;
   }
-  
-  /* Overlay (for start/game over messages) */
+
   #overlay {
     position: absolute;
     top: 0;
