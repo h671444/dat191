@@ -1,7 +1,8 @@
 // No game-specific imports needed here anymore
 
 // --- Constants ---
-const VOSK_SERVER_URL = "ws://localhost:8765";
+// const VOSK_SERVER_URL = "ws://172.20.10.14:8765";
+const VOSK_SERVER_URL = "ws://localhost:8765"
 const VOSK_BUFFER_SIZE = 4096;
 // Note: VOICE_COMMANDS list itself isn't strictly needed here if we just pass raw text
 
