@@ -35,29 +35,27 @@ The quiz application is a frontend web application that communicates with a sepa
 
 The diagrammer folder (`games/quiz/diagrammer/`) contains Mermaid diagrams illustrating the Finite State Machine (FSM), flowchart, component interactions, and sequence of operations.
 
-### Project Structure (Relevant to Quiz)
-dat191voice/
-├── assets/
-│   ├── data/
-│   │   └── questions.json      
-│   └── images/
-│       └── logo/
+### Project Structure 
+├── assets
+│   ├── data
+│   │   └── questions.json 
+│   └── images
+│       └── logo
 │           └── NNL logo.png
-├── css/
-│   └── style.css               
-├── games/
-│   ├── quiz/
-│      ├── diagrammer/         # Mermaid diagrams
-│      │   ├── FSM.md
-│      │   ├── flowchart.md
-│      │   ├── komponenter.md
-│      │   └── seq_diagram.md
-│      ├── quiz.css            # Styles specific to the quiz
-│      ├── quiz.html           # Main HTML for the quiz game
-│      ├── quiz.js             # Quiz game logic and state management
-│      ├── quiz_main.js        # Entry point for quiz, initializes UI and voice
-│      └── quiz_voice.js       # Handles voice input and WebSocket communication
-└── ...                         
+├── games
+│   └── quiz
+│       ├── diagrammer
+│       │   ├── FSM.md 
+│       │   ├── flowchart.md 
+│       │   ├── komponenter.md 
+│       │   ├── seq_diagram.md 
+│       │   └── seq_diagram_expired.md 
+│       ├── quiz.css 
+│       ├── quiz.html 
+│       ├── quiz.js 
+│       ├── quiz_main.js 
+│       └── quiz_voice.js 
+└── README.md                      
 
 
 ### Prerequisites
