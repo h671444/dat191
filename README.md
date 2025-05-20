@@ -77,26 +77,14 @@ To run the Voice Quiz application fully with voice control, you need:
    * Follow its README to install Python dependencies (Vosk, websockets) and ensure the Vosk English model is correctly placed.
    * Run the `quiz_server.py` from the `vosk-server` project. It should indicate it's listening on `ws://localhost:8765`.
 
-2. **Run the Quiz Application (this `dat191voice` repository):**
-   * **Option 1 (Simple):**
-     * Clone this `dat191voice` repository.
+2. **Run the Quiz Application:**
+   * **:**
+     * Clone this `dat191` repository.
      * Open the `games/quiz/quiz.html` file directly in your web browser.
-   * **Option 2 (Using a local server - Recommended for avoiding potential CORS issues with `Workspace`):**
-     * Clone this `dat191voice` repository.
-     * Navigate to the root directory of `dat191voice` in your terminal.
-     * If you have Python installed, you can run a simple HTTP server:
-       ```bash
-       python -m http.server
-       ```
-       Or for Python 2:
-       ```bash
-       python -m SimpleHTTPServer
-       ```
-     * Open your browser and go to `http://localhost:8000/games/quiz/quiz.html`. (The port might vary depending on your server).
 
 3. **Enable Voice Control:**
    * Once `quiz.html` is loaded, click the "Start Stemme Kontroll" (Start Voice Control) button.
-   * Your browser will likely ask for microphone permission. **Allow** it.
+   * Your browser will ask for microphone permission. **Allow** it.
    * The button should change to "Stopp Stemme Kontroll," and the application will start sending audio to the Vosk server.
 
 4. **Play:**
