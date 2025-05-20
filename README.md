@@ -6,7 +6,7 @@ This repository contains a Node.js-based system for testing and evaluating the b
 
 ## About
 
-This project is a submodule of DAT191 at HVL, focusing exclusively on the button input method. It enables simulation, logging, and analysis of button presses sent over a serial port, with results broadcast to web clients via WebSocket.
+This project is a submodule of DAT191 at HVL, focusing exclusively on the button input method. It enables logging and analysis of button presses sent over a serial port, with results broadcast to web clients via WebSocket.
 
 ---
 
@@ -24,8 +24,6 @@ dat191/
 │       ├── serialHandler.js
 │       ├── serialInputHandler.js
 │       └── webSocketHandler.js
-├── scripts/
-│   └── simulate_buttons.sh         # (If present) Bash script for simulating button presses
 ├── package.json
 ├── package-lock.json
 └── README.md
@@ -37,14 +35,15 @@ dat191/
 
 - Node.js (v14 or higher recommended)
 - socat (for creating virtual serial ports on macOS/Linux)
-- Bash (for running simulation script)
+- Bash (for terminal-based testing)
 
 ---
 
 ## Setup & Usage
 
-### 1. Create Virtual Serial Ports
+### 1. Create Virtual Serial Ports (for simulation)
 
+If you do **not** have physical controllers available, you can simulate serial input using socat.  
 Open a terminal and run:
 ```bash
 socat -d -d pty,raw,echo=0 pty,raw,echo=0
@@ -73,18 +72,22 @@ WebSocket server running on ws://localhost:8080
 Serial port is open
 ```
 
-### 5. Simulate Button Presses
+### 5. Send Button Commands
 
-If you have the script `scripts/simulate_buttons.sh`, set `PORT` to the other virtual port (e.g., `/dev/ttys012`), then run:
-```bash
-bash scripts/simulate_buttons.sh
-```
-This will send a series of simulated button presses to the server.
+- **If you have physical controllers:**  
+  Connect them to your computer. Button presses will be logged and broadcast automatically.
 
-### 6. View Results
+- **If you are simulating input:**  
+  Open a new terminal and send commands by typing:
+  ```bash
+  cat > /dev/ttys012
+  ```
+  Then type `a`, `b`, or `c` (followed by Enter if needed) to simulate button presses.  
+  - `a` = UP  
+  - `b` = DOWN  
+  - `c` = SELECT  
 
-Latency and command logs will appear in the terminal running `serialHandler.js`.  
-You can analyze these logs to evaluate system responsiveness.
+  You should see the corresponding commands and latency logged in the terminal running `serialHandler.js`.
 
 ---
 
