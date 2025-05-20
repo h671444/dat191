@@ -12,7 +12,6 @@ function logStatus(message, isError = false) {
     
 }
 
-
 function resampleBuffer(inputBuffer, targetSampleRate) {
   const inputData = inputBuffer.getChannelData(0);
   const inputSampleRate = inputBuffer.sampleRate;

@@ -62,7 +62,7 @@ body {
     transform: scale(1.05);
   }
   
-  /* shared button styles */
+ 
   button {
     width: 100%;
     padding: 20px; 
@@ -84,18 +84,18 @@ body {
     transform: scale(1.1);
   }
 
-  /* Add this to quiz.css */
+ 
   .category-btn.voice-selected-feedback,
   .difficulty-btn.voice-selected-feedback {
-    background-color: #b926a3; /* Light Sky Blue */
-    border: 2px solid #b926a3; /* Steel Blue */
-    color: #020207;           /* Navy Text */
-    /* Make the transition quick */
+    background-color: #b926a3;
+    border: 2px solid #b926a3;
+    color: #020207;          
+   
     transition: background-color 0.1s ease-in-out, border-color 0.1s ease-in-out, color 0.1s ease-in-out;
-    /* Optional: add a subtle glow */
+   
     box-shadow: 0 0 10px rgba(70, 130, 180, 0.6);
-    /* Ensure high specificity if needed */
-    transform: scale(1.02); /* Optional: slightly enlarge */
+   
+    transform: scale(1.02);
 }
   
   #quiz-area {
@@ -115,7 +115,7 @@ body {
     margin-bottom: 15px;
   }
   
-  /* question answer buttons */
+ 
   .option-btn {
     background: #44475a;
     color: white;
@@ -143,7 +143,7 @@ body {
     transition: all 0.3s ease-in-out;
   }
   
-  /* Navigation Buttons */
+ 
   .nav-btn {
     background: #0095ff;
     color: white;
@@ -159,12 +159,12 @@ body {
     transform: scale(1.08);
   }
   
-  /* hide sections initially */
+ 
   .hidden {
     display: none;
   }
   
-  /* animations */
+ 
   @keyframes fadeIn {
     from {
         opacity: 0;

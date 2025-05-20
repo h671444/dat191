@@ -1,26 +1,25 @@
-// Import initializers and voice control functions
-import { loadQuestions } from './quiz.js'; // Use named export
+
+import { loadQuestions } from './quiz.js'; 
 import { initializeVoice, stopVoiceRecognition, isVoiceRecognitionActive } from './quiz_voice.js';
-// import { audioCtx } from './quiz.js'; // Import the shared AudioContext
+
 
 document.addEventListener('DOMContentLoaded', () => {
     console.log("Quiz DOM Loaded. Initializing...");
 
-    // Load quiz data and display initial category screen
-    loadQuestions();
 
-    // --- Voice Control Button Setup ---
+    loadQuestions();
+    
     const voiceButton = document.createElement('button');
     voiceButton.id = 'voiceButton';
-    voiceButton.textContent = 'Start Stemme Kontroll'; // Use Norwegian?
-    // Apply some basic styling (adjust as needed)
-    voiceButton.style.position = 'fixed'; // Use fixed to stay relative to viewport
+    voiceButton.textContent = 'Start Stemme Kontroll'; 
+    
+    voiceButton.style.position = 'fixed'; 
     voiceButton.style.bottom = '20px';
     voiceButton.style.left = '20px';
     voiceButton.style.padding = '12px 20px';
     voiceButton.style.fontSize = '1rem';
     voiceButton.style.cursor = 'pointer';
-    voiceButton.style.zIndex = '2000'; // Ensure it's above other elements
+    voiceButton.style.zIndex = '2000'; 
     voiceButton.style.backgroundColor = '#0095ff';
     voiceButton.style.color = 'white';
     voiceButton.style.border = 'none';
@@ -29,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     voiceButton.onclick = () => {
         if (!isVoiceRecognitionActive) {
-            // Pass the shared AudioContext when initializing
+            
             initializeVoice();
             voiceButton.textContent = 'Stopp Stemme Kontroll';
         } else {
@@ -39,9 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     document.body.appendChild(voiceButton);
 
-     // --- Other Global Listeners ---
+     
      window.addEventListener('beforeunload', () => {
-        stopVoiceRecognition(); // Clean up on page leave
+        stopVoiceRecognition(); 
     });
 
      console.log("Quiz initialization complete.");
