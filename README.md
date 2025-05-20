@@ -78,7 +78,7 @@ To run the Voice Quiz application fully with voice control, you need:
    * Run the `quiz_server.py` from the `vosk-server` project. It should indicate it's listening on `ws://localhost:8765`.
 
 2. **Run the Quiz Application:**
-   * **:**
+   * ****
      * Clone this `dat191` repository.
      * Open the `games/quiz/quiz.html` file directly in your web browser.
 
